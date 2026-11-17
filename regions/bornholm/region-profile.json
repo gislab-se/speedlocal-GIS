@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0",
+  "region": {
+    "id": "bornholm",
+    "name": "Bornholm",
+    "country_code": "DK"
+  },
+  "database": {
+    "connection": "speedlocal",
+    "schema": "bornholm",
+    "boundary_view": "region_boundary",
+    "analysis_surface_view": "analysis_surface"
+  },
+  "landscape": {
+    "roads": [
+      "roads_large",
+      "roads_medium"
+    ],
+    "nature": [
+      "protected_areas",
+      "natura_bird_protection",
+      "natura_habitat_areas",
+      "coastal_proximity_zone"
+    ],
+    "culture": [
+      "cultural_preservation",
+      "valuable_cultural_environment"
+    ],
+    "population": [
+      "built_centre",
+      "built_low_selection",
+      "population_points"
+    ],
+    "grid_infrastructure": [
+      "high_voltage_lines",
+      "underground_cables",
+      "power_substations",
+      "wind_turbines_osm",
+      "solar_parks_osm"
+    ]
+  },
+  "energy": {
+    "source_id": "energy_island_placeholder",
+    "evidence": "provisional_fallback"
+  },
+  "social_acceptance": {
+    "source_id": "bornholm_synthetic",
+    "evidence": "synthetic_demo"
+  },
+  "extra_landscape_groups": [],
+  "contracts": {
+    "region": "regions/bornholm/region.json",
+    "geography": "regions/bornholm/geography.json"
+  }
+}

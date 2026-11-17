@@ -1,0 +1,285 @@
+{
+  "schema_version": "1.0",
+  "region_id": "trondelag",
+  "groups": [
+    {
+      "id": "roads",
+      "status": "candidate",
+      "reason": "The owner-approved N500 road geometry is tied to the checksum-recorded local GeoNorge delivery downloaded 2024-10-10 and Kartverket's CC BY 4.0 terms. Gate 2 still approves source geometry only, not buffers or calculations.",
+      "sources": [
+        {
+          "id": "roads_large",
+          "label": "Stora vägar",
+          "database_view": "roads_large",
+          "authority": "Kartverket",
+          "dataset": "N500 road network clipped to Trøndelag",
+          "snapshot_date": "2024-10-10",
+          "license": {"name": "Creative Commons Attribution 4.0 International (CC BY 4.0)", "url": "https://creativecommons.org/licenses/by/4.0/deed.no", "status": "verified_local_delivery"},
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "vegkategor E och R",
+          "source_feature_count": 327,
+          "geometry_family": "line",
+          "data_representation": "network",
+          "asset": {
+            "provider": "v2_archive",
+            "path": "docs/geocontext/acceptance_framework/data/trondelag_prototype_assets/source_geojson/roads_large.geojson",
+            "sha256": "e8f3448c4d5924484c9e59a2812735b9ce7f4a0bc5abddc114e68516c4cee786",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 1
+          }
+        },
+        {
+          "id": "roads_medium",
+          "label": "Mellanvägar",
+          "database_view": "roads_medium",
+          "authority": "Kartverket",
+          "dataset": "N500 road network clipped to Trøndelag",
+          "snapshot_date": "2024-10-10",
+          "license": {"name": "Creative Commons Attribution 4.0 International (CC BY 4.0)", "url": "https://creativecommons.org/licenses/by/4.0/deed.no", "status": "verified_local_delivery"},
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "vegkategor F",
+          "source_feature_count": 2252,
+          "geometry_family": "line",
+          "data_representation": "network",
+          "asset": {
+            "provider": "v2_archive",
+            "path": "docs/geocontext/acceptance_framework/data/trondelag_prototype_assets/source_geojson/roads_medium.geojson",
+            "sha256": "136027c3043d7a5ec3a5c692bcbccdd8a1e78a3bc56aa1aa54139c7a638574a1",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "population",
+      "status": "candidate",
+      "reason": "The two owner-approved population sources are tied to checksum-recorded local deliveries: SSB's 2023 population grid downloaded 2024-10-25 under NLOD 1.0 and Kartverket N500 downloaded 2024-10-10 under CC BY 4.0. The rejected 1 km holiday-house centroid proxy remains excluded.",
+      "sources": [
+        {
+          "id": "population_points",
+          "label": "Befolkning, 250 m-rutor",
+          "database_view": "population_points",
+          "authority": "Statistisk sentralbyrå (SSB)",
+          "dataset": "Befolkning på rutenett, bearbetad Trøndelag-yta",
+          "snapshot_date": "2024-10-25",
+          "license": {"name": "Norwegian Licence for Open Government Data 1.0 (NLOD 1.0)", "url": "https://data.norge.no/nlod/no/1.0", "status": "verified_local_delivery"},
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "Befolkade 250 m-rutor, integritetsskyddat och upplöst till en granskningsyta",
+          "source_feature_count": 26029,
+          "geometry_family": "polygon",
+          "data_representation": "grid",
+          "asset": {
+            "provider": "v2_archive",
+            "path": "docs/geocontext/acceptance_framework/data/trondelag_prototype_assets/source_geojson/population_points.geojson",
+            "sha256": "70110cfa8342d299833755326a99c9de556ac660941f6a8f8909cbd3e2e317ea",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 1
+          }
+        },
+        {
+          "id": "built_centre",
+          "label": "Tät bebyggelse",
+          "database_view": "built_centre",
+          "authority": "Kartverket",
+          "dataset": "N500 bebyggd yta, Trøndelag",
+          "snapshot_date": "2024-10-10",
+          "license": {"name": "Creative Commons Attribution 4.0 International (CC BY 4.0)", "url": "https://creativecommons.org/licenses/by/4.0/deed.no", "status": "verified_local_delivery"},
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "Bebyggda ytor klippta till Trøndelag",
+          "source_feature_count": 1,
+          "geometry_family": "polygon",
+          "data_representation": "features",
+          "asset": {
+            "provider": "v2_archive",
+            "path": "docs/geocontext/acceptance_framework/data/trondelag_prototype_assets/source_geojson/built_centre.geojson",
+            "sha256": "ad0df08a688bcff2a10d49d5f96eb3972229b5d5ac9a6e1eaf45bd801604b338",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "nature",
+      "status": "candidate",
+      "reason": "The checksum-pinned protected-areas geometry is the exact previously promoted Trøndelag nature controller; Gate 2 only standardizes that reviewed source in PostGIS and preserves its zero-buffer hard-exclusion behavior.",
+      "sources": [
+        {
+          "id": "protected_areas",
+          "label": "Naturvernområden",
+          "database_view": "protected_areas",
+          "authority": "Miljødirektoratet",
+          "dataset": "Naturvernområder",
+          "snapshot_date": "2024-10-28",
+          "license": {
+            "name": "Norsk lisens for offentlige data (NLOD) 2.0",
+            "url": "https://data.norge.no/nlod/no/2.0",
+            "status": "verified_local_delivery"
+          },
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "420 naturvernområden som skär Trøndelags landmask; klippta, förenklade och upplösta till den tidigare godkända kontrollgeometrin",
+          "source_feature_count": 420,
+          "geometry_family": "polygon",
+          "data_representation": "features",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/trondelag_nature_2024_10_28/protected_areas.geojson",
+            "sha256": "a2d7e25ce436cb8e613c7a26f27fc804a0c6f17a599d6fe36a40255646a074eb",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "culture",
+      "status": "candidate",
+      "reason": "The two exact promoted Trøndelag culture controllers are standardized as checksum-bound PostGIS candidates. The former merged NW layer remains QA-only to avoid duplicate scoring; Gate 2 changes neither defaults, buffers nor calculations.",
+      "sources": [
+        {
+          "id": "cultural_preservation",
+          "label": "Kulturmiljöer och kulturminnen",
+          "database_view": "cultural_preservation",
+          "authority": "Riksantikvaren",
+          "dataset": "Kulturminner – Kulturmiljøer",
+          "snapshot_date": "2024-10-27",
+          "license": {
+            "name": "Norsk lisens for offentlige data (NLOD) 2.0",
+            "url": "https://data.norge.no/nlod/no/2.0",
+            "status": "verified_local_delivery"
+          },
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "64 regionalt levererade kulturmiljöobjekt; den ogiltiga arkivgeometrin repareras deterministiskt och samtliga 62 polygondelar bevaras",
+          "source_feature_count": 64,
+          "geometry_family": "polygon",
+          "data_representation": "features",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/trondelag_culture_2024_10/cultural_preservation.geojson",
+            "sha256": "8814d5e9e71b23827b4f05d6811e244b8f21fde28d8a6fd32793129d8869ff78",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 1
+          }
+        },
+        {
+          "id": "valuable_cultural_environment",
+          "label": "Värdefulla kulturlandskap",
+          "database_view": "valuable_cultural_environment",
+          "authority": "Miljødirektoratet",
+          "dataset": "Kulturlandskap – verdifulle",
+          "snapshot_date": "2024-10-28",
+          "license": {
+            "name": "Norsk lisens for offentlige data (NLOD) 2.0",
+            "url": "https://data.norge.no/nlod/no/2.0",
+            "status": "verified_local_delivery"
+          },
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "146 regionalt levererade kulturlandskapsobjekt, upplösta till de 192 polygondelar som används av den tidigare godkända kontrollgeometrin",
+          "source_feature_count": 146,
+          "geometry_family": "polygon",
+          "data_representation": "features",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/trondelag_culture_2024_10/valuable_cultural_environment.geojson",
+            "sha256": "d8eef4bcab34a93aed754ecb9a4379af35c6555e08fabac96229e535837c2eaf",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "grid_infrastructure",
+      "status": "candidate",
+      "reason": "The exact three-source Trøndelag grid-infrastructure controller is standardized as checksum-bound PostGIS candidates without changing its promoted proximity-feasibility behavior. Undeclared transformer stations remain outside the accepted contract.",
+      "sources": [
+        {
+          "id": "high_voltage_lines",
+          "label": "Högspänningsledningar",
+          "database_view": "high_voltage_lines",
+          "authority": "Noregs vassdrags- og energidirektorat (NVE)",
+          "dataset": "Kraftnett – transmission",
+          "snapshot_date": "2024-10-27",
+          "license": {
+            "name": "Norsk lisens for offentlige data (NLOD) 2.0",
+            "url": "https://data.norge.no/nlod/no/2.0",
+            "status": "verified_local_delivery"
+          },
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "16 932 regionala transmissionsledningar från den rena UTM 32-källan, klippta till Trøndelags landmask, upplösta och förenklade 20 m enligt den tidigare promoverade kontrollgeometrin",
+          "source_feature_count": 16932,
+          "geometry_family": "line",
+          "data_representation": "network",
+          "asset": {
+            "provider": "v2_archive",
+            "path": "docs/geocontext/acceptance_framework/data/trondelag_prototype_assets/source_geojson/high_voltage_lines.geojson",
+            "sha256": "b651ac9acc29155814d8f6079bd2030987031a207e7bc891b5cbde698d1b8a67",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 1
+          }
+        },
+        {
+          "id": "underground_cables",
+          "label": "Sjö- och undervattenskablar",
+          "database_view": "underground_cables",
+          "authority": "Noregs vassdrags- og energidirektorat (NVE)",
+          "dataset": "Kraftnett – sjøkabel",
+          "snapshot_date": "2024-12-11",
+          "license": {
+            "name": "Norsk lisens for offentlige data (NLOD) 2.0",
+            "url": "https://data.norge.no/nlod/no/2.0",
+            "status": "verified_local_delivery"
+          },
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "330 regionalt levererade sjö- och undervattenskablar, upplösta och förenklade 20 m enligt den tidigare promoverade kontrollgeometrin; källan är inte landklippt men dess analysbuffer klipps till analysdomänen",
+          "source_feature_count": 330,
+          "geometry_family": "line",
+          "data_representation": "network",
+          "asset": {
+            "provider": "v2_archive",
+            "path": "docs/geocontext/acceptance_framework/data/trondelag_prototype_assets/source_geojson/underground_cables.geojson",
+            "sha256": "ed1d530fdf52513ff66508423a43587bda9074921c79eea443e5766171158da8",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 1
+          }
+        },
+        {
+          "id": "existing_wind_turbines",
+          "label": "Befintliga vindkraftverk",
+          "database_view": "existing_wind_turbines",
+          "authority": "Noregs vassdrags- og energidirektorat (NVE)",
+          "dataset": "Vindkraftverk",
+          "snapshot_date": "2024-10-28",
+          "license": {
+            "name": "Norsk lisens for offentlige data (NLOD) 2.0",
+            "url": "https://data.norge.no/nlod/no/2.0",
+            "status": "verified_local_delivery"
+          },
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "470 regionalt levererade befintliga vindkraftverk, landklippta och upplösta enligt den tidigare promoverade anslutningsproxyn",
+          "source_feature_count": 470,
+          "geometry_family": "point",
+          "data_representation": "features",
+          "asset": {
+            "provider": "v2_archive",
+            "path": "docs/geocontext/acceptance_framework/data/trondelag_prototype_assets/source_geojson/existing_wind_turbines.geojson",
+            "sha256": "bd8e8bfeb35c61c5cdaeca23ffc2046313c0c03b66ba976f39aa899f33945bfc",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 1
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "title": "Utforska Skaraborg med SpeedLocal",
+  "subtitle": "Ett svenskt filmmanus och en tutorial för GIS-personer. Från modellens kapacitetsmix till 60 procent vind och 40 procent sol, med tydligt märkta demonstrationsdata.",
+  "region_id": "skaraborg",
+  "language": "sv",
+  "app_url": "http://localhost:8502/?region=skaraborg",
+  "total_seconds": 263,
+  "preparation": [
+    "Öppna Skaraborg med länken ovan. Välj Svenska och vänta tills kartan och resultatet är färdiga. Klicka Starta guide i appen. Guiden visar var du ska arbeta; talmanuset läser du på denna separata sida. Använd samma stegnummer i båda fönstren.",
+    "Öppna vänsterpanelen med pilen längst upp till vänster. Under Geografier använder du Landskapspotential Vind. Stäng solpanelen när du visar vindens underlag så att rätt reglage syns.",
+    "Om du har ändrat GIS-filtren: välj Återställ startvärden i både Landskapspotential Vind och Landskapspotential Sol och vänta tills resultaten är klara. Under Energimodellering väljer du Demonstrationsnivå: High · 2050 · ×250 och bekräftar ändrade val med Använd ändringar. Behåll denna nivå under filmen. Nivåerna Low · 2030 · ×20, Base · 2040 · ×100 och High · 2050 · ×250 är Bornholms kapacitetsmodell med olika, artificiellt valda skalfaktorer för visualisering i Skaraborg. Årtalen är Bornholms referensår. Detta är placeholders, inte en validerad regional prognos. Ytfaktorerna per MW är oförändrade och årsproduktion i TWh saknas.",
+    "Under Social acceptans ska Acceptanspåverkan och Acceptansstyrning av scenarioyta inom potentialen vara 0 procent. Bekräfta ändrade värden med panelens Använd ändringar. Under Kapacitetsmix väljer du sedan Återställ modellens mix och väntar på uppdateringen. Modellens High-nivå är 20 000 MW vind och 25 000 MW sol: totalt 45 000 MW, cirka 44,44 procent vind och 55,56 procent sol. Reglaget kan visa den avrundade vindandelen 44 procent; tillämpa ingen egen mix före steg 6. Med GIS-startvalen överskrider vindens markbehov potentialen med cirka 126 km² redan före mixändringen. Kontrollera att startläget är tillämpat och inte bara synligt i formulären.",
+    "Öppna resultatpanelen med Visa/dölj kontext (pilen till höger). Kontrollera att tabellen syns. Du kan stänga panelen när du vill ge kartan mer plats och öppna den igen i steg 10.",
+    "Länken öppnar appen i en ny flik. Dra ut den fliken till ett eget webbläsarfönster. Ha tutorialen utanför inspelningsområdet, helst på en andra skärm. Med en skärm: placera appen och tutorialen bredvid varandra. Tiderna avser berättande och visning; långa beräkningsväntetider kan klippas bort.",
+    "Öva de tio stegen före inspelningen. Läs källvarningarna: regionala GIS-underlag, kapacitet från Bornholm med artificiella skalfaktorer och syntetisk acceptans har olika evidens. I filmen använder vi High-nivåns faktor 250 för att tydligt visa markbehov utanför potentialen. Skaraborgs GIS-data används fortfarande, men energiscenariot är demonstrationsdata. Ett tekniskt validerat flöde är inte ett regionalt godkänt planeringsunderlag."
+  ],
+  "recording": {
+    "recommendation": "Enklast i uppdaterat Windows 11: Skärmklippverktyget med valt inspelningsområde och mikrofon. Då kan tutorialen ligga synlig bredvid appen utan att komma med i filmen.",
+    "instructions": [
+      "Placera appfönstret där du vill spela in. Låt tutorialen ligga utanför området. Använd en läsbar zoomnivå, stäng aviseringar och anslut gärna ett headset.",
+      "Tryck Win + Skift + R och markera bara appens område. Du kan också öppna Skärmklippverktyget, välja Spela in och därefter Nytt.",
+      "Slå på mikrofonen i inspelningsfältet. Spela först in ett prov på cirka 15 sekunder och kontrollera röst, textstorlek och att pratbubblan inte syns.",
+      "Starta inspelningen och läs pratbubblorna. Gör klickmomenten i appen och byt steg manuellt här. Flytta inte appfönstret utanför det markerade området.",
+      "Vänta in tillämpade ändringar innan du beskriver resultatet. Vid lång väntan: pausa inspelningen om din version erbjuder det, eller klipp bort väntan efteråt.",
+      "Välj Stoppa, förhandsgranska och kontrollera var filen sparats. Vid behov kan filmen trimmas i Clipchamp. Dela först när du själv har granskat den."
+    ],
+    "teams": "Teams fungerar om mötesinspelning är tillåten för ditt konto. Dela då enbart appfönstret och ha tutorialen i ett annat fönster. Inspelning kräver rätt licens och administratörens tillåtelse, och filmen sparas i OneDrive eller SharePoint. För den här enskilda filmen är Skärmklippverktyget enklare eftersom du slipper skapa ett möte.",
+    "windows10": "Om du använder Windows 10 eller saknar videoläget i Skärmklippverktyget kan Xbox Game Bar vara ett alternativ för webbläsarappen. Win + Alt + R startar och stoppar; Win + Alt + M växlar mikrofonen. MP4-filen sparas i Videor/Captures. Gör ett kort prov och kontrollera att rätt fönster och ljud spelas in.",
+    "sources": [
+      {"title": "Microsoft: Skärmklippverktyget, videoinspelning och Win + Skift + R", "url": "https://support.microsoft.com/sv-se/windows/apps/use-snipping-tool-to-capture-screenshots"},
+      {"title": "Microsoft: spela in ett valt område med mikrofon", "url": "https://www.microsoft.com/en-us/windows/learning-center/your-guide-snipping-tool"},
+      {"title": "Microsoft: Teams-inspelning, behörigheter och lagring", "url": "https://support.microsoft.com/sv-se/teams/meetings/start-stop-and-find-meeting-recordings-in-microsoft-teams"},
+      {"title": "Microsoft: Xbox Game Bar och mikrofonkommandon", "url": "https://support.microsoft.com/en-us/accessibility/windows/use-a-screen-reader-to-record-your-screen-with-xbox-game-bar"}
+    ]
+  },
+  "steps": [
+    {
+      "id": "intro", "guide_target": "region", "target": "Kartan · Skaraborg", "seconds": 22,
+      "title": "Utforska Skaraborg",
+      "guide_title": "Välkommen till SpeedLocal",
+      "guide_text": "Välkommen! I SpeedLocal kan du utforska var vind- och solenergi kan vara möjlig i Skaraborg och hur olika val påverkar resultatet. Det är en prototyp för att undersöka idéer och antaganden. Guiden visar dig runt i tio steg. Välj Nästa när du vill fortsätta.",
+      "instruction": "Visa hela Skaraborg på kartan och arbetsytan Sol- och vindpotential. Stanna i Skaraborg under hela filmen.",
+      "narration": "Vi ska använda SpeedLocal för att utforska vind- och solpotential i Skaraborg. Det här är en prototyp för att pröva geografiska antaganden och jämföra scenarier. För oss som arbetar med GIS är huvudfrågan hur underlag och analysregler påverkar den möjliga etableringsytan.",
+      "takeaway": "Ett utforskande GIS-verktyg, med Skaraborg som enda demonstrationsregion."
+    },
+    {
+      "id": "geography", "guide_target": "map", "target": "Kartan · analysens avgränsning", "seconds": 24,
+      "title": "Börja med analysens geografi",
+      "guide_title": "Lär känna området",
+      "guide_text": "Kartan visar Skaraborgs femton kommuner. Analysen omfattar landytan; sjöar och vattendrag ingår inte i den mark som undersöks. Dra i kartan och zooma för att orientera dig. Färgerna hjälper dig att skilja mellan möjligheterna för vind och sol.",
+      "instruction": "Visa Skaraborgs utbredning på kartan mellan Vänern och Vättern. Peka på landytan och vattenområdena. Byt inte region.",
+      "narration": "Analysen utgår från Skaraborgs femton kommuner. Den administrativa gränsen bygger på SCB:s underlag, medan analysytan avgränsas till land med hjälp av Lantmäteriets vattenytor. Det är viktigt att skilja regionens identitet från den markyta där vind- och solpotential faktiskt beräknas i den här modellen.",
+      "takeaway": "Regiongräns och analyserbar landyta har olika roller."
+    },
+    {
+      "id": "sources", "guide_target": "wind-nature", "target": "Geografier → Landskapspotential Vind → Skyddad natur", "seconds": 27,
+      "title": "Granska GIS-underlagen",
+      "guide_title": "Se vad kartan bygger på",
+      "guide_text": "Vilka ytor som räknas som möjliga beror på vilka hänsyn du väljer. Under Geografier finns filter för bland annat vägar, bebyggelse och skyddad natur. Öppna Datakällor under Skyddad natur för att se vilka naturunderlag som används. Ett lager kan påverka analysen även när det är dolt på kartan.",
+      "instruction": "Öppna Geografier och Landskapspotential Vind. Öppna Skyddad natur → Datakällor och visa Naturreservat och Naturvårdsområden. Peka också på grupperna Vägar och Befolkning och bebyggelse. Behåll källurvalen.",
+      "narration": "Här granskar vi vilka GIS-underlag som formar vindpotentialen. Skaraborg har bland annat vägar från NVDB, SCB:s tätorter, småorter och fritidshusområden samt natur- och kulturmiljöunderlag. Under Datakällor ser vi det valda urvalet. Ett dolt kartlager kan fortfarande vara aktivt i analysen.",
+      "takeaway": "Källurval och kartans synlighet är olika saker."
+    },
+    {
+      "id": "grid", "guide_target": "wind-grid-apply", "target": "Vind → Elinfrastruktur / nätanslutning", "seconds": 24,
+      "title": "Förstå avstånd och filter",
+      "guide_title": "Utforska närheten till elnätet",
+      "guide_text": "Vind- och solanläggningar behöver kunna anslutas till elnätet. Här väljer du hur långt från den valda infrastrukturen modellen får leta efter möjlig mark. Öppna Datakällor för att se vilka ledningar och befintliga vindkraftverk som används som närhetsmått. Närhet innebär inte att det finns ledig nätkapacitet.",
+      "instruction": "I vindpanelen: öppna Elinfrastruktur / nätanslutning och dess Datakällor. Visa Största anslutningsavstånd, Högspänningsledningar och Befintliga vindkraftverk. Behåll värdena.",
+      "narration": "Avståndsreglerna fungerar på olika sätt. Vägar och bebyggelse har minsta avstånd, medan elnätsfiltret anger största anslutningsavstånd till vald infrastruktur. Närhet till en ledning eller ett befintligt vindkraftverk säger däremot inget om ledig nätkapacitet. Startvärdena är utforskningsvärden och ingen regional rekommendation.",
+      "takeaway": "Geografisk närhet är en proxy; filtervärden är antaganden."
+    },
+    {
+      "id": "scenario", "guide_target": "scenario", "target": "Vänsterpanelen → Energimodellering", "seconds": 29,
+      "title": "Koppla installerad effekt till mark",
+      "guide_title": "Från installerad effekt till markbehov",
+      "guide_text": "Installerad effekt mäts i megawatt (MW). Demonstrationsnivåerna använder Bornholms kapacitetsmodell med artificiella skalfaktorer: Low ×20, Base ×100 och High ×250. Årtalen är Bornholms referensår; nivåerna är placeholders för visualisering i Skaraborg, inte regionala prognoser. Prova High · 2050 · ×250 och Använd ändringar för att se vad som händer när markbehovet blir större än potentialen. Årsproduktion i TWh saknas.",
+      "instruction": "Öppna Energimodellering. Visa Demonstrationsnivå med Low · 2030 · ×20, Base · 2040 · ×100 och High · 2050 · ×250. Välj High · 2050 · ×250 och bekräfta ändrade val med Använd ändringar. Öppna Källstatus och begränsningar. Visa att skalfaktorerna är artificiella demonstrationsval, att årtalen kommer från Bornholms modell och att årsproduktion saknas. Kontrollera High-nivåns modellmix: 20 000 MW vind och 25 000 MW sol.",
+      "narration": "Här kopplar vi installerad effekt till markbehov. Vi väljer High: Bornholms kapacitetsmodell för referensåret 2050, multiplicerad med 250. De olika skalfaktorerna är artificiella val för visualisering i Skaraborg, ingen regional prognos. High gör det lätt att se vad som händer när markbehovet inte ryms. Ytfaktorerna per megawatt är oförändrade. Årsproduktion saknas, så vi räknar inte om effekten till terawattimmar.",
+      "takeaway": "Demonstrationsnivåerna använder olika artificiella skalningar; modellens referensår är inte regionala prognosår."
+    },
+    {
+      "id": "mix", "guide_target": "mix", "target": "Under kartan → Kapacitetsmix", "seconds": 30,
+      "title": "Prova 60 procent vind",
+      "guide_title": "Prova en annan kapacitetsmix",
+      "guide_text": "Vind och sol behöver olika mycket mark per installerad megawatt. Med Kapacitetsmix fördelar du demonstrationsnivåns totala effekt mellan dem. Prova gärna 60 procent vind och välj Använd egen mix. Solandelen blir då 40 procent, medan total effekt i MW är densamma. Vänta på uppdateringen och välj sedan Fortsätt guiden. Du kan återgå med Återställ modellens mix.",
+      "instruction": "Under kartan: visa Kapacitetsmix och Modellens fördelning för High · 2050 · ×250. Ändra Vindandel av installerad effekt (%) till 60 och klicka Använd egen mix. Totalen ska förbli 45 000 MW: 27 000 MW vind och 18 000 MW sol. Vänta tills kartan och resultatet har uppdaterats. Klicka sedan Fortsätt guiden för att återgå till detta steg och välj Nästa när du är klar.",
+      "narration": "Nu ändrar jag kapacitetsmixen från modellens fördelning till sextio procent vind och fyrtio procent sol, och väljer Använd egen mix. High-nivåns total är fortfarande 45 000 megawatt: 27 000 vind och 18 000 sol. Vind och sol behöver olika mycket mark per megawatt, så deras ytbehov ändras. Det här är en fördelning av effekt, inte av årsproduktion.",
+      "takeaway": "Kapacitetsmixen omfördelar demonstrationsnivåns MW och ändrar ytbehovet; den beskriver inte en produktionsmix."
+    },
+    {
+      "id": "potential-map", "guide_target": "map", "target": "Kartan → Potentiell etableringsyta", "seconds": 27,
+      "title": "Läs den tekniska potentialen",
+      "guide_title": "Lär känna kartans färger",
+      "guide_text": "Potentiell etableringsyta visar vilken mark som återstår efter dina geografiska filter. Grönt betyder potential för både vind och sol, blått för vind och gult för sol. Mörkrött betyder att marken inte passar enligt de valda reglerna. Zooma in för fler detaljer; en översiktsfärg beskriver inte varje plats i hexagonen.",
+      "instruction": "I kartans lagerkontroll uppe till höger: behåll Potentiell etableringsyta synlig. Håll Scenarioyta inom potentialen dold och dölj tillfälligt Ytbehov utanför landskapets potential. Zooma in ett steg och läs potentialens teckenförklaring. Detta ändrar bara visningen.",
+      "narration": "Potentialkartan visar vad som återstår efter de tillämpade geografiska filtren. Grönt betyder potential för både vind och sol, blått vind och gult sol. Mörkrött markerar olämplig yta enligt modellens regler. Vid utzoomning visar hexagonerna den dominerande kategorin, så färgen beskriver inte varje plats i hexagonen.",
+      "takeaway": "Potential är regelberoende och visningsskalan begränsar detaljtolkningen."
+    },
+    {
+      "id": "scenario-map", "guide_target": "map", "target": "Kartans lagerkontroll → Scenarioyta inom potentialen", "seconds": 25,
+      "title": "Skilj potential från scenarioyta",
+      "guide_title": "Se hur scenariot fördelas",
+      "guide_text": "Potentialen visar möjlig mark enligt dina val. Scenarioytan visar modellens fördelning av markbehovet. Slå på Scenarioyta inom potentialen i kartans lagerkontroll: blått visar vind, gulorange sol och mörkgrönt båda i samma visningshexagon. Det visar inte exakt överlappning. Aktivera även Ytbehov utanför landskapets potential. High med 60 procent vind visar ett schematiskt fält för det vindbehov som inte ryms. Zooma vid behov ut ett steg för att se hela fältet.",
+      "instruction": "Öppna lagerkontrollen i kartans övre högra hörn. Visa Scenarioyta inom potentialen och återaktivera Ytbehov utanför landskapets potential. Läs teckenförklaringen och varningen. Med oförändrade GIS-startval och High-nivåns 60/40-mix ligger cirka 1 203 km² av vindens markbehov utanför potentialen. Solens markbehov ryms. Zooma vid behov ut ett steg så att hela det schematiska fältet syns. Peka på fältet och kontrollera det aktuella resultatet.",
+      "narration": "Scenarioytan visar modellens fördelning av vind- och solutrymmet. Vind är blått och sol gulorange. Mörkgrönt betyder båda teknikerna i samma visningshexagon, utan beräknad fysisk överlappning. I vårt artificiella High-exempel ryms inte hela vindbehovet. Det schematiska fältet visar ungefär 1 203 kvadratkilometer utanför potentialen. Det är en illustration av ett underskott, inte ett lokaliseringsförslag.",
+      "takeaway": "Scenarioyta är modellallokering, och gemensam visningscell bevisar inte fysisk överlappning."
+    },
+    {
+      "id": "social", "guide_target": "social", "target": "Vänsterpanelen → Social acceptans", "seconds": 25,
+      "title": "Tolka social acceptans korrekt",
+      "guide_title": "Utforska social acceptans",
+      "guide_text": "Här kan du undersöka hur antaganden om social acceptans påverkar modellen. Skaraborgs värden är syntetiska demonstrationsdata och beskriver inte invånarnas uppmätta attityder. Öppna Källstatus och begränsningar för att läsa mer. Låt båda reglagen stå på noll procent om du vill utforska de geografiska förutsättningarna utan acceptansens påverkan.",
+      "instruction": "Öppna Social acceptans och Källstatus och begränsningar. Visa reglagen, men behåll Acceptanspåverkan och Acceptansstyrning av scenarioyta inom potentialen på 0 %. Ingen ny tillämpning behövs.",
+      "narration": "Social acceptans är ett separat perspektiv, men Skaraborgs värden är syntetiska demonstrationsdata. De bygger inte på observerade attityder, regional kalibrering eller landskapsfaktorer. Jag lämnar påverkan och styrning på noll i den här jämförelsen. Funktionen kan demonstreras, men kartan berättar inte vad invånarna i Skaraborg faktiskt tycker.",
+      "takeaway": "Syntetiska demovärden är inte observerad social acceptans."
+    },
+    {
+      "id": "results", "guide_target": "results", "target": "Högerpanelen → Visa/dölj kontext → resultattabellen", "seconds": 30,
+      "title": "Läs resultat och begränsningar",
+      "guide_title": "Läs och jämför resultatet",
+      "guide_text": "I resultatpanelen till höger kan du jämföra vind och sol utifrån dina aktuella val. Installerad effekt anges i MW och yta i km². Se hur mycket markbehov som ryms inom potentialen och hur mycket som hamnar utanför. Årsproduktion i TWh saknas; det betyder inte noll produktion. Demonstrationsnivåernas skalningar är artificiella och ingen regional prognos. Totalytan summerar teknikerna och behöver inte motsvara unik mark.",
+      "instruction": "Öppna Visa/dölj kontext till höger om kartan. För High · 2050 · ×250 och 60/40 ska vind visa 27 000 MW och cirka 4 153,85 km² ytbehov, sol 18 000 MW och 181,80 km². Total installerad effekt är 45 000 MW. Med GIS-startvalen finns cirka 2 950,92 km² vindpotential och 942,18 km² solpotential. Vindens markbehov utanför potentialen är cirka 1 202,92 km²; solens är noll. Visa att årsproduktion saknas och att High är en artificiell skalning med faktor 250 enbart för visualisering. Kontrollera aktuella värden om resultatet avviker.",
+      "narration": "Efter mixändringen är vindens effekt 27 000 megawatt och solens 18 000. Vindens markbehov är ungefär 4 154 kvadratkilometer, varav omkring 1 203 inte ryms inom potentialen. Solen behöver ungefär 182 kvadratkilometer och ryms. Årsproduktion saknas, den är inte noll. High är Bornholms modell gånger 250, artificiellt vald för visualisering i Skaraborg. Vilket antagande vill vi granska vidare?",
+      "takeaway": "Läs MW och km², håll saknad årsproduktion öppen och behandla scenariot som demonstrationsdata."
+    }
+  ]
+}

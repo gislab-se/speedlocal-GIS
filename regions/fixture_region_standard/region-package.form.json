@@ -1,0 +1,834 @@
+{
+  "$schema": "../../schemas/speedlocal/1.0/region-package-form.schema.json",
+  "form_schema_version": "1.0",
+  "region": {
+    "region_id": "fixture_region_standard",
+    "display_name": "Neutral standard fixture",
+    "country_code": "ZZ",
+    "country_name": "Synthetic test territory",
+    "native_crs": "EPSG:32633",
+    "web_crs": "EPSG:4326",
+    "behavior_reference": {
+      "state": "unavailable",
+      "reason": "Synthetic portability fixture; it has no regional behavior reference."
+    }
+  },
+  "access": {
+    "lifecycle": "onboarding",
+    "trust_classification": "diagnostic_only",
+    "product_route_requested": false,
+    "local_review": {
+      "enabled": true,
+      "allowed_capabilities": [
+        "workspace.map",
+        "workspace.landscape",
+        "wind.area",
+        "wind.group.roads",
+        "wind.group.population",
+        "wind.group.nature",
+        "wind.group.culture",
+        "wind.group.grid_infrastructure",
+        "solar.area",
+        "solar.group.roads",
+        "solar.group.population",
+        "solar.group.nature",
+        "solar.group.culture",
+        "solar.group.grid_infrastructure",
+        "solar.rooftop",
+        "workspace.technology_context",
+        "workspace.scenario",
+        "workspace.social_acceptance",
+        "workspace.combined_result"
+      ]
+    },
+    "landing_card": {
+      "title": "Neutral standard fixture",
+      "subtitle": "Synthetic five-group manifest fixture",
+      "description": "A non-public fixture for the complete standard-group program path.",
+      "badge": "Fixture",
+      "sort_order": 998
+    }
+  },
+  "map_h3": {
+    "center": [56.0, 12.0],
+    "zoom": 10,
+    "analysis_resolution": 9,
+    "rollup_resolutions": [8]
+  },
+  "geography": {
+    "boundary": {
+      "state": "declared",
+      "id": "onshore_region_extent",
+      "label": "Synthetic square boundary",
+      "asset": {
+        "provider": "repo",
+        "path": "regions/fixture_region_standard/assets/boundary.geojson",
+        "format": "geojson",
+        "integrity": {"mode": "generate"}
+      },
+      "source_crs": "EPSG:4326",
+      "native_crs": "EPSG:32633",
+      "geometry_family": "polygon",
+      "provenance": {
+        "authority": "SpeedLocal test suite",
+        "dataset_name": "Synthetic square boundary",
+        "dataset_version": "fixture-1",
+        "snapshot_date": "2026-08-14",
+        "license": "CC0-1.0 synthetic fixture",
+        "provenance_status": "processed_snapshot_only",
+        "derivation": "Hand-authored polygon used only by deterministic portability gates."
+      }
+    },
+    "standard_analysis_domain": {
+      "state": "declared",
+      "domain_id": "standard_constraints_r9",
+      "coverage_geometry_id": "onshore_region_extent",
+      "cell_kind": "h3",
+      "resolution": 9,
+      "rollup_resolutions": [8],
+      "candidate_buffer_m": 5000,
+      "coverage_rule": "positive_area_intersection",
+      "missing_observation_policy": "error"
+    },
+    "technology_support": {
+      "state": "declared",
+      "support_domain_id": "onshore_technology_r9",
+      "label": "Synthetic wind and solar support domain",
+      "technologies": ["wind", "solar"],
+      "coverage_geometry": {
+        "id": "onshore_technology_extent",
+        "label": "Synthetic technology target surface",
+        "asset": {
+          "provider": "repo",
+          "path": "regions/fixture_region_standard/assets/boundary.geojson",
+          "format": "geojson",
+          "integrity": {"mode": "generate"}
+        },
+        "source_crs": "EPSG:4326",
+        "native_crs": "EPSG:32633",
+        "geometry_family": "polygon",
+        "provenance": {
+          "authority": "SpeedLocal test suite",
+          "dataset_name": "Synthetic technology target surface",
+          "dataset_version": "fixture-1",
+          "snapshot_date": "2026-08-14",
+          "license": "CC0-1.0 synthetic fixture",
+          "provenance_status": "processed_snapshot_only",
+          "derivation": "The boundary is deliberately reused as a distinct declared technology-target role for portability tests."
+        }
+      },
+      "candidate_buffer_m": 5000,
+      "eligible_surface": {
+        "id": "onshore_land",
+        "label": "Synthetic onshore eligible surface",
+        "outside_region_policy": "exclude",
+        "geometry_operation": "intersection",
+        "source_derivation": "reviewed_web_crs_derivative"
+      },
+      "technology_context": {
+        "state": "declared",
+        "id": "synthetic_landscape_r9",
+        "asset": {
+          "provider": "repo",
+          "path": "regions/fixture_region_standard/assets/technology_context_r9.geojson",
+          "format": "geojson",
+          "integrity": {"mode": "generate"}
+        },
+        "id_field": "hex_id",
+        "cell_kind": "h3",
+        "resolution": 9,
+        "context_fields": ["landscape_type"],
+        "missing_policy": "explicit_not_assessed",
+        "provenance": {
+          "authority": "SpeedLocal test suite",
+          "dataset_name": "Synthetic H3 technology context",
+          "dataset_version": "fixture-1",
+          "snapshot_date": "2026-08-14",
+          "license": "CC0-1.0 synthetic fixture",
+          "provenance_status": "processed_snapshot_only",
+          "derivation": "H3 ids from the synthetic target extent with one explicit test-only landscape_type value."
+        }
+      }
+    }
+  },
+  "landscape": {
+    "state": "declared",
+    "landscape_id": "synthetic_landscape_review",
+    "label": "Synthetic landscape review",
+    "purpose": "display_review_only",
+    "numerical_use": "forbidden",
+    "source_reference": {
+      "kind": "technology_context",
+      "context_id": "synthetic_landscape_r9"
+    },
+    "domain_reference": {
+      "role": "standard_analysis_domain",
+      "domain_id": "standard_constraints_r9"
+    },
+    "h3_id_field": "hex_id",
+    "cell_kind": "h3",
+    "resolution": 9,
+    "views": [
+      {
+        "view_id": "landscape_types",
+        "label": "Landscape types",
+        "value_field": "landscape_type",
+        "value_semantics": "categorical_id",
+        "legend": [
+          {
+            "value_id": "synthetic_context",
+            "label": "Synthetic landscape",
+            "color": "#5B8FF9"
+          }
+        ]
+      }
+    ],
+    "default_view_id": "landscape_types",
+    "product_default_visible": true,
+    "rollup_resolutions": [8],
+    "rollup_rule": "dominant_area_then_legend_order",
+    "missing_policy": "explicit_not_assessed",
+    "outside_domain_policy": "ignore_with_evidence",
+    "missing_label": "Not assessed",
+    "provenance": {
+      "authority": "SpeedLocal test suite",
+      "dataset_name": "Synthetic landscape display contract",
+      "dataset_version": "fixture-1",
+      "snapshot_date": "2026-08-14",
+      "license": "CC0-1.0 synthetic fixture",
+      "provenance_status": "processed_snapshot_only",
+      "derivation": "The declared categorical field is joined by exact H3 id to the standard analysis domain for deterministic display-only review."
+    },
+    "trust": {
+      "classification": "diagnostic_only",
+      "regional_acceptance": false,
+      "allowed_use": "display_review_only",
+      "decision_support": false
+    }
+  },
+  "standard_groups": [
+    {
+      "id": "roads",
+      "state": "declared",
+      "layers": [
+        {
+          "id": "fixture_roads",
+          "label": "Synthetic roads",
+          "operation": "distance_exclusion",
+          "geometry_family": "line",
+          "data_representation": "network",
+          "source": {
+            "source_kind": "vector_file",
+            "asset": {
+              "provider": "repo",
+              "path": "regions/fixture_region_standard/assets/standard_sources.geojson",
+              "format": "geojson",
+              "integrity": {"mode": "generate"}
+            },
+            "source_crs": "EPSG:4326",
+            "geometry_family": "line",
+            "data_representation": "network",
+            "selection": {"field": "theme", "values": ["roads"]},
+            "provenance": {
+              "authority": "SpeedLocal test suite",
+              "dataset_name": "Synthetic standard sources",
+              "dataset_version": "fixture-1",
+              "snapshot_date": "2026-08-14",
+              "license": "CC0-1.0 synthetic fixture",
+              "provenance_status": "processed_snapshot_only",
+              "derivation": "Theme-selected line for generic distance exclusion."
+            }
+          },
+          "parameters": {
+            "buffer_m": {
+              "type": "number",
+              "unit": "m",
+              "minimum": 0,
+              "maximum": 1000,
+              "step": 25,
+              "technical_initial_value": 100,
+              "accepted_recommended_default": {
+                "state": "unavailable",
+                "reason": "Synthetic fixture has no accepted regional recommendation."
+              }
+            }
+          },
+          "note": "Synthetic line used only to prove the roads adapter."
+        }
+      ]
+    },
+    {
+      "id": "population",
+      "state": "declared",
+      "layers": [
+        {
+          "id": "fixture_population",
+          "label": "Synthetic settlement point",
+          "operation": "distance_exclusion",
+          "geometry_family": "point",
+          "data_representation": "features",
+          "source": {
+            "source_kind": "vector_file",
+            "asset": {
+              "provider": "repo",
+              "path": "regions/fixture_region_standard/assets/standard_sources.geojson",
+              "format": "geojson",
+              "integrity": {"mode": "generate"}
+            },
+            "source_crs": "EPSG:4326",
+            "geometry_family": "point",
+            "data_representation": "features",
+            "selection": {"field": "theme", "values": ["population"]},
+            "provenance": {
+              "authority": "SpeedLocal test suite",
+              "dataset_name": "Synthetic standard sources",
+              "dataset_version": "fixture-1",
+              "snapshot_date": "2026-08-14",
+              "license": "CC0-1.0 synthetic fixture",
+              "provenance_status": "processed_snapshot_only",
+              "derivation": "Theme-selected point for generic distance exclusion."
+            }
+          },
+          "parameters": {
+            "buffer_m": {
+              "type": "number",
+              "unit": "m",
+              "minimum": 0,
+              "maximum": 1000,
+              "step": 25,
+              "technical_initial_value": 100,
+              "accepted_recommended_default": {
+                "state": "unavailable",
+                "reason": "Synthetic fixture has no accepted regional recommendation."
+              }
+            }
+          },
+          "note": "Synthetic point used only to prove the population adapter."
+        }
+      ]
+    },
+    {
+      "id": "nature",
+      "state": "declared",
+      "layers": [
+        {
+          "id": "fixture_nature",
+          "label": "Synthetic protected area",
+          "operation": "hard_exclusion",
+          "geometry_family": "polygon",
+          "data_representation": "features",
+          "source": {
+            "source_kind": "vector_file",
+            "asset": {
+              "provider": "repo",
+              "path": "regions/fixture_region_standard/assets/standard_sources.geojson",
+              "format": "geojson",
+              "integrity": {"mode": "generate"}
+            },
+            "source_crs": "EPSG:4326",
+            "geometry_family": "polygon",
+            "data_representation": "features",
+            "selection": {"field": "theme", "values": ["nature"]},
+            "provenance": {
+              "authority": "SpeedLocal test suite",
+              "dataset_name": "Synthetic standard sources",
+              "dataset_version": "fixture-1",
+              "snapshot_date": "2026-08-14",
+              "license": "CC0-1.0 synthetic fixture",
+              "provenance_status": "processed_snapshot_only",
+              "derivation": "Theme-selected polygon for generic hard exclusion."
+            }
+          },
+          "parameters": {
+            "buffer_m": {
+              "type": "number",
+              "unit": "m",
+              "minimum": 0,
+              "maximum": 500,
+              "step": 25,
+              "technical_initial_value": 0,
+              "accepted_recommended_default": {
+                "state": "unavailable",
+                "reason": "Synthetic fixture has no accepted regional recommendation."
+              }
+            }
+          },
+          "note": "Synthetic polygon used only to prove binary hard exclusion."
+        }
+      ]
+    },
+    {
+      "id": "culture",
+      "state": "declared",
+      "layers": [
+        {
+          "id": "fixture_culture",
+          "label": "Synthetic cultural area",
+          "operation": "hard_exclusion",
+          "geometry_family": "polygon",
+          "data_representation": "features",
+          "source": {
+            "source_kind": "vector_file",
+            "asset": {
+              "provider": "repo",
+              "path": "regions/fixture_region_standard/assets/standard_sources.geojson",
+              "format": "geojson",
+              "integrity": {"mode": "generate"}
+            },
+            "source_crs": "EPSG:4326",
+            "geometry_family": "polygon",
+            "data_representation": "features",
+            "selection": {"field": "theme", "values": ["culture"]},
+            "provenance": {
+              "authority": "SpeedLocal test suite",
+              "dataset_name": "Synthetic standard sources",
+              "dataset_version": "fixture-1",
+              "snapshot_date": "2026-08-14",
+              "license": "CC0-1.0 synthetic fixture",
+              "provenance_status": "processed_snapshot_only",
+              "derivation": "Theme-selected polygon for generic hard exclusion."
+            }
+          },
+          "parameters": {
+            "buffer_m": {
+              "type": "number",
+              "unit": "m",
+              "minimum": 0,
+              "maximum": 500,
+              "step": 25,
+              "technical_initial_value": 0,
+              "accepted_recommended_default": {
+                "state": "unavailable",
+                "reason": "Synthetic fixture has no accepted regional recommendation."
+              }
+            }
+          },
+          "note": "Synthetic polygon used only to prove cultural hard exclusion."
+        }
+      ]
+    },
+    {
+      "id": "grid_infrastructure",
+      "state": "declared",
+      "layers": [
+        {
+          "id": "fixture_grid",
+          "label": "Synthetic grid line",
+          "operation": "proximity_feasibility",
+          "geometry_family": "line",
+          "data_representation": "network",
+          "source": {
+            "source_kind": "vector_file",
+            "asset": {
+              "provider": "repo",
+              "path": "regions/fixture_region_standard/assets/standard_sources.geojson",
+              "format": "geojson",
+              "integrity": {"mode": "generate"}
+            },
+            "source_crs": "EPSG:4326",
+            "geometry_family": "line",
+            "data_representation": "network",
+            "selection": {"field": "theme", "values": ["grid_infrastructure"]},
+            "provenance": {
+              "authority": "SpeedLocal test suite",
+              "dataset_name": "Synthetic standard sources",
+              "dataset_version": "fixture-1",
+              "snapshot_date": "2026-08-14",
+              "license": "CC0-1.0 synthetic fixture",
+              "provenance_status": "processed_snapshot_only",
+              "derivation": "Theme-selected line for generic proximity feasibility."
+            }
+          },
+          "parameters": {
+            "buffer_m": {
+              "type": "number",
+              "unit": "m",
+              "minimum": 0,
+              "maximum": 5000,
+              "step": 100,
+              "technical_initial_value": 500,
+              "accepted_recommended_default": {
+                "state": "unavailable",
+                "reason": "Synthetic fixture has no accepted regional recommendation."
+              }
+            }
+          },
+          "note": "Synthetic line used only to prove proximity feasibility."
+        }
+      ]
+    }
+  ],
+  "technologies": {
+    "wind": {
+      "technology_id": "wind",
+      "state": "declared",
+      "applicable_group_ids": [
+        "roads",
+        "population",
+        "nature",
+        "culture",
+        "grid_infrastructure"
+      ],
+      "area_result": {
+        "state": "declared",
+        "eligible_surface_id": "onshore_land",
+        "surface_scope": "onshore_land",
+        "water_policy": "exclude_all_water",
+        "restriction_combination": "geometry_union",
+        "operation_order": "feasibility_then_exclusion",
+        "denominator": "eligible_surface",
+        "geometry_semantics": "exact_vector_clip"
+      }
+    },
+    "solar": {
+      "technology_id": "solar",
+      "state": "declared",
+      "applicable_group_ids": [
+        "roads",
+        "population",
+        "nature",
+        "culture",
+        "grid_infrastructure"
+      ],
+      "area_result": {
+        "state": "declared",
+        "eligible_surface_id": "onshore_land",
+        "surface_scope": "onshore_land",
+        "water_policy": "exclude_all_water",
+        "restriction_combination": "geometry_union",
+        "operation_order": "feasibility_then_exclusion",
+        "denominator": "eligible_surface",
+        "geometry_semantics": "exact_vector_clip"
+      }
+    }
+  },
+  "solar_rooftop": {
+    "state": "declared",
+    "capability_id": "solar.rooftop",
+    "technology_id": "solar",
+    "domain_reference": {
+      "role": "standard_analysis_domain",
+      "domain_id": "standard_constraints_r9"
+    },
+    "population_source": {
+      "asset": {
+        "provider": "repo",
+        "path": "regions/fixture_region_standard/assets/rooftop_population_r9.csv",
+        "format": "csv",
+        "integrity": {"mode": "generate"}
+      },
+      "h3_id_field": "hex_id",
+      "value_field": "population",
+      "source_h3_resolution": 9,
+      "analysis_h3_resolution": 9,
+      "aggregation": "sum_to_analysis_then_parent_rollup",
+      "accounting_total_policy": "source_total_before_domain_clip",
+      "missing_domain_cell_policy": "zero_population",
+      "semantics": "synthetic_h3_population_counts",
+      "provenance": {
+        "authority": "SpeedLocal test suite",
+        "dataset_name": "Synthetic rooftop population counts",
+        "dataset_version": "fixture-1",
+        "snapshot_date": "2026-08-14",
+        "license": "CC0-1.0 synthetic fixture",
+        "provenance_status": "processed_snapshot_only",
+        "derivation": "Ten synthetic persons are assigned to each exact R9 standard-domain cell."
+      }
+    },
+    "map_review": {
+      "canonical_group_id": "population",
+      "layer_ids": ["fixture_population"],
+      "buffer_value_source": "canonical_layer_default"
+    },
+    "panel_area_m2_per_person": {
+      "type": "number",
+      "unit": "m2/person",
+      "minimum": 0,
+      "maximum": 25,
+      "step": 1,
+      "technical_initial_value": 10,
+      "accepted_recommended_default": {
+        "state": "unavailable",
+        "reason": "Synthetic fixture has no accepted regional recommendation."
+      }
+    },
+    "annual_yield": {
+      "method": "pvgis_specific_yield_times_stc_efficiency",
+      "specific_yield_kwh_per_kwp": 800,
+      "module_efficiency_stc_fraction": 0.2,
+      "pvgis_version": "fixture-1",
+      "radiation_database": "synthetic",
+      "data_period": "fixture",
+      "pv_technology": "synthetic_module",
+      "mounting_place": "building",
+      "slope_deg": 30,
+      "aspect_deg": 0,
+      "system_loss_pct": 10,
+      "use_horizon": true,
+      "site_aggregation": "unweighted_mean",
+      "sample_site_count": 1,
+      "reference_urls": ["https://example.invalid/speedlocal-rooftop-fixture"],
+      "provenance": {
+        "authority": "SpeedLocal test suite",
+        "dataset_name": "Synthetic rooftop yield",
+        "dataset_version": "fixture-1",
+        "snapshot_date": "2026-08-14",
+        "license": "CC0-1.0 synthetic fixture",
+        "provenance_status": "processed_snapshot_only",
+        "derivation": "Fixed synthetic values used only to verify generic rooftop accounting."
+      }
+    },
+    "accounting": {
+      "cap_at_solar_target": true,
+      "affects_geographic_potential": false,
+      "adds_establishment_candidates": false
+    },
+    "trust": {
+      "classification": "diagnostic_only",
+      "regional_acceptance": false,
+      "allowed_use": "planning_exploration_only"
+    },
+    "limitation": "Synthetic values are test evidence only and are not regional planning inputs.",
+    "replacement_condition": "Replace every source, parameter and acceptance statement with region-owned reviewed evidence."
+  },
+  "scenario": {
+    "state": "declared",
+    "scenario_set_id": "fixture_energy_pathways",
+    "status": "accepted_regional",
+    "provider": "repo",
+    "regional_acceptance": true,
+    "allowed_use": "regional_planning",
+    "source_region_id": "fixture_region_standard",
+    "source_dataset_id": "fixture_scenario_inputs",
+    "source_label": "Synthetic scenario inputs",
+    "provenance": "Repo-owned deterministic synthetic values for the manifest-program portability gate.",
+    "limitation": "Synthetic fixture values are test evidence only.",
+    "replacement_condition": "Fixture data is never replaced by or interpreted as regional production evidence.",
+    "display_warning": {
+      "sv": "Syntetisk testdata för en neutral fixture-region.",
+      "en": "Synthetic test data for a neutral fixture region.",
+      "da_no": "Syntetiske testdata for en nøytral fixture-region."
+    },
+    "assets": {
+      "energy_model": {
+        "provider": "repo",
+        "path": "regions/fixture_region_standard/assets/scenario_energy.json",
+        "format": "json",
+        "integrity": {
+          "mode": "pinned",
+          "sha256": "fc2c057b2339dfb60633cc7c45b24a891c5b5f03d69fb31b415b96d84ec666bc"
+        }
+      },
+      "area_demand": {
+        "provider": "repo",
+        "path": "regions/fixture_region_standard/assets/scenario_area_demand.json",
+        "format": "json",
+        "integrity": {
+          "mode": "pinned",
+          "sha256": "8981cf6449cfd50a9c2dc5acd2ba42f386e5bda8820c901e2e86449d594b437d"
+        }
+      }
+    },
+    "adapter": {
+      "id": "normalized_json_v1",
+      "technology_ids": ["wind", "solar"]
+    },
+    "scenario_levels": ["compact", "expanded"],
+    "default_scenario": "compact",
+    "area_demand_options": [
+      {"id": "compact", "label": "Compact land demand"},
+      {"id": "broad", "label": "Broad land demand"}
+    ],
+    "default_area_demand_scenario": "broad",
+    "technology_mix": {
+      "share_step_pct": 1.0,
+      "default_shares": [
+        {"technology_id": "wind", "share_pct": 50.0},
+        {"technology_id": "solar", "share_pct": 50.0}
+      ]
+    },
+    "planning_scenarios": [
+      {
+        "id": "compact",
+        "label": "Compact",
+        "source_scenario": "reference_path",
+        "planning_year": 2040,
+        "energy_scale": 1.0,
+        "area_demand_scenario": "compact"
+      },
+      {
+        "id": "expanded",
+        "label": "Expanded",
+        "source_scenario": "reference_path",
+        "planning_year": 2040,
+        "energy_scale": 1.5,
+        "area_demand_scenario": "broad"
+      }
+    ]
+  },
+  "social_acceptance": {
+    "state": "declared",
+    "acceptance_id": "fixture_social_acceptance",
+    "display_name": "Synthetic social acceptance",
+    "status": "provisional_fallback",
+    "synthetic": true,
+    "provider": "repo",
+    "regional_acceptance": false,
+    "allowed_use": "behavior_exploration_only",
+    "source_region_id": "fixture_region_standard",
+    "source_dataset_id": "fixture_social_acceptance_values",
+    "source_label": "Synthetic social-acceptance fixture",
+    "method_id": "fixture_social_acceptance_v1",
+    "provenance": "Repo-owned deterministic values for the neutral manifest-program portability gate.",
+    "limitation": "The values are synthetic test evidence and are not regional observations or decision support.",
+    "replacement_condition": "A production package must replace the fixture with reviewed region-owned observations and acceptance evidence.",
+    "display_warning": {
+      "sv": "Syntetisk testdata för en neutral fixture-region; inte regional acceptansevidens.",
+      "en": "Synthetic data for a neutral fixture region; not regional acceptance evidence.",
+      "da_no": "Syntetiske data for en nøytral fixture-region; ikke regional akseptevidens."
+    },
+    "assets": {
+      "acceptance_values": {
+        "provider": "repo",
+        "path": "regions/fixture_region_standard/assets/social_acceptance_values_r9.csv",
+        "format": "csv",
+        "integrity": {
+          "mode": "pinned",
+          "sha256": "d781fc8d7649d8d869b6ef2e44613871c3833ee38299caac98ad2dba1ab451cc"
+        }
+      },
+      "display_geometry": {
+        "provider": "repo",
+        "path": "regions/fixture_region_standard/assets/social_acceptance_geometry_r9.geojson",
+        "format": "geojson",
+        "integrity": {
+          "mode": "pinned",
+          "sha256": "f91bf45b397c6b6559489555067bad99b205cd7912c1b972cccb69a2eee6a4a9"
+        }
+      }
+    },
+    "coverage": {
+      "scope": "technology_support_r9_with_explicit_unassessed_cells",
+      "source_hex_count": 3,
+      "target_support_hex_count": 47,
+      "unassessed_support_hex_count": 44
+    },
+    "behavior": {
+      "impact_model": "linear_acceptance_weight",
+      "allocation_priority_model": "linear_acceptance_blend",
+      "low_threshold": 0.4,
+      "high_threshold": 0.7,
+      "missing_context_policy": "exclude_when_applied",
+      "allocation_missing_context_policy": "exclude_when_prioritized"
+    },
+    "hex_resolution": 9,
+    "rollup_resolutions": [8],
+    "rollup_rule": "mean_by_source_cell",
+    "control_contract": {
+      "impact_pct": {
+        "type": "number",
+        "unit": "percent",
+        "minimum": 0,
+        "maximum": 100,
+        "step": 5,
+        "technical_initial_value": 0,
+        "accepted_recommended_default": {
+          "state": "unavailable",
+          "reason": "A synthetic fixture has no accepted regional recommendation."
+        }
+      },
+      "allocation_priority_pct": {
+        "type": "number",
+        "unit": "percent",
+        "minimum": 0,
+        "maximum": 100,
+        "step": 5,
+        "technical_initial_value": 0,
+        "accepted_recommended_default": {
+          "state": "unavailable",
+          "reason": "A synthetic fixture has no accepted regional recommendation."
+        }
+      }
+    },
+    "scenario_levels": ["low", "medium", "high"],
+    "default_scenario": "medium",
+    "scenarios": [
+      {"id": "low", "label": "Low", "value_column": "acceptance_low"},
+      {"id": "medium", "label": "Medium", "value_column": "acceptance_medium"},
+      {"id": "high", "label": "High", "value_column": "acceptance_high"}
+    ],
+    "value_range": [0, 1],
+    "max_decimals": 3,
+    "random_seed": 101,
+    "method_note": "Deterministic synthetic values for generic request/result and fail-closed tests only."
+  },
+  "combined_result": {
+    "state": "declared",
+    "capability_id": "workspace.combined_result",
+    "policy_id": "neutral_uniform_allocation",
+    "technology_order": ["wind", "solar"],
+    "finalization_resolution": 9,
+    "rollup_resolutions": [8],
+    "co_use_policy": "disallow_shared_cells",
+    "outside_potential_policy": "disabled",
+    "outside_ring_model": "none",
+    "rollup_model": "sum_finalized_children_without_reranking",
+    "technical_validation": {
+      "provider": "repo",
+      "path": "regions/fixture_region_standard/data_migrations/combined_result_validation_v1.json",
+      "format": "json",
+      "integrity": {
+        "mode": "pinned",
+        "sha256": "57069eff9f0c4d5db56ba24f45ece62a2af3c259958cab1e758abf7d92b31316"
+      }
+    },
+    "score_input": {
+      "input_id": "neutral_uniform_eligible_surface",
+      "base_score_model": "declared_unit_interval_v1",
+      "executor_id": "uniform_eligible_surface_v1",
+      "numeric_parameters": [
+        {"id": "uniform_score", "value": 1.0}
+      ],
+      "layer_selections": []
+    },
+    "technology_priorities": [
+      {
+        "technology_id": "wind",
+        "phase_order": ["inside_potential"],
+        "phase_policies": [
+          {
+            "phase_id": "inside_potential",
+            "entry_residual_threshold_km2": 0.0,
+            "stop_tolerance_km2": 0.0
+          }
+        ],
+        "inside_components": [
+          {"component_id": "base_score", "value_source": "base_score", "direction": "descending"},
+          {"component_id": "stable_cell_id", "value_source": "stable_cell_id", "direction": "ascending"}
+        ],
+        "outside_components": []
+      },
+      {
+        "technology_id": "solar",
+        "phase_order": ["inside_potential"],
+        "phase_policies": [
+          {
+            "phase_id": "inside_potential",
+            "entry_residual_threshold_km2": 0.0,
+            "stop_tolerance_km2": 0.0
+          }
+        ],
+        "inside_components": [
+          {"component_id": "base_score", "value_source": "base_score", "direction": "descending"},
+          {"component_id": "stable_cell_id", "value_source": "stable_cell_id", "direction": "ascending"}
+        ],
+        "outside_components": []
+      }
+    ]
+  },
+  "notes": [
+    "This fixture is never indexed or published.",
+    "All five groups must execute without production-region branches.",
+    "Changing only region_id must not change operations, adapters or readiness semantics."
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "migration_id": "trondelag_standard_constraints_r5_display_2026_08_26",
+  "strategy": "h3_child_geometry_union",
+  "source": {
+    "provider": "v2_archive",
+    "path": "docs/geocontext/potential_framework/data/trondelag_r7_app_bundle/hex.geojson",
+    "sha256": "0bd493f93f55fe47e4deabe683eccdaa798969913fcdc9e12ee1523ae87d7f90",
+    "id_field": "hex_id",
+    "resolution": 7
+  },
+  "reference": {
+    "provider": "v2_archive",
+    "path": "docs/geocontext/potential_framework/data/trondelag_r7_app_bundle/h3/trondelag_landscape_h3_r5_rollup.geojson",
+    "sha256": "b38a5fdbd1490105dc7898a50ab8978fb0350a48558ff1005ac91e9d03b84fc4",
+    "id_field": "hex_id",
+    "area_field": "display_area_m2",
+    "area_unit": "m2",
+    "resolution": 5
+  },
+  "expected_reference_invalid_cell_ids": [
+    "85080647fffffff"
+  ],
+  "output": {
+    "provider": "generated_runtime",
+    "path": "data/generated/analysis_domain/trondelag_standard_constraints_r5_display.geojson",
+    "sha256": "851272a6db44a48765b2b295fc7bee9e52dd5e3a11fd431dc059e724c5ea4d37",
+    "bytes": 1069981,
+    "cell_ids_sha256": "451547abfc34c059c0ee9968fc01aee6e69996b6dcd7111152f077c77ee79009",
+    "expected_feature_count": 365,
+    "expected_total_area_km2": 45213.18864360976
+  }
+}

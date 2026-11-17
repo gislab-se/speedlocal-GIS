@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "capability_id": "workspace.combined_result",
+  "region_id": "fixture_region_standard",
+  "validation_status": "technically_validated",
+  "validator_id": "validate_manifest_standard_full_journey",
+  "validator_version": "1.0",
+  "validated_utc_date": "2026-08-30",
+  "check_count": 16,
+  "reference_scope": "Deterministic synthetic neutral fixture; exact default full-journey execution in the real V2 Final app.",
+  "policy_contract_signature_sha256": "65593b37e794733002f52591acb1c5c53c86a34391c6c6ec7ea51b0728838052",
+  "allocation_policy_artifact_sha256": "1000383894f8981eeaf1b6be594ef53a28fde87f3d2eff911f45151b27de2208",
+  "allocation_policy_signature_sha256": "f9c9d46f5ec177f5f10bd6c1126ab79e4c60015bf1368651e8eaf0b70891e91d",
+  "validated_default_execution_signature_sha256": "40919caab8c384cb356bbf36a523d624760d94bbe71368bdeb65fcdd14d9ec27"
+}

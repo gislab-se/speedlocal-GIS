@@ -1,0 +1,318 @@
+{
+  "schema_version": "1.0",
+  "region_id": "bornholm",
+  "selection_sha256": "a82a3f3a545abf460dc75f7463498928c56373a61acb362e98edc47a0f1bd25b",
+  "group_ids": [
+    "roads",
+    "population",
+    "nature",
+    "culture",
+    "grid_infrastructure"
+  ],
+  "sources": {
+    "roads_large": {
+      "replaced_source_contract_sha256": "8e87f42f25024621f1bac74be2a702a24e84c5ae78729c69e3b5c4bf082c210d",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "bornholm",
+        "database_schema": "bornholm",
+        "revision_sha256": "1248fe0312fc50651d6eda9c27f455f109eec6f22eadbee62af149e7f429353a",
+        "source_id": "roads_large",
+        "domain_id": "standard_analysis",
+        "resolution": 9,
+        "upstream_geojson_bytes": 1436419
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 6882,
+        "source_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653"
+      }
+    },
+    "roads_medium": {
+      "replaced_source_contract_sha256": "139b83ab23762e3ab5e1833a964f59cd115e052fa48e82d510b9eaea6e37485b",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "bornholm",
+        "database_schema": "bornholm",
+        "revision_sha256": "1248fe0312fc50651d6eda9c27f455f109eec6f22eadbee62af149e7f429353a",
+        "source_id": "roads_medium",
+        "domain_id": "standard_analysis",
+        "resolution": 9,
+        "upstream_geojson_bytes": 1397898
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 6882,
+        "source_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653"
+      }
+    },
+    "built_centre": {
+      "replaced_source_contract_sha256": "6bcaf8d42f5491a243d103842b1044da2c110f18677704da88c611f20d5bd7ac",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "bornholm",
+        "database_schema": "bornholm",
+        "revision_sha256": "1248fe0312fc50651d6eda9c27f455f109eec6f22eadbee62af149e7f429353a",
+        "source_id": "built_centre",
+        "domain_id": "standard_analysis",
+        "resolution": 9,
+        "upstream_geojson_bytes": 4604
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 6882,
+        "source_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653"
+      }
+    },
+    "built_low_selection": {
+      "replaced_source_contract_sha256": "ff9b409fdebd573530f1a774fd07bcf3d5bdd9a1de59c379a5c5f5fa0751a65b",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "bornholm",
+        "database_schema": "bornholm",
+        "revision_sha256": "1248fe0312fc50651d6eda9c27f455f109eec6f22eadbee62af149e7f429353a",
+        "source_id": "built_low_selection",
+        "domain_id": "standard_analysis",
+        "resolution": 9,
+        "upstream_geojson_bytes": 219023
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 6882,
+        "source_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653"
+      }
+    },
+    "protected_areas": {
+      "replaced_source_contract_sha256": "ac97db5e65740b5fba3e7b79c458f772a9272d69f545c41711d91f99fa73e801",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "bornholm",
+        "database_schema": "bornholm",
+        "revision_sha256": "1248fe0312fc50651d6eda9c27f455f109eec6f22eadbee62af149e7f429353a",
+        "source_id": "protected_areas",
+        "domain_id": "standard_analysis",
+        "resolution": 9,
+        "upstream_geojson_bytes": 113046
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 6882,
+        "source_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653"
+      }
+    },
+    "cultural_preservation": {
+      "replaced_source_contract_sha256": "4f1d329b3c1181137e2d4952575fff1c2088593f078a5803e1704e13d5c85753",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "bornholm",
+        "database_schema": "bornholm",
+        "revision_sha256": "1248fe0312fc50651d6eda9c27f455f109eec6f22eadbee62af149e7f429353a",
+        "source_id": "cultural_preservation",
+        "domain_id": "standard_analysis",
+        "resolution": 9,
+        "upstream_geojson_bytes": 276334
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 6882,
+        "source_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653"
+      }
+    },
+    "valuable_cultural_environment": {
+      "replaced_source_contract_sha256": "85925218ac7359da424d4571c2632b7df336779de1f99959dba23cb097138293",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "bornholm",
+        "database_schema": "bornholm",
+        "revision_sha256": "1248fe0312fc50651d6eda9c27f455f109eec6f22eadbee62af149e7f429353a",
+        "source_id": "valuable_cultural_environment",
+        "domain_id": "standard_analysis",
+        "resolution": 9,
+        "upstream_geojson_bytes": 163614
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 6882,
+        "source_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653"
+      }
+    },
+    "high_voltage_lines": {
+      "replaced_source_contract_sha256": "2fc6ff113dd46062b3b516c612e443e208d6f309392d363bf0c6c8f590c9a62a",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "bornholm",
+        "database_schema": "bornholm",
+        "revision_sha256": "1248fe0312fc50651d6eda9c27f455f109eec6f22eadbee62af149e7f429353a",
+        "source_id": "high_voltage_lines",
+        "domain_id": "standard_analysis",
+        "resolution": 9,
+        "upstream_geojson_bytes": 13946
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 6882,
+        "source_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653"
+      }
+    },
+    "underground_cables": {
+      "replaced_source_contract_sha256": "1f22b190886a261a93e406f9e7d7918104ee2cfe3548f6509ae0c9fce8fa243f",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "bornholm",
+        "database_schema": "bornholm",
+        "revision_sha256": "1248fe0312fc50651d6eda9c27f455f109eec6f22eadbee62af149e7f429353a",
+        "source_id": "underground_cables",
+        "domain_id": "standard_analysis",
+        "resolution": 9,
+        "upstream_geojson_bytes": 6762
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 6882,
+        "source_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653"
+      }
+    },
+    "power_substations": {
+      "replaced_source_contract_sha256": "691808b1886e3a4a9bf7b6fdb0aa57c9b2a6773bf198293b9aa14149e6ec3e8b",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "bornholm",
+        "database_schema": "bornholm",
+        "revision_sha256": "1248fe0312fc50651d6eda9c27f455f109eec6f22eadbee62af149e7f429353a",
+        "source_id": "power_substations",
+        "domain_id": "standard_analysis",
+        "resolution": 9,
+        "upstream_geojson_bytes": 7844
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 6882,
+        "source_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653"
+      }
+    },
+    "natura_bird_protection": {
+      "replaced_source_contract_sha256": "8059a0e4a9e7105a578547294438c5849b6dba38fb3a13a9ad5805ff7359070b",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "bornholm",
+        "database_schema": "bornholm",
+        "revision_sha256": "1248fe0312fc50651d6eda9c27f455f109eec6f22eadbee62af149e7f429353a",
+        "source_id": "natura_bird_protection",
+        "domain_id": "standard_analysis",
+        "resolution": 9,
+        "upstream_geojson_bytes": 24764
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 6882,
+        "source_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653"
+      }
+    },
+    "natura_habitat_areas": {
+      "replaced_source_contract_sha256": "8b52135441d7377d086be04a586bb1ec3dda22fd0a469d06693e6a21db07cad9",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "bornholm",
+        "database_schema": "bornholm",
+        "revision_sha256": "1248fe0312fc50651d6eda9c27f455f109eec6f22eadbee62af149e7f429353a",
+        "source_id": "natura_habitat_areas",
+        "domain_id": "standard_analysis",
+        "resolution": 9,
+        "upstream_geojson_bytes": 26730
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 6882,
+        "source_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653"
+      }
+    },
+    "wind_turbines_osm": {
+      "replaced_source_contract_sha256": "4231c79f6272ecce30e7d294e0238f3fd9e4ffd7463e8003111bc1287ed64cf9",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "bornholm",
+        "database_schema": "bornholm",
+        "revision_sha256": "1248fe0312fc50651d6eda9c27f455f109eec6f22eadbee62af149e7f429353a",
+        "source_id": "wind_turbines_osm",
+        "domain_id": "standard_analysis",
+        "resolution": 9,
+        "upstream_geojson_bytes": 37318
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 6882,
+        "source_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653"
+      }
+    },
+    "solar_parks_osm": {
+      "replaced_source_contract_sha256": "8910351956323a555ffd1629c0f7a94b3b48b38edb370515baa5898826c8e9f8",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "bornholm",
+        "database_schema": "bornholm",
+        "revision_sha256": "1248fe0312fc50651d6eda9c27f455f109eec6f22eadbee62af149e7f429353a",
+        "source_id": "solar_parks_osm",
+        "domain_id": "standard_analysis",
+        "resolution": 9,
+        "upstream_geojson_bytes": 2543
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 6882,
+        "source_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653"
+      }
+    },
+    "population_points": {
+      "replaced_source_contract_sha256": "73b256565380d3d882bd8f73b11c1f538de6665760b3b9a839fa33fa7eabb2f4",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "bornholm",
+        "database_schema": "bornholm",
+        "revision_sha256": "1248fe0312fc50651d6eda9c27f455f109eec6f22eadbee62af149e7f429353a",
+        "source_id": "population_points",
+        "domain_id": "standard_analysis",
+        "resolution": 9,
+        "upstream_geojson_bytes": 855280
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 6882,
+        "source_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653"
+      }
+    },
+    "coastal_proximity_zone": {
+      "replaced_source_contract_sha256": "81c1b164d606196c64c3f2bbd6da65c56ba45cf4fcba5858f969036e08dd12bb",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "bornholm",
+        "database_schema": "bornholm",
+        "revision_sha256": "1248fe0312fc50651d6eda9c27f455f109eec6f22eadbee62af149e7f429353a",
+        "source_id": "coastal_proximity_zone",
+        "domain_id": "standard_analysis",
+        "resolution": 9,
+        "upstream_geojson_bytes": 2565636
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 6882,
+        "source_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653"
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+# Local environments, credentials and outputs
+.venv/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+.streamlit/secrets*.toml
+.runtime/
+*.log
+
+# Regional data deliveries and generated caches
+data/
+artifacts/
+
+# Editors and operating systems
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

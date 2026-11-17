@@ -1,0 +1,214 @@
+{
+  "schema_version": "1.0",
+  "region_id": "bornholm",
+  "landscape_id": "bornholm_lablab_landscape_r9",
+  "label": "Bornholm LABLAB landskapstyper",
+  "status": "compiled_unvalidated",
+  "purpose": "display_review_only",
+  "numerical_use": "forbidden",
+  "source_reference": {
+    "kind": "independent_asset",
+    "context_id": "bornholm_lablab_landscape_r9",
+    "relationship": "display_projection_only"
+  },
+  "source": {
+    "provider": "v2_archive",
+    "path": "exports/v2_multiregion/bornholm/bornholm_lablab_landscape_r9_dagi_landsdel_app.geojson",
+    "format": "geojson",
+    "sha256": "665cfc435432f500a65753fd81a1f30f0a7bed363a147aebf15f57ea99fb42dd",
+    "id_field": "hex_id",
+    "cell_kind": "h3",
+    "resolution": 9
+  },
+  "domain": {
+    "role": "standard_analysis_domain",
+    "domain_id": "standard_constraints",
+    "provider": "generated_runtime",
+    "path": "data/generated/analysis_domain/bornholm_standard_r9.geojson",
+    "format": "geojson",
+    "sha256": "407640739604d98c3322c3b324cc228cc602a015321964b3626c8311adad61d7",
+    "id_field": "hex_id",
+    "area_field": "area_km2",
+    "area_unit": "km2",
+    "cell_kind": "h3",
+    "resolution": 9,
+    "expected_cell_count": 6882,
+    "cell_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653"
+  },
+  "views": [
+    {
+      "view_id": "lablab_landscape_types",
+      "label": "Landskapstyper",
+      "value_field": "landscape_type_id",
+      "value_semantics": "categorical_id",
+      "legend": [
+        {
+          "value_id": "LT01",
+          "label": "Klippigt kustlandskap",
+          "color": "#627A93"
+        },
+        {
+          "value_id": "LT02",
+          "label": "Sandigt kustlandskap",
+          "color": "#D7B882"
+        },
+        {
+          "value_id": "LT03",
+          "label": "Jordbruks- och sprickdalslandskap",
+          "color": "#A35A3C"
+        },
+        {
+          "value_id": "LT04",
+          "label": "Skogs- och sprickdalslandskap",
+          "color": "#2E6B3E"
+        },
+        {
+          "value_id": "LT05",
+          "label": "Slätt- och jordbrukslandskap",
+          "color": "#C7D84C"
+        }
+      ]
+    }
+  ],
+  "default_view_id": "lablab_landscape_types",
+  "product_default_visible": true,
+  "rollup_resolutions": [
+    8,
+    7,
+    6
+  ],
+  "rollup_rule": "dominant_area_then_legend_order",
+  "missing_policy": "explicit_not_assessed",
+  "outside_domain_policy": "ignore_with_evidence",
+  "missing_label": "Ej bedömd",
+  "provenance": {
+    "authority": "LABLAB",
+    "dataset_name": "Bornholm LABLAB landskapstyper R9",
+    "dataset_version": "historical_dagi_landsdel_app_extent_2026-06-23",
+    "snapshot_date": "2026-06-23",
+    "license": "Inte dokumenterad i den frysta arkivinformationen",
+    "provenance_status": "historical_pdf_derived_diagnostic",
+    "derivation": "Existing LABLAB PDF dominant R10 classification aggregated to R9 and clipped to the historical DAGI Landsdel display. Read landscape_type_id exactly; never use legacy_v10_type_id, class_km/class_k8 or F1-F5 as classification or numerical inputs. The 30 current standard-domain cells without this source remain not_assessed. Parent display uses the existing declared area-weighted majority rule; no historical Bornholm parent-view parity or new regional approval is claimed."
+  },
+  "trust": {
+    "classification": "diagnostic_only",
+    "regional_acceptance": false,
+    "allowed_use": "display_review_only",
+    "decision_support": false
+  },
+  "generated_evidence": {
+    "source_bytes": 31989994,
+    "field_names": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F5",
+      "aggregation_method",
+      "bebyggelsecentrum_andel",
+      "befolkning_antal",
+      "beskyttede_naturtyper_andel",
+      "centroid_nord_m",
+      "centroid_ost_m",
+      "class_k8",
+      "class_km",
+      "classified_hex_share_pct",
+      "display_area_m2",
+      "dominant_area_km2",
+      "dominant_area_m2",
+      "dominant_area_share_pct",
+      "ekologisk_forbindelse_andel",
+      "elstation_antal",
+      "fredade_omraden_andel",
+      "fredskov_andel",
+      "gles_bebyggelse_andel",
+      "h3_resolution",
+      "hex_area_m2",
+      "hex_id",
+      "hogspanning_langd_m",
+      "hogsta_hojd_m",
+      "industri_verksamhet_andel",
+      "inflygningszon_andel",
+      "jordbruksmark_andel",
+      "kulturhistoriskt_bevarandevarde_andel",
+      "kustlinje_langd_m",
+      "kustnara_zon_andel",
+      "landmask_source",
+      "landscape_source",
+      "landscape_type",
+      "landscape_type_id",
+      "landscape_type_name",
+      "legacy_v10_confidence",
+      "legacy_v10_type_id",
+      "legacy_v10_type_name",
+      "medelhojd_kontur_m",
+      "medellutning_kontur_grader",
+      "militart_omrade_andel",
+      "natur_viltreservat_andel",
+      "natura_fagelskydd_andel",
+      "natura_habitat_andel",
+      "natura_sarskilt_utpekad_mark_andel",
+      "qgis_fill",
+      "relief_m",
+      "review_flag",
+      "review_flag_low_dominance",
+      "review_flag_low_hex_coverage",
+      "review_flag_overlap_possible",
+      "review_flag_tie",
+      "sanddyn_andel",
+      "second_area_m2",
+      "second_type_id",
+      "sjo_andel",
+      "skog_andel",
+      "skyddad_natur_andel",
+      "skyddad_natur_finns",
+      "skyddad_natur_komponent_antal",
+      "skyddad_natur_max_komponent_andel",
+      "skyddade_vattendrag_langd_m",
+      "solpark_antal",
+      "source_child_hex_count",
+      "source_h3_resolution",
+      "stor_vag_langd_m",
+      "strandbeskyddelse_andel",
+      "total_classified_area_m2",
+      "total_vag_langd_m",
+      "type_count",
+      "vardefull_kulturmiljo_andel",
+      "vatmark_andel",
+      "vattendrag_langd_m",
+      "vindkraftverk_antal"
+    ],
+    "field_names_sha256": "6f08cd9e900cdd58e92b3971e01c9b5f1dc0d61f20e0fefb25ebb9ef438c9bc4",
+    "feature_count": 6852,
+    "source_cell_count": 6852,
+    "source_cell_ids_sha256": "657ab82f82cf16c380ba6c5d9e1cf316d0a3bacc5778b844ae630305fc01cb19",
+    "view_ids_sha256": "c8744f11da2bc07d929c8577ded6fb392397749c16bfa090f16d64ee76406386",
+    "views": [
+      {
+        "view_id": "lablab_landscape_types",
+        "observed_cell_count": 6852,
+        "not_assessed_cell_count": 30,
+        "observed_cell_ids_sha256": "657ab82f82cf16c380ba6c5d9e1cf316d0a3bacc5778b844ae630305fc01cb19",
+        "observed_value_ids": [
+          "LT01",
+          "LT02",
+          "LT03",
+          "LT04",
+          "LT05"
+        ],
+        "observed_value_ids_sha256": "4e673df42fd109befb73a6b83aab6dfe4c70cd51ecf3e91c8e84ad49b29f9803"
+      }
+    ],
+    "coverage": {
+      "domain_cell_count": 6882,
+      "domain_cell_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653",
+      "covered_domain_cell_count": 6852,
+      "uncovered_domain_cell_count": 30,
+      "outside_domain_source_cell_count": 0,
+      "covered_domain_cell_ids_sha256": "657ab82f82cf16c380ba6c5d9e1cf316d0a3bacc5778b844ae630305fc01cb19",
+      "uncovered_domain_cell_ids_sha256": "157be3a1656f237c04c45c70554b33afb3e37a20ab42210cd0fbde0e353ba8d4",
+      "outside_domain_source_cell_ids_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "coverage_fraction": 0.995640802092415
+    }
+  }
+}

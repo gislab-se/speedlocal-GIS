@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "capability_id": "workspace.combined_result",
+  "region_id": "skaraborg",
+  "validation_status": "technically_validated",
+  "validator_id": "validate_complete_runtime",
+  "validator_version": "1.0",
+  "validated_utc_date": "2026-09-08",
+  "check_count": 5248,
+  "reference_scope": "current_ten_source_database_inputs;all_groups_default_area_anchors;native_allocation_and_exact_parent_rollups;offline_providers_denied;provisional_energy_and_synthetic_acceptance;technical_only_no_owner_approval",
+  "policy_contract_signature_sha256": "e9ce64cb9c8f0e0a178dadffaa75f67f568e72b091cc30acb5b851f55554aff8",
+  "allocation_policy_artifact_sha256": "b17c90fa14ae3b47d591aad260ba85b52b5b7f294920704dad4ab6987ac40a15",
+  "allocation_policy_signature_sha256": "4dfa14e0ab7daef5f76a190592e8d76d9161b2de2dccdeb21b9fe51db789bdd2",
+  "validated_default_execution_signature_sha256": "e9519b327a56667db7da9fa63f798a09395af22e95d69cae55fe8b52db60dcb2"
+}

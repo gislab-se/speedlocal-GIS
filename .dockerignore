@@ -1,0 +1,31 @@
+# Deny by default: no Git history, workstation data, credentials or test receipts.
+**
+!Dockerfile
+!requirements.txt
+!requirements-linux.lock
+!app.py
+!apps/
+!apps/**
+!speedlocal/
+!speedlocal/**
+!regions/
+!regions/**
+!schemas/
+!schemas/**
+!tutorials/
+!tutorials/skaraborg/
+!tutorials/skaraborg/steps.json
+
+# The historical sibling application is not the V2 Final entrypoint.
+apps/landskapspotential/
+
+# Also exclude caches/secrets accidentally placed under an allowed directory.
+**/__pycache__/
+**/*.pyc
+**/.git/
+**/.venv/
+**/.runtime/
+**/.env*
+**/secrets*.toml
+**/*.log
+**/*.md

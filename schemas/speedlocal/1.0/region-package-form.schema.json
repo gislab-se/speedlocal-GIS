@@ -1,0 +1,1683 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://speedlocal.local/schemas/1.0/region-package-form.schema.json",
+  "title": "SpeedLocal regionblankett 1.0",
+  "description": "Människofyllt, regionsneutralt underlag för att beskriva en region utan att påstå teknisk eller regional readiness.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "form_schema_version",
+    "region",
+    "access",
+    "map_h3",
+    "geography",
+    "landscape",
+    "standard_groups",
+    "technologies",
+    "solar_rooftop",
+    "scenario",
+    "social_acceptance",
+    "combined_result"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "../../schemas/speedlocal/1.0/region-package-form.schema.json",
+      "description": "Relativ sökväg till den schemafil som validerar blanketten.",
+      "examples": ["../../schemas/speedlocal/1.0/region-package-form.schema.json"]
+    },
+    "form_schema_version": {
+      "const": "1.0",
+      "description": "Blankettens kontraktsversion. Okända versioner ska stoppas."
+    },
+    "region": {
+      "$ref": "#/$defs/region_identity"
+    },
+    "access": {
+      "$ref": "#/$defs/access"
+    },
+    "map_h3": {
+      "$ref": "#/$defs/map_h3"
+    },
+    "geography": {
+      "$ref": "#/$defs/geography"
+    },
+    "landscape": {
+      "$ref": "#/$defs/landscape_declaration"
+    },
+    "standard_groups": {
+      "type": "array",
+      "description": "De fem standardgrupperna i programmets fasta ordning. Varje grupp är explicit deklarerad eller unavailable.",
+      "minItems": 5,
+      "maxItems": 5,
+      "prefixItems": [
+        {
+          "allOf": [
+            {"$ref": "#/$defs/group_declaration"},
+            {"properties": {"id": {"const": "roads"}}}
+          ]
+        },
+        {
+          "allOf": [
+            {"$ref": "#/$defs/group_declaration"},
+            {"properties": {"id": {"const": "population"}}}
+          ]
+        },
+        {
+          "allOf": [
+            {"$ref": "#/$defs/group_declaration"},
+            {"properties": {"id": {"const": "nature"}}}
+          ]
+        },
+        {
+          "allOf": [
+            {"$ref": "#/$defs/group_declaration"},
+            {"properties": {"id": {"const": "culture"}}}
+          ]
+        },
+        {
+          "allOf": [
+            {"$ref": "#/$defs/group_declaration"},
+            {"properties": {"id": {"const": "grid_infrastructure"}}}
+          ]
+        }
+      ],
+      "items": false
+    },
+    "technologies": {
+      "type": "object",
+      "description": "Teknikdeklarationer. Programmet äger layout och beteende; regionen anger endast tillgängligt kontrakt.",
+      "additionalProperties": false,
+      "required": ["wind", "solar"],
+      "properties": {
+        "wind": {
+          "allOf": [
+            {"$ref": "#/$defs/technology_declaration"},
+            {"properties": {"technology_id": {"const": "wind"}}}
+          ]
+        },
+        "solar": {
+          "allOf": [
+            {"$ref": "#/$defs/technology_declaration"},
+            {"properties": {"technology_id": {"const": "solar"}}}
+          ]
+        }
+      }
+    },
+    "solar_rooftop": {
+      "$ref": "#/$defs/rooftop_solar_declaration"
+    },
+    "scenario": {
+      "$ref": "#/$defs/scenario_declaration"
+    },
+    "social_acceptance": {
+      "$ref": "#/$defs/social_acceptance_declaration"
+    },
+    "combined_result": {
+      "$ref": "#/$defs/combined_result_declaration"
+    },
+    "notes": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "description": "Frivilliga mänskliga anteckningar. De aktiverar aldrig en capability."
+    }
+  },
+  "$defs": {
+    "non_empty_text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "identifier": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$",
+      "description": "Stabilt maskin-id med små bokstäver, siffror och understreck.",
+      "examples": ["example_region", "regional_roads"]
+    },
+    "crs": {
+      "type": "string",
+      "pattern": "^EPSG:[0-9]+$",
+      "examples": ["EPSG:3006", "EPSG:4326"]
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "provider": {
+      "type": "string",
+      "enum": ["repo", "v2_archive", "generated_runtime"]
+    },
+    "relative_path": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Provider-relativ POSIX-sökväg. Absoluta sökvägar, bakstreck och .. är förbjudna.",
+      "examples": ["data/regions/example_region/boundary.geojson"]
+    },
+    "integrity": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["mode"],
+          "properties": {
+            "mode": {"const": "generate"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["mode", "sha256"],
+          "properties": {
+            "mode": {"const": "pinned"},
+            "sha256": {"$ref": "#/$defs/sha256"}
+          }
+        }
+      ],
+      "description": "Välj generate så räknar verktyget checksumma. Använd pinned endast för en redan granskad digest."
+    },
+    "asset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provider", "path", "format", "integrity"],
+      "properties": {
+        "provider": {"$ref": "#/$defs/provider"},
+        "path": {"$ref": "#/$defs/relative_path"},
+        "format": {
+          "type": "string",
+          "enum": ["geojson", "gpkg", "parquet", "csv", "json", "duckdb", "xlsx", "shapefile"]
+        },
+        "integrity": {"$ref": "#/$defs/integrity"}
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority",
+        "dataset_name",
+        "dataset_version",
+        "snapshot_date",
+        "license",
+        "provenance_status",
+        "derivation"
+      ],
+      "properties": {
+        "authority": {"$ref": "#/$defs/non_empty_text"},
+        "dataset_name": {"$ref": "#/$defs/non_empty_text"},
+        "dataset_version": {"$ref": "#/$defs/non_empty_text"},
+        "snapshot_date": {
+          "type": "string",
+          "format": "date",
+          "description": "Källans snapshotdatum i YYYY-MM-DD."
+        },
+        "license": {"$ref": "#/$defs/non_empty_text"},
+        "license_url": {"type": "string", "format": "uri"},
+        "provenance_status": {
+          "type": "string",
+          "enum": ["source_snapshot_pinned", "processed_snapshot_only"]
+        },
+        "derivation": {"$ref": "#/$defs/non_empty_text"}
+      }
+    },
+    "region_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "region_id",
+        "display_name",
+        "country_code",
+        "country_name",
+        "native_crs",
+        "web_crs",
+        "behavior_reference"
+      ],
+      "properties": {
+        "region_id": {"$ref": "#/$defs/identifier"},
+        "display_name": {"$ref": "#/$defs/non_empty_text"},
+        "country_code": {
+          "type": "string",
+          "pattern": "^[A-Z]{2}$",
+          "examples": ["SE", "DK", "NO"]
+        },
+        "country_name": {"$ref": "#/$defs/non_empty_text"},
+        "native_crs": {"$ref": "#/$defs/crs"},
+        "web_crs": {"$ref": "#/$defs/crs"},
+        "behavior_reference": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["state", "reason"],
+              "properties": {
+                "state": {"const": "unavailable"},
+                "reason": {"$ref": "#/$defs/non_empty_text"}
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["state", "source", "label"],
+              "properties": {
+                "state": {"const": "declared"},
+                "source": {
+                  "type": "string",
+                  "enum": ["frozen_reference", "regional_acceptance", "no_historical_reference"]
+                },
+                "label": {"$ref": "#/$defs/non_empty_text"},
+                "reference": {"$ref": "#/$defs/non_empty_text"}
+              }
+            }
+          ]
+        }
+      }
+    },
+    "access": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "lifecycle",
+        "trust_classification",
+        "product_route_requested",
+        "local_review",
+        "landing_card"
+      ],
+      "properties": {
+        "lifecycle": {
+          "type": "string",
+          "enum": ["planned", "onboarding", "active"]
+        },
+        "trust_classification": {
+          "type": "string",
+          "enum": ["diagnostic_only", "candidate", "technically_validated", "regionally_accepted"]
+        },
+        "product_route_requested": {
+          "type": "boolean",
+          "description": "Mänsklig begäran om framtida publicering. Compilern aktiverar aldrig produktrutten direkt från detta fält."
+        },
+        "local_review": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["enabled", "allowed_capabilities"],
+          "properties": {
+            "enabled": {"type": "boolean"},
+            "allowed_capabilities": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "workspace.map",
+                  "workspace.landscape",
+                  "wind.area",
+                  "wind.group.roads",
+                  "wind.group.population",
+                  "wind.group.nature",
+                  "wind.group.culture",
+                  "wind.group.grid_infrastructure",
+                  "solar.area",
+                  "solar.group.roads",
+                  "solar.group.population",
+                  "solar.group.nature",
+                  "solar.group.culture",
+                  "solar.group.grid_infrastructure",
+                  "solar.rooftop",
+                  "workspace.technology_context",
+                  "workspace.scenario",
+                  "workspace.social_acceptance",
+                  "workspace.combined_result"
+                ]
+              },
+              "description": "A unique subset of exact ids from the active workspace profile. Access never selects a renderer or algorithm."
+            }
+          }
+        },
+        "landing_card": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["title", "subtitle", "description", "badge", "sort_order"],
+          "properties": {
+            "title": {"$ref": "#/$defs/non_empty_text"},
+            "subtitle": {"$ref": "#/$defs/non_empty_text"},
+            "description": {"$ref": "#/$defs/non_empty_text"},
+            "badge": {"$ref": "#/$defs/non_empty_text"},
+            "sort_order": {"type": "integer", "minimum": 0}
+          }
+        }
+      }
+    },
+    "map_h3": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["center", "zoom", "analysis_resolution", "rollup_resolutions"],
+      "properties": {
+        "center": {
+          "type": "array",
+          "prefixItems": [
+            {"type": "number", "minimum": -90, "maximum": 90},
+            {"type": "number", "minimum": -180, "maximum": 180}
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2,
+          "description": "Kartcentrum som [latitud, longitud]."
+        },
+        "zoom": {"type": "integer", "minimum": 0, "maximum": 22},
+        "analysis_resolution": {"type": "integer", "minimum": 0, "maximum": 15},
+        "rollup_resolutions": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "integer", "minimum": 0, "maximum": 15}
+        }
+      }
+    },
+    "geography": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["boundary", "standard_analysis_domain", "technology_support"],
+      "properties": {
+        "boundary": {"$ref": "#/$defs/boundary_declaration"},
+        "standard_analysis_domain": {"$ref": "#/$defs/domain_declaration"},
+        "technology_support": {"$ref": "#/$defs/technology_support_declaration"}
+      }
+    },
+    "boundary_declaration": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["state", "reason"],
+          "properties": {
+            "state": {"const": "unavailable"},
+            "reason": {"$ref": "#/$defs/non_empty_text"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["state", "id", "label", "asset", "source_crs", "native_crs", "geometry_family", "provenance"],
+          "properties": {
+            "state": {"const": "declared"},
+            "id": {"$ref": "#/$defs/identifier"},
+            "label": {"$ref": "#/$defs/non_empty_text"},
+            "asset": {"$ref": "#/$defs/asset"},
+            "source_crs": {"$ref": "#/$defs/crs"},
+            "native_crs": {"$ref": "#/$defs/crs"},
+            "geometry_family": {"const": "polygon"},
+            "provenance": {"$ref": "#/$defs/provenance"}
+          }
+        }
+      ]
+    },
+    "domain_declaration": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["state", "reason"],
+          "properties": {
+            "state": {"const": "unavailable"},
+            "reason": {"$ref": "#/$defs/non_empty_text"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "state",
+            "domain_id",
+            "coverage_geometry_id",
+            "cell_kind",
+            "resolution",
+            "rollup_resolutions",
+            "candidate_buffer_m",
+            "coverage_rule",
+            "missing_observation_policy"
+          ],
+          "properties": {
+            "state": {"const": "declared"},
+            "domain_id": {"$ref": "#/$defs/identifier"},
+            "coverage_geometry_id": {"$ref": "#/$defs/identifier"},
+            "cell_kind": {"const": "h3"},
+            "resolution": {"type": "integer", "minimum": 0, "maximum": 15},
+            "rollup_resolutions": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {"type": "integer", "minimum": 0, "maximum": 15}
+            },
+            "candidate_buffer_m": {"type": "number", "exclusiveMinimum": 0},
+            "coverage_rule": {"const": "positive_area_intersection"},
+            "missing_observation_policy": {"const": "error"}
+          }
+        }
+      ]
+    },
+    "technology_support_declaration": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["state", "reason"],
+          "properties": {
+            "state": {"const": "unavailable"},
+            "reason": {"$ref": "#/$defs/non_empty_text"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "state", "support_domain_id", "label", "technologies",
+            "coverage_geometry", "candidate_buffer_m", "eligible_surface",
+            "technology_context"
+          ],
+          "properties": {
+            "state": {"const": "declared"},
+            "support_domain_id": {"$ref": "#/$defs/identifier"},
+            "label": {"$ref": "#/$defs/non_empty_text"},
+            "technologies": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {"type": "string", "enum": ["wind", "solar"]}
+            },
+            "coverage_geometry": {"$ref": "#/$defs/technology_coverage_geometry"},
+            "candidate_buffer_m": {"type": "number", "exclusiveMinimum": 0},
+            "eligible_surface": {"$ref": "#/$defs/eligible_surface_declaration"},
+            "technology_context": {"$ref": "#/$defs/technology_context_declaration"}
+          }
+        }
+      ]
+    },
+    "technology_coverage_geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id", "label", "asset", "source_crs", "native_crs",
+        "geometry_family", "provenance"
+      ],
+      "properties": {
+        "id": {"$ref": "#/$defs/identifier"},
+        "label": {"$ref": "#/$defs/non_empty_text"},
+        "asset": {"$ref": "#/$defs/asset"},
+        "source_crs": {"$ref": "#/$defs/crs"},
+        "native_crs": {"$ref": "#/$defs/crs"},
+        "geometry_family": {"const": "polygon"},
+        "provenance": {"$ref": "#/$defs/provenance"}
+      }
+    },
+    "eligible_surface_declaration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id", "label", "outside_region_policy", "geometry_operation",
+        "source_derivation"
+      ],
+      "properties": {
+        "id": {"$ref": "#/$defs/identifier"},
+        "label": {"$ref": "#/$defs/non_empty_text"},
+        "outside_region_policy": {"const": "exclude"},
+        "geometry_operation": {"const": "intersection"},
+        "source_derivation": {"const": "reviewed_web_crs_derivative"}
+      }
+    },
+    "technology_context_declaration": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["state", "reason"],
+          "properties": {
+            "state": {"const": "unavailable"},
+            "reason": {"$ref": "#/$defs/non_empty_text"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "state", "id", "asset", "id_field", "cell_kind",
+            "resolution", "context_fields", "missing_policy", "provenance"
+          ],
+          "properties": {
+            "state": {"const": "declared"},
+            "id": {"$ref": "#/$defs/identifier"},
+            "asset": {"$ref": "#/$defs/asset"},
+            "id_field": {"const": "hex_id"},
+            "cell_kind": {"const": "h3"},
+            "resolution": {"type": "integer", "minimum": 0, "maximum": 15},
+            "context_fields": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "class_km", "class_k8", "landscape_type",
+                  "landscape_type_id", "landscape_type_name_sv",
+                  "v10_type_id", "v10_type_name", "assignment_method",
+                  "source_model", "F1", "F2", "F3", "F4", "F5"
+                ]
+              }
+            },
+            "missing_policy": {"const": "explicit_not_assessed"},
+            "provenance": {"$ref": "#/$defs/provenance"}
+          }
+        }
+      ]
+    },
+    "landscape_declaration": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["state", "reason"],
+          "properties": {
+            "state": {"const": "unavailable"},
+            "reason": {"$ref": "#/$defs/non_empty_text"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "state", "landscape_id", "label", "purpose", "numerical_use",
+            "source_reference", "domain_reference", "h3_id_field",
+            "cell_kind", "resolution", "views", "default_view_id",
+            "product_default_visible", "rollup_resolutions",
+            "rollup_rule", "missing_policy", "outside_domain_policy",
+            "missing_label", "provenance", "trust"
+          ],
+          "properties": {
+            "state": {"const": "declared"},
+            "landscape_id": {"$ref": "#/$defs/identifier"},
+            "label": {"$ref": "#/$defs/non_empty_text"},
+            "purpose": {"const": "display_review_only"},
+            "numerical_use": {"const": "forbidden"},
+            "source_reference": {"$ref": "#/$defs/landscape_source_reference"},
+            "domain_reference": {"$ref": "#/$defs/landscape_domain_reference"},
+            "h3_id_field": {"const": "hex_id"},
+            "cell_kind": {"const": "h3"},
+            "resolution": {"type": "integer", "minimum": 0, "maximum": 15},
+            "views": {
+              "type": "array",
+              "minItems": 1,
+              "items": {"$ref": "#/$defs/landscape_view"}
+            },
+            "default_view_id": {"$ref": "#/$defs/identifier"},
+            "product_default_visible": {"type": "boolean"},
+            "rollup_resolutions": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {"type": "integer", "minimum": 0, "maximum": 15}
+            },
+            "rollup_rule": {"const": "dominant_area_then_legend_order"},
+            "missing_policy": {"const": "explicit_not_assessed"},
+            "outside_domain_policy": {"const": "ignore_with_evidence"},
+            "missing_label": {"$ref": "#/$defs/non_empty_text"},
+            "provenance": {"$ref": "#/$defs/provenance"},
+            "trust": {"$ref": "#/$defs/landscape_trust"}
+          }
+        }
+      ]
+    },
+    "landscape_source_reference": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "context_id"],
+          "properties": {
+            "kind": {"const": "technology_context"},
+            "context_id": {"$ref": "#/$defs/identifier"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "context_id", "asset"],
+          "properties": {
+            "kind": {"const": "independent_asset"},
+            "context_id": {"$ref": "#/$defs/identifier"},
+            "asset": {"$ref": "#/$defs/asset"}
+          }
+        }
+      ]
+    },
+    "landscape_domain_reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "domain_id"],
+      "properties": {
+        "role": {"const": "standard_analysis_domain"},
+        "domain_id": {"$ref": "#/$defs/identifier"}
+      }
+    },
+    "landscape_view": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "view_id", "label", "value_field", "value_semantics", "legend"
+      ],
+      "properties": {
+        "view_id": {"$ref": "#/$defs/identifier"},
+        "label": {"$ref": "#/$defs/non_empty_text"},
+        "value_field": {"$ref": "#/$defs/non_empty_text"},
+        "value_semantics": {"const": "categorical_id"},
+        "legend": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/landscape_legend_entry"}
+        }
+      }
+    },
+    "landscape_legend_entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value_id", "label", "color"],
+      "properties": {
+        "value_id": {"$ref": "#/$defs/non_empty_text"},
+        "label": {"$ref": "#/$defs/non_empty_text"},
+        "color": {
+          "type": "string",
+          "pattern": "^#[0-9A-F]{6}$"
+        }
+      }
+    },
+    "landscape_trust": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "classification", "regional_acceptance", "allowed_use",
+        "decision_support"
+      ],
+      "properties": {
+        "classification": {
+          "type": "string",
+          "enum": [
+            "diagnostic_only", "candidate", "technically_validated",
+            "regionally_accepted"
+          ]
+        },
+        "regional_acceptance": {"type": "boolean"},
+        "allowed_use": {"const": "display_review_only"},
+        "decision_support": {"const": false}
+      }
+    },
+    "group_declaration": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "state", "reason"],
+          "properties": {
+            "id": {"$ref": "#/$defs/identifier"},
+            "state": {"const": "unavailable"},
+            "reason": {"$ref": "#/$defs/non_empty_text"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "state", "layers"],
+          "properties": {
+            "id": {"$ref": "#/$defs/identifier"},
+            "state": {"const": "declared"},
+            "layers": {
+              "type": "array",
+              "minItems": 1,
+              "items": {"$ref": "#/$defs/layer"}
+            }
+          }
+        }
+      ]
+    },
+    "layer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "operation", "geometry_family", "data_representation", "source", "parameters"],
+      "properties": {
+        "id": {"$ref": "#/$defs/identifier"},
+        "label": {"$ref": "#/$defs/non_empty_text"},
+        "operation": {
+          "type": "string",
+          "enum": ["distance_exclusion", "hard_exclusion", "proximity_feasibility"]
+        },
+        "geometry_family": {
+          "type": "string",
+          "enum": ["point", "line", "polygon", "grid"]
+        },
+        "data_representation": {
+          "type": "string",
+          "enum": ["auto", "network", "features", "grid", "privacy_protected_surface"]
+        },
+        "source": {"$ref": "#/$defs/layer_source"},
+        "parameters": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["buffer_m"],
+          "properties": {
+            "buffer_m": {"$ref": "#/$defs/numeric_parameter"}
+          }
+        },
+        "note": {"$ref": "#/$defs/non_empty_text"}
+      }
+    },
+    "layer_source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_kind", "asset", "source_crs", "geometry_family", "data_representation", "provenance"],
+      "properties": {
+        "source_kind": {
+          "type": "string",
+          "enum": ["vector_file", "asset_manifest", "generated_observations", "diagnostic_snapshot"]
+        },
+        "asset": {"$ref": "#/$defs/asset"},
+        "source_crs": {"$ref": "#/$defs/crs"},
+        "geometry_family": {
+          "type": "string",
+          "enum": ["point", "line", "polygon", "grid"]
+        },
+        "data_representation": {
+          "type": "string",
+          "enum": ["auto", "network", "features", "grid", "privacy_protected_surface"]
+        },
+        "analysis_base_buffer_m": {"type": "number", "minimum": 0},
+        "dataset_layer": {"$ref": "#/$defs/non_empty_text"},
+        "selection": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["field", "values"],
+          "properties": {
+            "field": {"$ref": "#/$defs/non_empty_text"},
+            "values": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {"$ref": "#/$defs/non_empty_text"}
+            }
+          }
+        },
+        "provenance": {"$ref": "#/$defs/provenance"}
+      }
+    },
+    "numeric_parameter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "unit",
+        "minimum",
+        "maximum",
+        "step",
+        "technical_initial_value",
+        "accepted_recommended_default"
+      ],
+      "properties": {
+        "type": {"const": "number"},
+        "unit": {"const": "m"},
+        "minimum": {"type": "number"},
+        "maximum": {"type": "number"},
+        "step": {"type": "number", "exclusiveMinimum": 0},
+        "technical_initial_value": {
+          "type": "number",
+          "description": "Körbart tekniskt startvärde för den gemensamma kontrollen; är inte en regional rekommendation."
+        },
+        "accepted_recommended_default": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["state", "reason"],
+              "properties": {
+                "state": {"const": "unavailable"},
+                "reason": {"$ref": "#/$defs/non_empty_text"}
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["state", "value"],
+              "properties": {
+                "state": {"const": "defined"},
+                "value": {"type": "number"}
+              }
+            }
+          ]
+        }
+      }
+    },
+    "percentage_parameter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type", "unit", "minimum", "maximum", "step",
+        "technical_initial_value", "accepted_recommended_default"
+      ],
+      "properties": {
+        "type": {"const": "number"},
+        "unit": {"const": "percent"},
+        "minimum": {"const": 0},
+        "maximum": {"const": 100},
+        "step": {"type": "number", "exclusiveMinimum": 0},
+        "technical_initial_value": {"type": "number", "minimum": 0, "maximum": 100},
+        "accepted_recommended_default": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["state", "reason"],
+              "properties": {
+                "state": {"const": "unavailable"},
+                "reason": {"$ref": "#/$defs/non_empty_text"}
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["state", "value"],
+              "properties": {
+                "state": {"const": "defined"},
+                "value": {"type": "number", "minimum": 0, "maximum": 100}
+              }
+            }
+          ]
+        }
+      }
+    },
+    "technology_declaration": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["technology_id", "state", "reason"],
+          "properties": {
+            "technology_id": {"type": "string", "enum": ["wind", "solar"]},
+            "state": {"const": "unavailable"},
+            "reason": {"$ref": "#/$defs/non_empty_text"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["technology_id", "state", "applicable_group_ids", "area_result"],
+          "properties": {
+            "technology_id": {"type": "string", "enum": ["wind", "solar"]},
+            "state": {"const": "declared"},
+            "applicable_group_ids": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": ["roads", "population", "nature", "culture", "grid_infrastructure"]
+              }
+            },
+            "area_result": {"$ref": "#/$defs/area_result_declaration"}
+          }
+        }
+      ]
+    },
+    "area_result_declaration": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["state", "reason"],
+          "properties": {
+            "state": {"const": "unavailable"},
+            "reason": {"$ref": "#/$defs/non_empty_text"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "state", "eligible_surface_id", "surface_scope", "water_policy",
+            "restriction_combination", "operation_order", "denominator",
+            "geometry_semantics"
+          ],
+          "properties": {
+            "state": {"const": "declared"},
+            "eligible_surface_id": {"$ref": "#/$defs/identifier"},
+            "surface_scope": {
+              "type": "string",
+              "enum": ["onshore_land", "offshore_water", "land_and_water"]
+            },
+            "water_policy": {
+              "type": "string",
+              "enum": ["exclude_sea_retain_inland_water", "exclude_all_water", "include_water"]
+            },
+            "restriction_combination": {"const": "geometry_union"},
+            "operation_order": {"const": "feasibility_then_exclusion"},
+            "denominator": {"const": "eligible_surface"},
+            "geometry_semantics": {"const": "exact_vector_clip"}
+          }
+        }
+      ]
+    },
+    "rooftop_solar_declaration": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["state", "reason"],
+          "properties": {
+            "state": {"const": "unavailable"},
+            "reason": {"$ref": "#/$defs/non_empty_text"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "state", "capability_id", "technology_id", "domain_reference",
+            "population_source", "map_review", "panel_area_m2_per_person",
+            "annual_yield", "accounting", "trust", "limitation",
+            "replacement_condition"
+          ],
+          "properties": {
+            "state": {"const": "declared"},
+            "capability_id": {"const": "solar.rooftop"},
+            "technology_id": {"const": "solar"},
+            "domain_reference": {"$ref": "#/$defs/rooftop_domain_reference"},
+            "population_source": {"$ref": "#/$defs/rooftop_population_source"},
+            "map_review": {"$ref": "#/$defs/rooftop_map_review"},
+            "panel_area_m2_per_person": {"$ref": "#/$defs/rooftop_panel_area_parameter"},
+            "annual_yield": {"$ref": "#/$defs/rooftop_annual_yield"},
+            "accounting": {"$ref": "#/$defs/rooftop_accounting"},
+            "trust": {"$ref": "#/$defs/rooftop_trust"},
+            "limitation": {"$ref": "#/$defs/non_empty_text"},
+            "replacement_condition": {"$ref": "#/$defs/non_empty_text"}
+          }
+        }
+      ]
+    },
+    "rooftop_domain_reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "domain_id"],
+      "properties": {
+        "role": {"const": "standard_analysis_domain"},
+        "domain_id": {"$ref": "#/$defs/identifier"}
+      }
+    },
+    "rooftop_population_source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "asset", "h3_id_field", "value_field", "source_h3_resolution",
+        "analysis_h3_resolution", "aggregation", "accounting_total_policy",
+        "missing_domain_cell_policy", "semantics", "provenance"
+      ],
+      "properties": {
+        "asset": {"$ref": "#/$defs/asset"},
+        "h3_id_field": {"$ref": "#/$defs/non_empty_text"},
+        "value_field": {"$ref": "#/$defs/non_empty_text"},
+        "source_h3_resolution": {"type": "integer", "minimum": 0, "maximum": 15},
+        "analysis_h3_resolution": {"type": "integer", "minimum": 0, "maximum": 15},
+        "aggregation": {"const": "sum_to_analysis_then_parent_rollup"},
+        "accounting_total_policy": {"const": "source_total_before_domain_clip"},
+        "missing_domain_cell_policy": {"const": "zero_population"},
+        "semantics": {"$ref": "#/$defs/non_empty_text"},
+        "provenance": {"$ref": "#/$defs/provenance"}
+      }
+    },
+    "rooftop_map_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["canonical_group_id", "layer_ids", "buffer_value_source"],
+      "properties": {
+        "canonical_group_id": {"const": "population"},
+        "layer_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/identifier"}
+        },
+        "buffer_value_source": {"const": "canonical_layer_default"}
+      }
+    },
+    "rooftop_panel_area_parameter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type", "unit", "minimum", "maximum", "step",
+        "technical_initial_value", "accepted_recommended_default"
+      ],
+      "properties": {
+        "type": {"const": "number"},
+        "unit": {"const": "m2/person"},
+        "minimum": {"type": "number", "minimum": 0},
+        "maximum": {"type": "number", "minimum": 0},
+        "step": {"type": "number", "exclusiveMinimum": 0},
+        "technical_initial_value": {"type": "number", "minimum": 0},
+        "accepted_recommended_default": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["state", "reason"],
+              "properties": {
+                "state": {"const": "unavailable"},
+                "reason": {"$ref": "#/$defs/non_empty_text"}
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["state", "value"],
+              "properties": {
+                "state": {"const": "defined"},
+                "value": {"type": "number", "minimum": 0}
+              }
+            }
+          ]
+        }
+      }
+    },
+    "rooftop_annual_yield": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "method", "specific_yield_kwh_per_kwp",
+        "module_efficiency_stc_fraction", "pvgis_version",
+        "radiation_database", "data_period", "pv_technology",
+        "mounting_place", "slope_deg", "aspect_deg", "system_loss_pct",
+        "use_horizon", "site_aggregation", "sample_site_count",
+        "reference_urls", "provenance"
+      ],
+      "properties": {
+        "method": {"const": "pvgis_specific_yield_times_stc_efficiency"},
+        "specific_yield_kwh_per_kwp": {"type": "number", "exclusiveMinimum": 0},
+        "module_efficiency_stc_fraction": {"type": "number", "exclusiveMinimum": 0, "maximum": 1},
+        "pvgis_version": {"$ref": "#/$defs/non_empty_text"},
+        "radiation_database": {"$ref": "#/$defs/non_empty_text"},
+        "data_period": {"$ref": "#/$defs/non_empty_text"},
+        "pv_technology": {"$ref": "#/$defs/non_empty_text"},
+        "mounting_place": {"$ref": "#/$defs/non_empty_text"},
+        "slope_deg": {"type": "number", "minimum": 0, "maximum": 90},
+        "aspect_deg": {"type": "number", "minimum": -180, "maximum": 180},
+        "system_loss_pct": {"type": "number", "minimum": 0, "exclusiveMaximum": 100},
+        "use_horizon": {"type": "boolean"},
+        "site_aggregation": {"$ref": "#/$defs/non_empty_text"},
+        "sample_site_count": {"type": "integer", "minimum": 1},
+        "reference_urls": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "format": "uri"}
+        },
+        "provenance": {"$ref": "#/$defs/provenance"}
+      }
+    },
+    "rooftop_accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cap_at_solar_target", "affects_geographic_potential",
+        "adds_establishment_candidates"
+      ],
+      "properties": {
+        "cap_at_solar_target": {"const": true},
+        "affects_geographic_potential": {"const": false},
+        "adds_establishment_candidates": {"const": false}
+      }
+    },
+    "rooftop_trust": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["classification", "regional_acceptance", "allowed_use"],
+      "properties": {
+        "classification": {
+          "type": "string",
+          "enum": ["diagnostic_only", "candidate", "technically_validated", "regionally_accepted"]
+        },
+        "regional_acceptance": {"type": "boolean"},
+        "allowed_use": {
+          "type": "string",
+          "enum": ["planning_exploration_only", "regional_planning"]
+        }
+      }
+    },
+    "display_warning": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sv", "en", "da_no"],
+      "properties": {
+        "sv": {"$ref": "#/$defs/non_empty_text"},
+        "en": {"$ref": "#/$defs/non_empty_text"},
+        "da_no": {"$ref": "#/$defs/non_empty_text"}
+      }
+    },
+    "scenario_adapter": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "technology_ids"],
+          "properties": {
+            "id": {"const": "normalized_json_v1"},
+            "technology_ids": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {"$ref": "#/$defs/identifier"}
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "technology_ids", "configuration"],
+          "properties": {
+            "id": {"const": "times_duckdb_area_demand_xlsx_v1"},
+            "technology_ids": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {"$ref": "#/$defs/identifier"}
+            },
+            "configuration": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["duckdb", "area_demand"],
+              "properties": {
+                "duckdb": {
+                  "type": "object",
+                  "minProperties": 1,
+                  "additionalProperties": true,
+                  "description": "Explicit column-, table-, filter- and technology mapping for the generic TIMES DuckDB adapter. The compiler only adds the declared asset path."
+                },
+                "area_demand": {
+                  "type": "object",
+                  "minProperties": 1,
+                  "additionalProperties": true,
+                  "description": "Explicit row-, technology-, quality- and provenance mapping for the generic AreaDemand XLSX adapter. The compiler only adds the declared asset path."
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "scenario_declaration": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["state", "reason"],
+          "properties": {
+            "state": {"const": "unavailable"},
+            "reason": {"$ref": "#/$defs/non_empty_text"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "state", "scenario_set_id", "status", "provider", "regional_acceptance", "allowed_use",
+            "source_region_id", "source_dataset_id", "source_label", "provenance",
+            "limitation", "replacement_condition", "display_warning", "assets",
+            "adapter", "scenario_levels", "default_scenario", "area_demand_options",
+            "default_area_demand_scenario", "technology_mix", "planning_scenarios"
+          ],
+          "properties": {
+            "state": {"const": "declared"},
+            "scenario_set_id": {"$ref": "#/$defs/identifier"},
+            "status": {"type": "string", "enum": ["accepted_regional", "provisional_fallback"]},
+            "provider": {"$ref": "#/$defs/provider"},
+            "regional_acceptance": {"type": "boolean"},
+            "allowed_use": {"type": "string", "enum": ["regional_planning", "planning_exploration_only"]},
+            "source_region_id": {"$ref": "#/$defs/identifier"},
+            "source_dataset_id": {"$ref": "#/$defs/identifier"},
+            "source_label": {"$ref": "#/$defs/non_empty_text"},
+            "provenance": {"$ref": "#/$defs/non_empty_text"},
+            "limitation": {"$ref": "#/$defs/non_empty_text"},
+            "replacement_condition": {"$ref": "#/$defs/non_empty_text"},
+            "display_warning": {"$ref": "#/$defs/display_warning"},
+            "assets": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["energy_model", "area_demand"],
+              "properties": {
+                "energy_model": {"$ref": "#/$defs/asset"},
+                "area_demand": {"$ref": "#/$defs/asset"}
+              }
+            },
+            "adapter": {"$ref": "#/$defs/scenario_adapter"},
+            "scenario_levels": {
+              "type": "array", "minItems": 1, "uniqueItems": true,
+              "items": {"$ref": "#/$defs/identifier"}
+            },
+            "default_scenario": {"$ref": "#/$defs/identifier"},
+            "area_demand_options": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["id", "label"],
+                "properties": {
+                  "id": {"$ref": "#/$defs/identifier"},
+                  "label": {"$ref": "#/$defs/non_empty_text"}
+                }
+              }
+            },
+            "default_area_demand_scenario": {"$ref": "#/$defs/identifier"},
+            "technology_mix": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["share_step_pct", "default_shares"],
+              "properties": {
+                "share_step_pct": {
+                  "type": "number",
+                  "exclusiveMinimum": 0,
+                  "maximum": 100
+                },
+                "default_shares": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["technology_id", "share_pct"],
+                    "properties": {
+                      "technology_id": {"$ref": "#/$defs/identifier"},
+                      "share_pct": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 100
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "planning_scenarios": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["id", "label", "source_scenario", "planning_year", "energy_scale", "area_demand_scenario"],
+                "properties": {
+                  "id": {"$ref": "#/$defs/identifier"},
+                  "label": {"$ref": "#/$defs/non_empty_text"},
+                  "source_scenario": {"$ref": "#/$defs/non_empty_text"},
+                  "planning_year": {"type": "integer", "minimum": 1},
+                  "energy_scale": {"type": "number", "exclusiveMinimum": 0},
+                  "area_demand_scenario": {"$ref": "#/$defs/non_empty_text"}
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "combined_priority_component": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["component_id", "value_source", "direction"],
+      "properties": {
+        "component_id": {"$ref": "#/$defs/identifier"},
+        "value_source": {
+          "type": "string",
+          "enum": [
+            "base_score",
+            "outside_ring",
+            "potential_fraction",
+            "potential_area_km2",
+            "reservation_state",
+            "declared_value",
+            "stable_cell_id",
+            "wind_zone_size"
+          ]
+        },
+        "direction": {
+          "type": "string",
+          "enum": ["ascending", "descending"]
+        }
+      }
+    },
+    "combined_technology_priority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "technology_id",
+        "phase_order",
+        "phase_policies",
+        "inside_components",
+        "outside_components"
+      ],
+      "properties": {
+        "technology_id": {
+          "type": "string",
+          "enum": ["wind", "solar"]
+        },
+        "phase_order": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": ["inside_potential", "outside_potential"]
+          }
+        },
+        "phase_policies": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 2,
+          "items": {
+            "$ref": "#/$defs/combined_allocation_phase_policy"
+          }
+        },
+        "inside_components": {
+          "type": "array",
+          "minItems": 2,
+          "items": {"$ref": "#/$defs/combined_priority_component"}
+        },
+        "outside_components": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/combined_priority_component"}
+        }
+      }
+    },
+    "combined_allocation_phase_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "phase_id",
+        "entry_residual_threshold_km2",
+        "stop_tolerance_km2"
+      ],
+      "properties": {
+        "phase_id": {
+          "type": "string",
+          "enum": ["inside_potential", "outside_potential"]
+        },
+        "entry_residual_threshold_km2": {
+          "type": "number",
+          "minimum": 0
+        },
+        "stop_tolerance_km2": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "combined_score_input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "input_id",
+        "base_score_model",
+        "executor_id",
+        "numeric_parameters",
+        "layer_selections"
+      ],
+      "properties": {
+        "input_id": {"$ref": "#/$defs/identifier"},
+        "base_score_model": {
+          "type": "string",
+          "enum": [
+            "declared_unit_interval_v1",
+            "landscape_potential_core_v1"
+          ]
+        },
+        "executor_id": {"$ref": "#/$defs/identifier"},
+        "numeric_parameters": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "value"],
+            "properties": {
+              "id": {"$ref": "#/$defs/identifier"},
+              "value": {"type": "number"}
+            }
+          }
+        },
+        "layer_selections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "technology_id",
+              "analysis_id",
+              "group_id",
+              "layer_ids"
+            ],
+            "properties": {
+              "technology_id": {
+                "type": "string",
+                "enum": ["wind", "solar"]
+              },
+              "analysis_id": {"$ref": "#/$defs/identifier"},
+              "group_id": {"$ref": "#/$defs/identifier"},
+              "layer_ids": {
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": {"$ref": "#/$defs/identifier"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "combined_result_declaration": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["state", "reason"],
+          "properties": {
+            "state": {"const": "unavailable"},
+            "reason": {"$ref": "#/$defs/non_empty_text"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "state",
+            "capability_id",
+            "policy_id",
+            "technology_order",
+            "finalization_resolution",
+            "rollup_resolutions",
+            "co_use_policy",
+            "outside_potential_policy",
+            "outside_ring_model",
+            "rollup_model",
+            "score_input",
+            "technology_priorities"
+          ],
+          "properties": {
+            "state": {"const": "declared"},
+            "capability_id": {"const": "workspace.combined_result"},
+            "policy_id": {"$ref": "#/$defs/identifier"},
+            "technology_order": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": ["wind", "solar"]
+              }
+            },
+            "finalization_resolution": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 15
+            },
+            "rollup_resolutions": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 15
+              }
+            },
+            "co_use_policy": {
+              "type": "string",
+              "enum": [
+                "allow_with_reservation_tiebreak",
+                "disallow_shared_cells"
+              ]
+            },
+            "outside_potential_policy": {
+              "type": "string",
+              "enum": ["disabled", "allocate_declared_eligible_area"]
+            },
+            "outside_ring_model": {
+              "type": "string",
+              "enum": [
+                "none",
+                "declared_non_negative_integer",
+                "selected_inside_h3_graph_distance_v1"
+              ]
+            },
+            "rollup_model": {
+              "const": "sum_finalized_children_without_reranking"
+            },
+            "technical_validation": {
+              "$ref": "#/$defs/asset",
+              "description": "Optional separately produced technical-validation evidence. Declaring it never changes the compiler's compiled_unvalidated status; the runtime verifies it against the exact materialized policy package."
+            },
+            "score_input": {"$ref": "#/$defs/combined_score_input"},
+            "technology_priorities": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": {"$ref": "#/$defs/combined_technology_priority"}
+            }
+          }
+        }
+      ]
+    },
+    "social_acceptance_declaration": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["state", "reason"],
+          "properties": {
+            "state": {"const": "unavailable"},
+            "reason": {"$ref": "#/$defs/non_empty_text"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "state", "acceptance_id", "display_name", "status", "provider", "regional_acceptance", "allowed_use",
+            "synthetic", "method_id", "source_region_id", "source_dataset_id",
+            "source_label", "provenance", "limitation", "replacement_condition",
+            "display_warning", "assets", "hex_resolution", "coverage", "behavior",
+            "rollup_resolutions", "rollup_rule", "control_contract",
+            "scenario_levels", "default_scenario", "scenarios", "value_range",
+            "max_decimals", "method_note"
+          ],
+          "properties": {
+            "state": {"const": "declared"},
+            "acceptance_id": {"$ref": "#/$defs/identifier"},
+            "display_name": {"$ref": "#/$defs/non_empty_text"},
+            "status": {"type": "string", "enum": ["accepted_regional", "provisional_fallback"]},
+            "provider": {"$ref": "#/$defs/provider"},
+            "regional_acceptance": {"type": "boolean"},
+            "allowed_use": {"type": "string", "enum": ["regional_planning", "behavior_exploration_only"]},
+            "synthetic": {"type": "boolean"},
+            "method_id": {"$ref": "#/$defs/identifier"},
+            "source_region_id": {"$ref": "#/$defs/identifier"},
+            "source_dataset_id": {"$ref": "#/$defs/identifier"},
+            "source_label": {"$ref": "#/$defs/non_empty_text"},
+            "provenance": {"$ref": "#/$defs/non_empty_text"},
+            "limitation": {"$ref": "#/$defs/non_empty_text"},
+            "replacement_condition": {"$ref": "#/$defs/non_empty_text"},
+            "display_warning": {"$ref": "#/$defs/display_warning"},
+            "assets": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["acceptance_values", "display_geometry"],
+              "properties": {
+                "acceptance_values": {"$ref": "#/$defs/asset"},
+                "display_geometry": {"$ref": "#/$defs/asset"}
+              }
+            },
+            "hex_resolution": {"type": "integer", "minimum": 0, "maximum": 15},
+            "rollup_resolutions": {
+              "type": "array", "uniqueItems": true,
+              "items": {"type": "integer", "minimum": 0, "maximum": 15}
+            },
+            "rollup_rule": {"const": "mean_by_source_cell"},
+            "control_contract": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["impact_pct", "allocation_priority_pct"],
+              "properties": {
+                "impact_pct": {"$ref": "#/$defs/percentage_parameter"},
+                "allocation_priority_pct": {"$ref": "#/$defs/percentage_parameter"}
+              }
+            },
+            "coverage": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["scope", "source_hex_count", "target_support_hex_count", "unassessed_support_hex_count"],
+              "properties": {
+                "scope": {"$ref": "#/$defs/non_empty_text"},
+                "source_hex_count": {"type": "integer", "minimum": 1},
+                "target_support_hex_count": {"type": "integer", "minimum": 1},
+                "unassessed_support_hex_count": {"type": "integer", "minimum": 0}
+              }
+            },
+            "behavior": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["impact_model", "allocation_priority_model", "low_threshold", "high_threshold", "missing_context_policy", "allocation_missing_context_policy"],
+              "properties": {
+                "impact_model": {"const": "linear_acceptance_weight"},
+                "allocation_priority_model": {"const": "linear_acceptance_blend"},
+                "low_threshold": {"type": "number", "minimum": 0, "maximum": 1},
+                "high_threshold": {"type": "number", "minimum": 0, "maximum": 1},
+                "missing_context_policy": {"const": "exclude_when_applied"},
+                "allocation_missing_context_policy": {"const": "exclude_when_prioritized"}
+              }
+            },
+            "scenario_levels": {
+              "type": "array", "minItems": 1, "uniqueItems": true,
+              "items": {"$ref": "#/$defs/identifier"}
+            },
+            "default_scenario": {"$ref": "#/$defs/identifier"},
+            "scenarios": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["id", "label", "value_column"],
+                "properties": {
+                  "id": {"$ref": "#/$defs/identifier"},
+                  "label": {"$ref": "#/$defs/non_empty_text"},
+                  "value_column": {"$ref": "#/$defs/identifier"}
+                }
+              }
+            },
+            "value_range": {
+              "type": "array",
+              "prefixItems": [{"const": 0}, {"const": 1}],
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "max_decimals": {"type": "integer", "minimum": 0, "maximum": 6},
+            "random_seed": {"type": "integer", "minimum": 0},
+            "method_note": {"$ref": "#/$defs/non_empty_text"}
+          }
+        }
+      ]
+    }
+  }
+}

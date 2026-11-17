@@ -1,0 +1,96 @@
+{
+  "state": "declared",
+  "acceptance_id": "fixture_social_acceptance",
+  "display_name": "Synthetic social acceptance",
+  "status": "provisional_fallback",
+  "synthetic": true,
+  "provider": "repo",
+  "regional_acceptance": false,
+  "allowed_use": "behavior_exploration_only",
+  "source_region_id": "fixture_region_standard",
+  "source_dataset_id": "fixture_social_acceptance_values",
+  "source_label": "Synthetic social-acceptance fixture",
+  "method_id": "fixture_social_acceptance_v1",
+  "provenance": "Repo-owned deterministic values for the neutral manifest-program portability gate.",
+  "limitation": "The values are synthetic test evidence and are not regional observations or decision support.",
+  "replacement_condition": "A production package must replace the fixture with reviewed region-owned observations and acceptance evidence.",
+  "display_warning": {
+    "sv": "Syntetisk testdata för en neutral fixture-region; inte regional acceptansevidens.",
+    "en": "Synthetic data for a neutral fixture region; not regional acceptance evidence.",
+    "da_no": "Syntetiske data for en nøytral fixture-region; ikke regional akseptevidens."
+  },
+  "assets": {
+    "acceptance_values": {
+      "provider": "repo",
+      "path": "regions/fixture_region_standard/assets/social_acceptance_values_r9.csv",
+      "format": "csv",
+      "integrity": {
+        "mode": "pinned",
+        "sha256": "d781fc8d7649d8d869b6ef2e44613871c3833ee38299caac98ad2dba1ab451cc"
+      }
+    },
+    "display_geometry": {
+      "provider": "repo",
+      "path": "regions/fixture_region_standard/assets/social_acceptance_geometry_r9.geojson",
+      "format": "geojson",
+      "integrity": {
+        "mode": "pinned",
+        "sha256": "f91bf45b397c6b6559489555067bad99b205cd7912c1b972cccb69a2eee6a4a9"
+      }
+    }
+  },
+  "coverage": {
+    "scope": "technology_support_r9_with_explicit_unassessed_cells",
+    "source_hex_count": 3,
+    "target_support_hex_count": 47,
+    "unassessed_support_hex_count": 44
+  },
+  "behavior": {
+    "impact_model": "linear_acceptance_weight",
+    "allocation_priority_model": "linear_acceptance_blend",
+    "low_threshold": 0.4,
+    "high_threshold": 0.7,
+    "missing_context_policy": "exclude_when_applied",
+    "allocation_missing_context_policy": "exclude_when_prioritized"
+  },
+  "hex_resolution": 9,
+  "rollup_resolutions": [8],
+  "rollup_rule": "mean_by_source_cell",
+  "control_contract": {
+    "impact_pct": {
+      "type": "number",
+      "unit": "percent",
+      "minimum": 0,
+      "maximum": 100,
+      "step": 5,
+      "technical_initial_value": 0,
+      "accepted_recommended_default": {
+        "state": "unavailable",
+        "reason": "A synthetic fixture has no accepted regional recommendation."
+      }
+    },
+    "allocation_priority_pct": {
+      "type": "number",
+      "unit": "percent",
+      "minimum": 0,
+      "maximum": 100,
+      "step": 5,
+      "technical_initial_value": 0,
+      "accepted_recommended_default": {
+        "state": "unavailable",
+        "reason": "A synthetic fixture has no accepted regional recommendation."
+      }
+    }
+  },
+  "scenario_levels": ["low", "medium", "high"],
+  "default_scenario": "medium",
+  "scenarios": [
+    {"id": "low", "label": "Low", "value_column": "acceptance_low"},
+    {"id": "medium", "label": "Medium", "value_column": "acceptance_medium"},
+    {"id": "high", "label": "High", "value_column": "acceptance_high"}
+  ],
+  "value_range": [0, 1],
+  "max_decimals": 3,
+  "random_seed": 101,
+  "method_note": "Deterministic synthetic values for generic request/result and fail-closed tests only."
+}

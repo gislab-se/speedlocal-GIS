@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "region_id": "bornholm",
+  "connection_alias": "speedlocal",
+  "database_schema": "bornholm",
+  "revision_sha256": "bee45f1ae92f6558c421369a78495bb13a632d353570e71f5830b866f7b1f168",
+  "scope": {
+    "analysis_contract_signatures": [
+      [
+        "solar",
+        "c5507f8b068268edf4051191236ea0b0d462e062819f4d9ead54e87443fda7c4"
+      ],
+      [
+        "wind",
+        "18f1388aad04cfb29c1ac48fd7d5f48d9e8c9d6c2d0ffc501ba7505d997bf35e"
+      ]
+    ],
+    "analysis_revision_sha256": "1248fe0312fc50651d6eda9c27f455f109eec6f22eadbee62af149e7f429353a",
+    "region_id": "bornholm",
+    "support_domain": {
+      "cell_count": 6882,
+      "cell_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653",
+      "cells_sha256": "dc9efbd35b9665de28b22c3b832fb7476d22821bcb3900cea64439b416500b29",
+      "domain_id": "onshore_technology_r9",
+      "resolution": 9,
+      "source_sha256": "81fad7accc34b30d7d7267be01d7b81eab9ba94d2041fc50e75c1f850f45d85c"
+    }
+  },
+  "required_datasets": [
+    "combined_policy",
+    "landscape",
+    "scenario",
+    "social_acceptance",
+    "technology_context"
+  ]
+}

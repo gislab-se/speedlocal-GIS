@@ -1,0 +1,108 @@
+{
+  "schema_version": "1.0",
+  "acceptance_id": "trondelag_provisional_synthetic_social_acceptance_v1",
+  "display_name": "Trøndelag provisorisk syntetisk social acceptans",
+  "region_id": "trondelag",
+  "status": "provisional_fallback",
+  "synthetic": true,
+  "scenario_levels": ["low", "medium", "high"],
+  "default_scenario": "medium",
+  "source_contract": {
+    "schema_version": "1.0",
+    "status": "provisional_fallback",
+    "intended_region_id": "trondelag",
+    "source_region_id": "trondelag",
+    "source_dataset_id": "trondelag_synthetic_social_acceptance_r7_v0",
+    "source_label": "Syntetiskt Trøndelag-testlager v0",
+    "provider": "v2_archive",
+    "regional_acceptance": false,
+    "allowed_use": "behavior_exploration_only",
+    "synthetic": true,
+    "method_id": "trondelag_synthetic_social_acceptance_v0",
+    "provenance": "Deterministiskt syntetiskt testlager med seed 20260519 från det frysta externa V2-arkivet. Landskapsfaktorer används som proxykomponenter för att prova UI- och integrationskedjan.",
+    "limitation": "Värdena är inte observationer, IVL-resultat eller regionalt accepterad evidens och får endast användas för beteende- och integrationsutforskning.",
+    "replacement_condition": "Ersätt fallbacken när en granskad regional källa med dokumenterad metod, fullständig täckningspolicy, scenariosemantik, checksummor och regional acceptans har validerats.",
+    "display_warning": {
+      "sv": "Provisorisk acceptanskälla: Trøndelag-vyn använder syntetiskt testdata för att prova beteendet. Värdena är inte forskningsresultat eller regionalt accepterade.",
+      "en": "Provisional acceptance source: the Trøndelag view uses synthetic test data to exercise the behavior. The values are not research results or regionally accepted.",
+      "da_no": "Foreløpig akseptkilde: Trøndelag-visningen bruker syntetiske testdata for å prøve funksjonen. Verdiene er ikke forskningsresultater eller regionalt godkjent."
+    },
+    "assets": {
+      "acceptance_values": {
+        "path": "docs/geocontext/potential_framework/data/social_acceptance/trondelag_synthetic_social_acceptance_r7.csv",
+        "sha256": "cb300e938547d705bc2f51bfe4c8bd7c52139d519ebe7df50dffadebbddb2063"
+      },
+      "display_geometry": {
+        "path": "docs/geocontext/potential_framework/data/trondelag_r7_app_bundle/hex.geojson",
+        "sha256": "0bd493f93f55fe47e4deabe683eccdaa798969913fcdc9e12ee1523ae87d7f90"
+      }
+    }
+  },
+  "coverage_contract": {
+    "scope": "technology_support_r7_with_standard_domain_proxy_values",
+    "source_hex_count": 13735,
+    "target_support_hex_count": 14229,
+    "unassessed_support_hex_count": 494
+  },
+  "behavior_contract": {
+    "impact_model": "linear_acceptance_weight",
+    "allocation_priority_model": "linear_acceptance_blend",
+    "low_threshold": 0.4,
+    "high_threshold": 0.7,
+    "missing_context_policy": "exclude_when_applied",
+    "allocation_missing_context_policy": "exclude_when_prioritized"
+  },
+  "hex_resolution": 7,
+  "rollup_resolutions": [6, 5],
+  "rollup_rule": "mean_by_source_cell",
+  "control_contract": {
+    "impact_pct": {
+      "type": "number",
+      "unit": "percent",
+      "minimum": 0,
+      "maximum": 100,
+      "step": 5,
+      "technical_initial_value": 0,
+      "accepted_recommended_default": {
+        "state": "unavailable",
+        "reason": "Det finns ingen regionalt accepterad rekommendation för acceptanspåverkan."
+      }
+    },
+    "allocation_priority_pct": {
+      "type": "number",
+      "unit": "percent",
+      "minimum": 0,
+      "maximum": 100,
+      "step": 5,
+      "technical_initial_value": 0,
+      "accepted_recommended_default": {
+        "state": "unavailable",
+        "reason": "Det finns ingen regionalt accepterad rekommendation för acceptansstyrd allokeringsprioritet."
+      }
+    }
+  },
+  "source_hex_geojson": "docs/geocontext/potential_framework/data/trondelag_r7_app_bundle/hex.geojson",
+  "hex_geometry_path": "docs/geocontext/potential_framework/data/trondelag_r7_app_bundle/hex.geojson",
+  "acceptance_csv": "docs/geocontext/potential_framework/data/social_acceptance/trondelag_synthetic_social_acceptance_r7.csv",
+  "random_seed": 20260519,
+  "scenarios": [
+    {
+      "id": "low",
+      "label": "Låg acceptans",
+      "value_column": "acceptance_low"
+    },
+    {
+      "id": "medium",
+      "label": "Mellanacceptans",
+      "value_column": "acceptance_medium"
+    },
+    {
+      "id": "high",
+      "label": "Hög acceptans",
+      "value_column": "acceptance_high"
+    }
+  ],
+  "value_range": [0, 1],
+  "max_decimals": 3,
+  "method_note": "Deterministiskt syntetiskt testdata för UI och integration. Inte observationer, IVL-forskningsresultat eller regional acceptansevidens."
+}

@@ -1,0 +1,15 @@
+# Checksum-pinned fixture assets are byte-exact test data, not editable text.
+regions/fixture_region_a/assets/** -text
+regions/fixture_region_standard/assets/** -text
+
+# Reviewed migration evidence is checksum-pinned and must keep repository bytes.
+regions/*/data_migrations/*.json -text
+
+# Gate 1 records the exact reviewed profile bytes in PostGIS.
+regions/*/region-profile.json -text
+regions/*/geography.json -text
+
+# Keep the Linux packaging inputs consistent across development platforms.
+Dockerfile text eol=lf
+.dockerignore text eol=lf
+requirements-linux.lock text eol=lf

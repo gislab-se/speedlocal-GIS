@@ -1,0 +1,162 @@
+{
+  "schema_version": "1.0",
+  "region_id": "trondelag",
+  "scenario_set_id": "trondelag_provisional_bornholm_fallback_v1",
+  "status": "provisional_fallback",
+  "scenario_levels": ["low", "medium", "high"],
+  "layers": [],
+  "source_contract": {
+    "schema_version": "1.0",
+    "status": "provisional_fallback",
+    "intended_region_id": "trondelag",
+    "source_region_id": "bornholm",
+    "source_dataset_id": "bornholm_energyisland2050_times_areademand",
+    "source_label": "Bornholm ENERGYISLAND2050 och AreaDemand",
+    "provider": "v2_archive",
+    "regional_acceptance": false,
+    "allowed_use": "planning_exploration_only",
+    "provenance": "Checksumskyddade Bornholm TIMES- och AreaDemand-filer från det frysta externa V2-arkivet.",
+    "limitation": "Energinivåerna och markintensiteterna är inte kalibrerade eller accepterade för Trøndelag och får endast användas för att prova den generella scenario- och allokeringskedjan.",
+    "replacement_condition": "Ersätt fallbacken när en granskad norsk eller Trøndelag-specifik scenarioexport med vind, sol, planeringsår och arealintensitet har pinnats och validerats.",
+    "display_warning": {
+      "sv": "Provisorisk scenariokälla: Trøndelag-vyn använder tills vidare Bornholm-data för planeringsutforskning. Värdena är inte regionalt accepterade för Trøndelag.",
+      "en": "Provisional scenario source: the Trøndelag view currently uses Bornholm data for planning exploration. The values are not regionally accepted for Trøndelag.",
+      "da_no": "Foreløpig scenariokilde: Trøndelag-visningen bruker inntil videre Bornholm-data til planleggingsutforsking. Verdiene er ikke regionalt godkjent for Trøndelag."
+    },
+    "assets": {
+      "energy_model": {
+        "path": "data/processed/speedlocal_times.duckdb",
+        "format": "duckdb",
+        "sha256": "7487b7a3b1e2f511bf54342db939c9aa4f1dfc9d4ce66cba0fdebbd619e98784"
+      },
+      "area_demand": {
+        "path": "data/raw/AreaDemand.xlsx",
+        "format": "xlsx",
+        "sha256": "621b2dce5a1e3da6e1046038cbae813d8641f9e21ce7d3e7ebd839915060a79a"
+      }
+    }
+  },
+  "energy_model": {
+    "adapter_id": "times_duckdb_area_demand_xlsx_v1",
+    "duckdb": {
+      "path": "data/processed/speedlocal_times.duckdb",
+      "source_tables": ["timesreport", "timesreport_raw"],
+      "description_tables": ["scen_desc"],
+      "columns": {
+        "scenario": ["scen", "scenario"],
+        "year": ["year"],
+        "value": ["value"],
+        "unit": ["unit", "units"],
+        "time_slice": ["all_ts", "timeslice"],
+        "topic": ["topic"],
+        "attribute": ["attr", "attribute"],
+        "technology": ["comgroup", "techgroup", "prc", "com", "technology", "tech"]
+      },
+      "filters": {
+        "topic": ["energy"],
+        "attribute": ["f_out", "comnet"],
+        "time_slice": ["annual"]
+      },
+      "technology_map": {
+        "NRG_WIN": "wind",
+        "NRG_SOL": "solar"
+      },
+      "scenario_description": {
+        "scenario_column": ["scen", "id", "scenario"],
+        "description_column": ["description", "label", "name"]
+      }
+    },
+    "area_demand": {
+      "path": "data/raw/AreaDemand.xlsx",
+      "times_technology_map": {
+        "NRG_WIN": {
+          "energy_key": "wind",
+          "literature_key": "wind",
+          "literature_label": "Wind (onshore)"
+        },
+        "NRG_SOL": {
+          "energy_key": "solar",
+          "literature_key": "solar",
+          "literature_label": "Solar PV"
+        }
+      },
+      "technology_rows": {
+        "wind": "Wind (onshore)",
+        "solar": "Solar PV"
+      },
+      "quality_rules": {
+        "gwh_per_km2": {
+          "wind": {"min": 0.1, "max": 500.0},
+          "solar": {"min": 0.1, "max": 500.0}
+        },
+        "w_per_m2": {
+          "wind": {"min": 0.01, "max": 100.0},
+          "solar": {"min": 0.01, "max": 200.0}
+        }
+      },
+      "scenario_factor_caps": {
+        "high_km2_per_twh": {
+          "wind": 100.0
+        }
+      },
+      "local_reference": {
+        "section_label": "Bornholm",
+        "technology_map": {
+          "Landvind": "wind",
+          "Solceller": "solar",
+          "Havvind": "offshore_wind",
+          "Halm": "straw",
+          "Trae": "wood",
+          "Træ": "wood"
+        }
+      }
+    },
+    "planning": {
+      "primary_technology": "wind",
+      "planning_year": 2050,
+      "default_scenario": "medium",
+      "area_demand_options": [
+        {"id": "low", "label": "Låg"},
+        {"id": "mid", "label": "Mellan"},
+        {"id": "high", "label": "Hög"}
+      ],
+      "default_area_demand_scenario": "high",
+      "technology_mix": {
+        "share_step_pct": 1.0,
+        "default_shares": [
+          {"technology_id": "wind", "share_pct": 50.0},
+          {"technology_id": "solar", "share_pct": 50.0}
+        ]
+      },
+      "scenarios": [
+        {
+          "id": "low",
+          "label": "Låg",
+          "source_scenario": "ENERGYISLAND2050",
+          "planning_year": 2050,
+          "energy_scale": 0.65,
+          "area_demand_scenario": "low"
+        },
+        {
+          "id": "medium",
+          "label": "Mellan",
+          "source_scenario": "ENERGYISLAND2050",
+          "planning_year": 2050,
+          "energy_scale": 1.0,
+          "area_demand_scenario": "mid"
+        },
+        {
+          "id": "high",
+          "label": "Hög",
+          "source_scenario": "ENERGYISLAND2050",
+          "planning_year": 2050,
+          "energy_scale": 1.25,
+          "area_demand_scenario": "high"
+        }
+      ],
+      "placement_modes": ["auto", "manual"],
+      "auto_min_potential_share_pct": 65.0
+    }
+  },
+  "note": "Repoägt leveransmanifest för en explicit provisorisk Bornholm-fallback. Det frysta V2-arkivet och dess placeholder-manifest ändras inte."
+}

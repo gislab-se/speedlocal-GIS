@@ -1,0 +1,75 @@
+{
+  "state": "declared",
+  "scenario_set_id": "fixture_energy_pathways",
+  "status": "accepted_regional",
+  "provider": "repo",
+  "regional_acceptance": true,
+  "allowed_use": "regional_planning",
+  "source_region_id": "fixture_region_standard",
+  "source_dataset_id": "fixture_scenario_inputs",
+  "source_label": "Synthetic scenario inputs",
+  "provenance": "Repo-owned deterministic synthetic values for the manifest-program portability gate.",
+  "limitation": "Synthetic fixture values are test evidence only.",
+  "replacement_condition": "Fixture data is never replaced by or interpreted as regional production evidence.",
+  "display_warning": {
+    "sv": "Syntetisk testdata för en neutral fixture-region.",
+    "en": "Synthetic test data for a neutral fixture region.",
+    "da_no": "Syntetiske testdata for en nøytral fixture-region."
+  },
+  "assets": {
+    "energy_model": {
+      "provider": "repo",
+      "path": "regions/fixture_region_standard/assets/scenario_energy.json",
+      "format": "json",
+      "integrity": {
+        "mode": "pinned",
+        "sha256": "fc2c057b2339dfb60633cc7c45b24a891c5b5f03d69fb31b415b96d84ec666bc"
+      }
+    },
+    "area_demand": {
+      "provider": "repo",
+      "path": "regions/fixture_region_standard/assets/scenario_area_demand.json",
+      "format": "json",
+      "integrity": {
+        "mode": "pinned",
+        "sha256": "8981cf6449cfd50a9c2dc5acd2ba42f386e5bda8820c901e2e86449d594b437d"
+      }
+    }
+  },
+  "adapter": {
+    "id": "normalized_json_v1",
+    "technology_ids": ["wind", "solar"]
+  },
+  "scenario_levels": ["compact", "expanded"],
+  "default_scenario": "compact",
+  "area_demand_options": [
+    {"id": "compact", "label": "Compact land demand"},
+    {"id": "broad", "label": "Broad land demand"}
+  ],
+  "default_area_demand_scenario": "broad",
+  "technology_mix": {
+    "share_step_pct": 1.0,
+    "default_shares": [
+      {"technology_id": "wind", "share_pct": 50.0},
+      {"technology_id": "solar", "share_pct": 50.0}
+    ]
+  },
+  "planning_scenarios": [
+    {
+      "id": "compact",
+      "label": "Compact",
+      "source_scenario": "reference_path",
+      "planning_year": 2040,
+      "energy_scale": 1.0,
+      "area_demand_scenario": "compact"
+    },
+    {
+      "id": "expanded",
+      "label": "Expanded",
+      "source_scenario": "reference_path",
+      "planning_year": 2040,
+      "energy_scale": 1.5,
+      "area_demand_scenario": "broad"
+    }
+  ]
+}

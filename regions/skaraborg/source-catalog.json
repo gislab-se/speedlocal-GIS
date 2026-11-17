@@ -1,0 +1,401 @@
+{
+  "schema_version": "1.0",
+  "region_id": "skaraborg",
+  "groups": [
+    {
+      "id": "roads",
+      "status": "candidate",
+      "reason": "Owner-reviewed technical grouping from the checksum-pinned Trafikverket delivery; not a regional distance recommendation.",
+      "sources": [
+        {
+          "id": "roads_large",
+          "label": "Nationellt och regionalt huvudnät",
+          "database_view": "roads_large",
+          "authority": "Trafikverket",
+          "dataset": "NVDB Funktionell vägklass, Lastkajen order 567873",
+          "snapshot_date": "2026-08-18",
+          "license": {
+            "name": "CC0",
+            "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+            "status": "verified_local_delivery"
+          },
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "Funktionell vägklass 0–3",
+          "source_feature_count": 1285,
+          "geometry_family": "line",
+          "data_representation": "network",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/skaraborg_nvdb_funktionell_vagklass_2026_08_18/roads_large.geojson",
+            "sha256": "e66c07c33ab8c0400016642fe3abe8a2388d7ec0b27b87755c90858d05ae9a10",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 1285
+          }
+        },
+        {
+          "id": "roads_medium",
+          "label": "Övrigt huvud- och uppsamlingsnät",
+          "database_view": "roads_medium",
+          "authority": "Trafikverket",
+          "dataset": "NVDB Funktionell vägklass, Lastkajen order 567873",
+          "snapshot_date": "2026-08-18",
+          "license": {
+            "name": "CC0",
+            "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+            "status": "verified_local_delivery"
+          },
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "Funktionell vägklass 4–6",
+          "source_feature_count": 3946,
+          "geometry_family": "line",
+          "data_representation": "network",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/skaraborg_nvdb_funktionell_vagklass_2026_08_18/roads_medium.geojson",
+            "sha256": "16111b5a5160ba14946fdc38d439aa4e0474ea376b98690620aeb44b7e1fd21a",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 3946
+          }
+        }
+      ]
+    },
+    {
+      "id": "population",
+      "status": "candidate",
+      "reason": "Four owner-approved settlement and residential-building sources are clipped to the Gate 1 land surface and checksum-pinned for localhost review; the rejected 1 km population grid is not active.",
+      "sources": [
+        {
+          "id": "urban_areas",
+          "label": "Tätort",
+          "database_view": "urban_areas",
+          "authority": "Statistiska centralbyrån (SCB)",
+          "dataset": "Tätorter 2023",
+          "snapshot_date": "2023-12-31",
+          "license": {"name": "CC0", "url": "https://creativecommons.org/publicdomain/zero/1.0/", "status": "verified_local_delivery"},
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "Tätortsytor som skär den godkända landytan för Skaraborg",
+          "source_feature_count": 74,
+          "geometry_family": "polygon",
+          "data_representation": "features",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/skaraborg_population_settlements_buildings_2026_09_03/urban_areas.geojson",
+            "sha256": "14466e30e6fa622e6f29c36968fe19add5e1e4f236122b60029fe0abcab88043",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 74
+          }
+        },
+        {
+          "id": "small_settlements",
+          "label": "Småort",
+          "database_view": "small_settlements",
+          "authority": "Statistiska centralbyrån (SCB)",
+          "dataset": "Småorter 2023",
+          "snapshot_date": "2023-12-31",
+          "license": {"name": "CC0", "url": "https://creativecommons.org/publicdomain/zero/1.0/", "status": "verified_local_delivery"},
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "Småortsytor som skär den godkända landytan för Skaraborg",
+          "source_feature_count": 94,
+          "geometry_family": "polygon",
+          "data_representation": "features",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/skaraborg_population_settlements_buildings_2026_09_03/small_settlements.geojson",
+            "sha256": "0f0307995229ea75deb34d9127eda8de1e4a48bda838ae77d0df66b756105171",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 94
+          }
+        },
+        {
+          "id": "residential_buildings",
+          "label": "Byggnad",
+          "database_view": "residential_buildings",
+          "authority": "Lantmäteriet",
+          "dataset": "Byggnad Nedladdning, vektor",
+          "snapshot_date": "2026-09-03",
+          "license": {"name": "CC BY 4.0", "url": "https://creativecommons.org/licenses/by/4.0/", "status": "verified_local_delivery"},
+          "public_display_status": "local_review_only",
+          "selection": "Byggnader i de 15 godkända kommunpaketen med Bostad som primärt eller sekundärt ändamål, klippta till Skaraborgs godkända landyta",
+          "source_feature_count": 101423,
+          "geometry_family": "polygon",
+          "data_representation": "features",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/skaraborg_population_settlements_buildings_2026_09_03/residential_buildings.geojson",
+            "sha256": "c60f1b4aae38086355f17d4c67ffc31ba8e99dbf5f8339ee7585e081fef26d32",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 1
+          }
+        },
+        {
+          "id": "holiday_home_areas",
+          "label": "Fritidshusområde",
+          "database_view": "holiday_home_areas",
+          "authority": "Statistiska centralbyrån (SCB)",
+          "dataset": "Statistiska fritidshusområden 2020",
+          "snapshot_date": "2020-12-31",
+          "license": {"name": "CC0", "url": "https://creativecommons.org/publicdomain/zero/1.0/", "status": "verified_local_delivery"},
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "Fritidshusområden som skär den godkända landytan för Skaraborg",
+          "source_feature_count": 17,
+          "geometry_family": "polygon",
+          "data_representation": "features",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/skaraborg_population_settlements_buildings_2026_09_03/holiday_home_areas.geojson",
+            "sha256": "f2e7d40587917db5e6fcb848cd7f4cc5c89a2294c871f697109aa1036059c04e",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 17
+          }
+        }
+      ]
+    },
+    {
+      "id": "nature",
+      "status": "candidate",
+      "reason": "Four source geometries are clipped to a fixed 5 km source context around the approved Gate 1 land surface; the duplicate nature overview points were removed after owner review, the region analysis surface is unchanged and analysis-buffer policy remains outside Gate 2.",
+      "sources": [
+        {
+          "id": "protected_nature_overview",
+          "label": "Skyddad natur (översikt)",
+          "database_view": "protected_nature_overview",
+          "authority": "Lantmäteriet",
+          "dataset": "Topografi 250 Nedladdning, vektor / skyddadnatur",
+          "snapshot_date": "2026-04-14",
+          "license": {"name": "CC0", "url": "https://creativecommons.org/publicdomain/zero/1.0/", "status": "verified_local_delivery"},
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "Generaliserade skyddade naturområden som skär en fast 5 km källzon runt Skaraborgs godkända landyta; klippta till källzonen, inte till regiongränsen",
+          "source_feature_count": 103,
+          "geometry_family": "polygon",
+          "data_representation": "features",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/skaraborg_nature_2026_09_03/protected_nature_overview.geojson",
+            "sha256": "54b9348a0523ed97e441a95d93f3a5479f57fb07d301341aa817dbaa73b812f6",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 103
+          }
+        },
+        {
+          "id": "nature_conservation_areas",
+          "label": "Naturvårdsområden",
+          "database_view": "nature_conservation_areas",
+          "authority": "Naturvårdsverket",
+          "dataset": "Naturvårdsregistret / Naturvårdsområden",
+          "snapshot_date": "2026-08-19",
+          "license": {"name": "CC0", "url": "https://creativecommons.org/publicdomain/zero/1.0/", "status": "verified_local_delivery"},
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "Naturvårdsområden som skär en fast 5 km källzon runt Skaraborgs godkända landyta; klippta till källzonen, inte till regiongränsen",
+          "source_feature_count": 9,
+          "geometry_family": "polygon",
+          "data_representation": "features",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/skaraborg_nature_2026_09_03/nature_conservation_areas.geojson",
+            "sha256": "1e1eb856027fc9df820436cf0e7df23dd646a74998cb4a6f5562bf93769b0871",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 9
+          }
+        },
+        {
+          "id": "nature_reserves",
+          "label": "Naturreservat",
+          "database_view": "nature_reserves",
+          "authority": "Naturvårdsverket",
+          "dataset": "Naturvårdsregistret / Naturreservat",
+          "snapshot_date": "2026-08-19",
+          "license": {"name": "CC0", "url": "https://creativecommons.org/publicdomain/zero/1.0/", "status": "verified_local_delivery"},
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "Naturreservat som skär en fast 5 km källzon runt Skaraborgs godkända landyta; klippta till källzonen, inte till regiongränsen",
+          "source_feature_count": 211,
+          "geometry_family": "polygon",
+          "data_representation": "features",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/skaraborg_nature_2026_09_03/nature_reserves.geojson",
+            "sha256": "bd6ef8bf8ea87ac9046b6068fbb7b74acc8771ec4ffdd5e902f36e8228b1aac6",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 211
+          }
+        },
+        {
+          "id": "biosphere_areas",
+          "label": "Biosfärområden",
+          "database_view": "biosphere_areas",
+          "authority": "Naturvårdsverket",
+          "dataset": "Skyddade områden / Biosfärområden",
+          "snapshot_date": "2026-08-19",
+          "license": {"name": "CC0", "url": "https://creativecommons.org/publicdomain/zero/1.0/", "status": "verified_local_delivery"},
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "Biosfärområden som skär en fast 5 km källzon runt Skaraborgs godkända landyta; inkluderar Östra Vätterbranterna cirka 4 955 m från landytan",
+          "source_feature_count": 2,
+          "geometry_family": "polygon",
+          "data_representation": "features",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/skaraborg_nature_2026_09_03/biosphere_areas.geojson",
+            "sha256": "b0bac9df18ae646c55479c1c5224049263b1184409dd1736c13b7a2bfc519bdc",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "culture",
+      "status": "candidate",
+      "reason": "Four owner-supplied sources are checksum-pinned and clipped to the approved Gate 1 land surface for localhost review. Military areas and national-interest outdoor recreation remain provisional members of the working culture group until Gate 3 semantic policy is approved; no analytical weighting is implied here.",
+      "sources": [
+        {
+          "id": "cultural_remains_overview",
+          "label": "Kulturhistoriska lämningar (översikt)",
+          "database_view": "cultural_remains_overview",
+          "authority": "Lantmäteriet",
+          "dataset": "Topografi 250 Nedladdning, vektor / kultur_lamning_punkt",
+          "snapshot_date": "2026-04-14",
+          "license": {"name": "CC0", "url": "https://creativecommons.org/publicdomain/zero/1.0/", "status": "verified_local_delivery"},
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "31 generaliserade kulturhistoriska lämningar inom Skaraborgs godkända landyta",
+          "source_feature_count": 31,
+          "geometry_family": "point",
+          "data_representation": "features",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/skaraborg_culture_2026_09_04/cultural_remains_overview.geojson",
+            "sha256": "c5b5a1060239b56dc5d51a9c1d631b0102588fa0e25bddce5aed7304dddcc1d5",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 31
+          }
+        },
+        {
+          "id": "military_areas",
+          "label": "Militära områden",
+          "database_view": "military_areas",
+          "authority": "Lantmäteriet",
+          "dataset": "Topografi 250 Nedladdning, vektor / militart_omrade",
+          "snapshot_date": "2026-04-14",
+          "license": {"name": "CC0", "url": "https://creativecommons.org/publicdomain/zero/1.0/", "status": "verified_local_delivery"},
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "12 generaliserade militära områden som skär Skaraborgs godkända landyta, klippta till landytan",
+          "source_feature_count": 12,
+          "geometry_family": "polygon",
+          "data_representation": "features",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/skaraborg_culture_2026_09_04/military_areas.geojson",
+            "sha256": "95fc7b31bc03fe3fbb445041b237f8129f765be193826fac343cde5b4eb606ec",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 12
+          }
+        },
+        {
+          "id": "outdoor_recreation_national_interest",
+          "label": "Riksintresse för rörligt friluftsliv",
+          "database_view": "outdoor_recreation_national_interest",
+          "authority": "Länsstyrelserna",
+          "dataset": "Riksintresse turism och friluftsliv, miljöbalken 4 kap. 1–2 §§",
+          "snapshot_date": "2026-08-14",
+          "license": {"name": "CC0", "url": "https://creativecommons.org/publicdomain/zero/1.0/", "status": "verified_local_delivery"},
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "8 riksintresseobjekt som skär Skaraborgs godkända landyta, klippta till landytan; korrekt CP1252-källkodning används",
+          "source_feature_count": 8,
+          "geometry_family": "polygon",
+          "data_representation": "features",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/skaraborg_culture_2026_09_04/outdoor_recreation_national_interest.geojson",
+            "sha256": "1c01108982f28491cf7a7483646204ce0f410039e5b31b9477f1dd8737c2bc35",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 8
+          }
+        },
+        {
+          "id": "cultural_environment_national_interest",
+          "label": "Riksintresse för kulturmiljövård",
+          "database_view": "cultural_environment_national_interest",
+          "authority": "Riksantikvarieämbetet",
+          "dataset": "Riksintresse kulturmiljövård, miljöbalken 3 kap. 6 §",
+          "snapshot_date": "2026-08-16",
+          "license": {"name": "CC BY 4.0", "url": "https://creativecommons.org/licenses/by/4.0/", "status": "verified_local_delivery"},
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "49 polygongeometrier från 50 valda källrader som skär Skaraborgs godkända landyta; en rad utan geometri tas bort och korrekt CP1252-källkodning används",
+          "source_feature_count": 50,
+          "geometry_family": "polygon",
+          "data_representation": "features",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/skaraborg_culture_2026_09_04/cultural_environment_national_interest.geojson",
+            "sha256": "0e6172c7028ec94ce4db13be2ef3eb553b440ef0c43e2ffbe7f5b5af7c956912",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 49
+          }
+        }
+      ]
+    },
+    {
+      "id": "grid_infrastructure",
+      "status": "candidate",
+      "reason": "Two owner-supplied electrical-infrastructure sources are checksum-pinned and clipped to the approved Gate 1 land surface for localhost geometry review. Transformer areas are a later separately acquired addition and are not implied by this candidate.",
+      "sources": [
+        {
+          "id": "high_voltage_lines",
+          "label": "Högspänningsledningar",
+          "database_view": "high_voltage_lines",
+          "authority": "Lantmäteriet",
+          "dataset": "Topografi 250 Nedladdning, vektor / ledningslinje",
+          "snapshot_date": "2026-04-14",
+          "license": {"name": "CC0", "url": "https://creativecommons.org/publicdomain/zero/1.0/", "status": "verified_local_delivery"},
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "158 av 160 levererade stam- och regionnätsledningar efter exakt klippning till Skaraborgs godkända Gate 1-landyta; 142 regionledningar och 16 stamledningar",
+          "source_feature_count": 160,
+          "geometry_family": "line",
+          "data_representation": "network",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/skaraborg_grid_infrastructure_2026_09_04/high_voltage_lines.geojson",
+            "sha256": "63e8563c15e670b750e27b7c74a5e7ebe2dc8e71b123539d7a39cf6c00e65842",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 158
+          }
+        },
+        {
+          "id": "existing_wind_turbines",
+          "label": "Befintliga vindkraftverk",
+          "database_view": "existing_wind_turbines",
+          "authority": "Länsstyrelserna / Vindbrukskollen",
+          "dataset": "Vindbrukskollen – vindkraftverk",
+          "snapshot_date": "2026-08-25",
+          "license": {"name": "CC0", "url": "https://creativecommons.org/publicdomain/zero/1.0/", "status": "verified_local_delivery"},
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "326 av 331 levererade vindkraftverk med status Uppfört efter exakt klippning till Skaraborgs godkända Gate 1-landyta",
+          "source_feature_count": 331,
+          "geometry_family": "point",
+          "data_representation": "features",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/skaraborg_grid_infrastructure_2026_09_04/existing_wind_turbines.geojson",
+            "sha256": "bb1c456020a658df4c36c4719ffe253b8ee9e5f2c80f2251dc81f454a196bec8",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 326
+          }
+        }
+      ]
+    }
+  ]
+}

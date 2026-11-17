@@ -1,0 +1,247 @@
+{
+  "$schema": "../../schemas/speedlocal/1.0/region-package-form.schema.json",
+  "form_schema_version": "1.0",
+  "region": {
+    "region_id": "bornholm",
+    "display_name": "Bornholm",
+    "country_code": "DK",
+    "country_name": "Denmark",
+    "native_crs": "EPSG:25833",
+    "web_crs": "EPSG:4326",
+    "behavior_reference": {
+      "state": "unavailable",
+      "reason": "Bornholms avsedda V1-referens är ännu inte tekniskt fryst och regionalt accepterad; det V1-härledda materialet i V2-arkivet är endast diagnostisk provenance."
+    }
+  },
+  "access": {
+    "lifecycle": "onboarding",
+    "trust_classification": "diagnostic_only",
+    "product_route_requested": false,
+    "local_review": {
+      "enabled": true,
+      "allowed_capabilities": [
+        "workspace.map",
+        "wind.group.roads"
+      ]
+    },
+    "landing_card": {
+      "title": "Bornholm",
+      "subtitle": "V1 reference · V2 Final onboarding",
+      "description": "Bornholm remains a delivery region, but V2 Final stays disabled until V1 behavior, source data and regional acceptance checks define a trusted baseline.",
+      "badge": "Onboarding",
+      "sort_order": 20
+    }
+  },
+  "map_h3": {
+    "center": [55.14, 14.92],
+    "zoom": 9,
+    "analysis_resolution": 9,
+    "rollup_resolutions": [8, 7, 6]
+  },
+  "geography": {
+    "boundary": {
+      "state": "declared",
+      "id": "onshore_region_extent",
+      "label": "Bornholm DAGI Landsdel boundary",
+      "asset": {
+        "provider": "v2_archive",
+        "path": "exports/v2_multiregion/bornholm/landmask/bornholm_dagi_landsdel_landmask_wgs84.geojson",
+        "format": "geojson",
+        "integrity": {
+          "mode": "pinned",
+          "sha256": "274686465bd8c4f91102d56b787fa8a539335230be180a007049adbddd08831f"
+        }
+      },
+      "source_crs": "EPSG:4326",
+      "native_crs": "EPSG:25833",
+      "geometry_family": "polygon",
+      "provenance": {
+        "authority": "Klimadatastyrelsen / Datafordeler (DAGI)",
+        "dataset_name": "DAGI V1 Landsdel, Bornholm 1:10,000",
+        "dataset_version": "DAGI Objektspecifikation 2.0",
+        "snapshot_date": "2024-12-06",
+        "license": "CC BY 4.0, documented in the recovered local project description and not live-verified in this build",
+        "provenance_status": "source_snapshot_pinned",
+        "derivation": "The checksum-pinned processed EPSG:25833 Landsdel shapefile was transformed to WGS84. Independent comparison reproduces this GeoJSON within 1e-7 metre; the stale QMD sidecar is not used as CRS authority."
+      }
+    },
+    "standard_analysis_domain": {
+      "state": "declared",
+      "domain_id": "standard_constraints_r9",
+      "coverage_geometry_id": "onshore_region_extent",
+      "cell_kind": "h3",
+      "resolution": 9,
+      "rollup_resolutions": [8, 7, 6],
+      "candidate_buffer_m": 5000,
+      "coverage_rule": "positive_area_intersection",
+      "missing_observation_policy": "error"
+    },
+    "technology_support": {
+      "state": "unavailable",
+      "reason": "Bornholm saknar ett kanoniskt, domänbundet och regionalt granskat kontrakt för teknikstödyta och teknikkontext."
+    }
+  },
+  "landscape": {
+    "state": "unavailable",
+    "reason": "Bornholm saknar ett kanoniskt display-only-landskapskontrakt; V1-härledda arkivfiler aktiverar inte capabilityn."
+  },
+  "standard_groups": [
+    {
+      "id": "roads",
+      "state": "declared",
+      "layers": [
+        {
+          "id": "roads_medium",
+          "label": "Mellanvägar",
+          "operation": "distance_exclusion",
+          "geometry_family": "line",
+          "data_representation": "network",
+          "source": {
+            "source_kind": "vector_file",
+            "asset": {
+              "provider": "generated_runtime",
+              "path": "data/generated/source_snapshots/bornholm_geodanmark_roads_2024_12_06/roads_medium.geojson",
+              "format": "geojson",
+              "integrity": {
+                "mode": "pinned",
+                "sha256": "5195ed8cf3f7cd27cc770b30d9e50789dda982715fa77b1c8048606bc5d784fb"
+              }
+            },
+            "source_crs": "EPSG:4326",
+            "geometry_family": "line",
+            "data_representation": "network",
+            "provenance": {
+              "authority": "Klimadatastyrelsen / GeoDanmark",
+              "dataset_name": "GeoDanmark Vektor 6.0, Bornholm",
+              "dataset_version": "GeoDanmark60_Bornholm-0400_25833_20241206102343",
+              "snapshot_date": "2024-12-06",
+              "license": "CC BY 4.0; locally documented and not live-verified in this build",
+              "license_url": "https://creativecommons.org/licenses/by/4.0/deed.da",
+              "provenance_status": "source_snapshot_pinned",
+              "derivation": "Exact membership in category Mellem vej, followed by native-CRS union and checksum-pinned diagnostic GeoJSON materialization."
+            }
+          },
+          "parameters": {
+            "buffer_m": {
+              "type": "number",
+              "unit": "m",
+              "minimum": 0,
+              "maximum": 2000,
+              "step": 25,
+              "technical_initial_value": 100,
+              "accepted_recommended_default": {
+                "state": "unavailable",
+                "reason": "Ordinarie vägavstånd har ännu inte regionalt accepterats för Bornholm; 100 m är endast ett tekniskt startvärde."
+              }
+            }
+          },
+          "note": "GeoDanmark-kategorin Mellem vej i Bornholms deklarerade diagnostiska snapshot."
+        },
+        {
+          "id": "roads_large",
+          "label": "Stora vägar",
+          "operation": "distance_exclusion",
+          "geometry_family": "line",
+          "data_representation": "network",
+          "source": {
+            "source_kind": "vector_file",
+            "asset": {
+              "provider": "generated_runtime",
+              "path": "data/generated/source_snapshots/bornholm_geodanmark_roads_2024_12_06/roads_large.geojson",
+              "format": "geojson",
+              "integrity": {
+                "mode": "pinned",
+                "sha256": "15c483299e215c81f565c5e04540b422356d15bdea7268c4d8d5ec880e3b603f"
+              }
+            },
+            "source_crs": "EPSG:4326",
+            "geometry_family": "line",
+            "data_representation": "network",
+            "provenance": {
+              "authority": "Klimadatastyrelsen / GeoDanmark",
+              "dataset_name": "GeoDanmark Vektor 6.0, Bornholm",
+              "dataset_version": "GeoDanmark60_Bornholm-0400_25833_20241206102343",
+              "snapshot_date": "2024-12-06",
+              "license": "CC BY 4.0; locally documented and not live-verified in this build",
+              "license_url": "https://creativecommons.org/licenses/by/4.0/deed.da",
+              "provenance_status": "source_snapshot_pinned",
+              "derivation": "Exact membership in categories Stor vej, Fordelingsrute and Gennemfartsrute, followed by native-CRS union and checksum-pinned diagnostic GeoJSON materialization."
+            }
+          },
+          "parameters": {
+            "buffer_m": {
+              "type": "number",
+              "unit": "m",
+              "minimum": 0,
+              "maximum": 2000,
+              "step": 25,
+              "technical_initial_value": 100,
+              "accepted_recommended_default": {
+                "state": "unavailable",
+                "reason": "Ordinarie vägavstånd har ännu inte regionalt accepterats för Bornholm; 100 m är endast ett tekniskt startvärde."
+              }
+            }
+          },
+          "note": "GeoDanmark-kategorierna Stor vej, Fordelingsrute och Gennemfartsrute i Bornholms deklarerade diagnostiska snapshot."
+        }
+      ]
+    },
+    {
+      "id": "population",
+      "state": "unavailable",
+      "reason": "Bornholm saknar ett kanoniskt befolknings- och bebyggelsekontrakt i regionpaketet; arkivförekomst aktiverar inte capabilityn."
+    },
+    {
+      "id": "nature",
+      "state": "unavailable",
+      "reason": "Bornholm saknar ett kanoniskt naturkontrakt i regionpaketet; arkivförekomst aktiverar inte capabilityn."
+    },
+    {
+      "id": "culture",
+      "state": "unavailable",
+      "reason": "Bornholm saknar ett kanoniskt kulturmiljökontrakt i regionpaketet; arkivförekomst aktiverar inte capabilityn."
+    },
+    {
+      "id": "grid_infrastructure",
+      "state": "unavailable",
+      "reason": "Bornholm saknar ett kanoniskt elnätskontrakt i regionpaketet; arkivförekomst aktiverar inte capabilityn."
+    }
+  ],
+  "technologies": {
+    "wind": {
+      "technology_id": "wind",
+      "state": "declared",
+      "applicable_group_ids": ["roads"],
+      "area_result": {
+        "state": "unavailable",
+        "reason": "Bornholm har ännu inget kanoniskt och regionalt granskat kontrakt för vindens berättigade etableringsyta."
+      }
+    },
+    "solar": {
+      "technology_id": "solar",
+      "state": "unavailable",
+      "reason": "Bornholm saknar ett kanoniskt solanalyskontrakt i regionpaketet; V1-härledda arkivfiler aktiverar inte capabilityn."
+    }
+  },
+  "solar_rooftop": {
+    "state": "unavailable",
+    "reason": "Bornholm saknar ett domänbundet, regionalt granskat kontrakt för taksol."
+  },
+  "scenario": {
+    "state": "unavailable",
+    "reason": "Bornholm saknar ett kanoniskt regionalt scenario- och energimodellskontrakt för V2 Final."
+  },
+  "social_acceptance": {
+    "state": "unavailable",
+    "reason": "Bornholm saknar ett kanoniskt domänbundet kontrakt och regional acceptansevidens för social acceptans."
+  },
+  "combined_result": {
+    "state": "unavailable",
+    "reason": "Bornholm saknar ett komplett explicit kombinerat resultatkontrakt, en registrerad regional score-input och validerad allokeringspolicy."
+  },
+  "notes": [
+    "Blanketten materialiserar endast repoauktoriserad identitet, geografi och den diagnostiska vägcapabilityn; alla övriga capabilities förblir uttryckligen låsta.",
+    "De checksummebundna väggeometrierna är teknisk onboardingevidens och utgör inte Bornholm-paritet, regional rekommendation eller beslutstöd.",
+    "Landingkortet får inte aktiveras av blanketten; produktåtkomst kräver separat readiness, regional acceptans och publiceringsgrind."
+  ]
+}

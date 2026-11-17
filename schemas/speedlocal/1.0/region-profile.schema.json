@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gislab.se/schemas/speedlocal/1.0/region-profile.schema.json",
+  "title": "SpeedLocal concise region profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "region",
+    "database",
+    "landscape",
+    "energy",
+    "social_acceptance",
+    "extra_landscape_groups",
+    "contracts"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "region": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "country_code"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9_]+$"},
+        "name": {"type": "string", "minLength": 1},
+        "country_code": {"type": "string", "pattern": "^[A-Z]{2}$"},
+        "native_name": {"type": "string", "minLength": 1}
+      }
+    },
+    "database": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "connection",
+        "schema",
+        "boundary_view",
+        "analysis_surface_view"
+      ],
+      "properties": {
+        "connection": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+        "schema": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+        "boundary_view": {"const": "region_boundary"},
+        "analysis_surface_view": {"const": "analysis_surface"}
+      }
+    },
+    "landscape": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["roads", "nature", "culture", "population", "grid_infrastructure"],
+      "properties": {
+        "roads": {"$ref": "#/$defs/viewList"},
+        "nature": {"$ref": "#/$defs/viewList"},
+        "culture": {"$ref": "#/$defs/viewList"},
+        "population": {"$ref": "#/$defs/viewList"},
+        "grid_infrastructure": {"$ref": "#/$defs/viewList"}
+      }
+    },
+    "energy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_id", "evidence"],
+      "properties": {
+        "source_id": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+        "evidence": {"enum": ["accepted", "provisional_fallback"]}
+      }
+    },
+    "social_acceptance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_id", "evidence"],
+      "properties": {
+        "source_id": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+        "evidence": {"enum": ["accepted", "provisional_fallback", "synthetic_demo"]}
+      }
+    },
+    "extra_landscape_groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "views"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+          "name": {"type": "string", "minLength": 1},
+          "views": {"$ref": "#/$defs/viewList"}
+        }
+      }
+    },
+    "contracts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["region", "geography"],
+      "properties": {
+        "region": {"$ref": "#/$defs/repoJsonPath"},
+        "geography": {"$ref": "#/$defs/repoJsonPath"}
+      }
+    }
+  },
+  "$defs": {
+    "viewList": {
+      "type": "array",
+      "items": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+      "uniqueItems": true,
+      "maxItems": 10
+    },
+    "repoJsonPath": {
+      "type": "string",
+      "pattern": "^regions/[a-z0-9_]+/[a-z0-9_.-]+\\.json$"
+    }
+  }
+}

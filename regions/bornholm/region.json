@@ -1,0 +1,303 @@
+{
+  "schema_version": "2026-06-26",
+  "region_id": "bornholm",
+  "workspace_guide": "capacity_intro_v1",
+  "workspace_start_parameters": "regions/workspace_profiles/exploratory_start_distances.json",
+  "display_name": "Bornholm",
+  "country": "Denmark",
+  "status": "onboarding",
+  "data_status": "diagnostic_only",
+  "behavior_reference": {
+    "status": "diagnostic_only",
+    "source": "frozen_v2_imported_from_v1",
+    "acceptance_source": "frozen_v1_plus_explicit_region_qa",
+    "frozen_v2_parity": false
+  },
+  "native_crs": "EPSG:25833",
+  "web_crs": "EPSG:4326",
+  "available_h3_resolutions": [
+    6,
+    7,
+    8,
+    9
+  ],
+  "default_h3_resolution": 9,
+  "default_map_center": [
+    55.14,
+    14.92
+  ],
+  "default_zoom": 9,
+  "workspace_profile": "regions/workspace_profiles/v2_final_standard.json",
+  "analysis_manifests": {
+    "wind": "regions/bornholm/analyses/wind.json",
+    "solar": "regions/bornholm/analyses/solar.json"
+  },
+  "geography_manifest": "regions/bornholm/geography.json",
+  "source_catalog_manifest": "regions/bornholm/source-catalog.json",
+  "diagnostic_source_snapshots": {
+    "roads": "regions/bornholm/source_snapshots/geodanmark_roads_2024_12_06.json"
+  },
+  "landing_card": {
+    "title": "Bornholm",
+    "subtitle": "V1 reference · V2 Final onboarding",
+    "description": "Bornholm remains a delivery region, but V2 Final stays disabled until V1 behavior, source data and regional acceptance checks define a trusted baseline.",
+    "badge": "Onboarding",
+    "enabled": false,
+    "sort_order": 20
+  },
+  "review_access": {
+    "enabled": true,
+    "mode": "review",
+    "surface": "shared_workspace",
+    "access_classification": "diagnostic_only",
+    "requires_environment_allowlist": true,
+    "entry_label": "Öppna lokal arbetsyta",
+    "entry_note": "Samma manifeststyrda programvy som för andra regioner, öppnad för lokal stegvis granskning. Saknade eller ovaliderade delar visas tydligt och förblir låsta; detta är inte regionalt beslutstöd.",
+    "warning_title": "Bornholm er åbnet til lokal gennemgang.",
+    "warning_body": "Underlaget är fortfarande klassificerat som diagnostic_only och bygger delvis på V1-härlett material som ännu inte är regionalt validerat. Använd vyn endast för teknisk granskning och integrationstest – inte som grund för planering eller beslut.",
+    "status_intro": "Status viser, hvad den aktive arbejdsflade faktisk bruger – ikke blot hvilke filer der findes.",
+    "allowed_use": "Tilladt anvendelse: teknisk afprøvning og integrationskontrol.",
+    "forbidden_use": "Ikke tilladt: regional planlægning, sammenligning med et godkendt Bornholm-resultat eller beslutningsstøtte.",
+    "allowed_capabilities": [
+      "workspace.map",
+      "workspace.landscape",
+      "wind.area",
+      "wind.group.roads",
+      "wind.group.population",
+      "wind.group.nature",
+      "wind.group.culture",
+      "wind.group.grid_infrastructure",
+      "solar.area",
+      "solar.group.roads",
+      "solar.group.population",
+      "solar.group.nature",
+      "solar.group.culture",
+      "solar.group.grid_infrastructure",
+      "workspace.technology_context",
+      "workspace.scenario",
+      "workspace.social_acceptance",
+      "workspace.combined_result"
+    ],
+    "allowed_slices": [
+      {
+        "analysis_id": "wind",
+        "group_id": "roads",
+        "apply_required": true,
+        "auto_select_sources": true,
+        "explicit_parameters": [
+          "buffer_m"
+        ]
+      },
+      {
+        "analysis_id": "wind",
+        "group_id": "population",
+        "apply_required": true,
+        "auto_select_sources": true,
+        "explicit_parameters": [
+          "buffer_m"
+        ]
+      },
+      {
+        "analysis_id": "wind",
+        "group_id": "nature",
+        "apply_required": true,
+        "auto_select_sources": true,
+        "explicit_parameters": [
+          "buffer_m"
+        ],
+        "default_source_ids": [
+          "protected_areas",
+          "natura_bird_protection",
+          "natura_habitat_areas",
+          "coastal_proximity_zone"
+        ]
+      },
+      {
+        "analysis_id": "wind",
+        "group_id": "culture",
+        "apply_required": true,
+        "auto_select_sources": true,
+        "explicit_parameters": [
+          "buffer_m"
+        ]
+      },
+      {
+        "analysis_id": "wind",
+        "group_id": "grid_infrastructure",
+        "apply_required": true,
+        "auto_select_sources": true,
+        "explicit_parameters": [
+          "buffer_m"
+        ]
+      },
+      {
+        "analysis_id": "solar",
+        "group_id": "roads",
+        "apply_required": true,
+        "auto_select_sources": true,
+        "explicit_parameters": [
+          "buffer_m"
+        ]
+      },
+      {
+        "analysis_id": "solar",
+        "group_id": "population",
+        "apply_required": true,
+        "auto_select_sources": true,
+        "explicit_parameters": [
+          "buffer_m"
+        ]
+      },
+      {
+        "analysis_id": "solar",
+        "group_id": "nature",
+        "apply_required": true,
+        "auto_select_sources": true,
+        "explicit_parameters": [
+          "buffer_m"
+        ],
+        "default_source_ids": [
+          "protected_areas",
+          "natura_bird_protection",
+          "natura_habitat_areas",
+          "coastal_proximity_zone"
+        ]
+      },
+      {
+        "analysis_id": "solar",
+        "group_id": "culture",
+        "apply_required": true,
+        "auto_select_sources": true,
+        "explicit_parameters": [
+          "buffer_m"
+        ]
+      },
+      {
+        "analysis_id": "solar",
+        "group_id": "grid_infrastructure",
+        "apply_required": true,
+        "auto_select_sources": true,
+        "explicit_parameters": [
+          "buffer_m"
+        ]
+      }
+    ]
+  },
+  "runtime": {
+    "backend_preference": "postgres_then_file",
+    "sources": {
+      "acceptance_registry": {
+        "provider": "v2_archive",
+        "path": "apps/acceptance_model/registry_bornholm.json",
+        "evidence_role": "diagnostic_only",
+        "runtime_strategy": "precomputed_polygon",
+        "artifact_root": "docs/geocontext/acceptance_framework/data/prototype_runtime",
+        "validated_fixtures": [
+          {
+            "id": "frozen_default_roads_300m",
+            "files_sha256": {
+              "combined.geojson": "41cbdab02e2063410492872a4662dd37c9f9d7f6f00695bcfbe9f6d1f32e88da",
+              "config.json": "4874250c5999d79ba05f6008b6d1917f39ed21b65f29bfc63a057d33e35c1592",
+              "group_culture.geojson": "5e4fbee93e1e29f3c28d741627d96dcde77e14f937ce371704140dcbefea9404",
+              "group_protected.geojson": "248dddb40640c61d230d0145af8462aac0fe6b909a79e979ec5bb7e0f36d2977",
+              "group_settlement.geojson": "0622290c29a2ae52809429e1ec785e3ae1a3c5d3948b01ac52227a646f6604bf",
+              "group_transport.geojson": "3bfaba324aa63fe8e84410d522cc19f062c2f67845babc8bfd7ec57110b58140",
+              "metadata.json": "a3c8ba7b3875c3436c68cf985ae214bd66bc82004fbed241ab5866adafef23ae"
+            }
+          },
+          {
+            "id": "frozen_roads_400m",
+            "files_sha256": {
+              "combined.geojson": "07b8e86f589f805f352ff23a24b196ed17149d223215e09dc4231e9905535fee",
+              "config.json": "b87b5cb4668583e4353b86ed4c80cd1c74873ee27cea2cc988c2ebedd894466d",
+              "group_culture.geojson": "5e4fbee93e1e29f3c28d741627d96dcde77e14f937ce371704140dcbefea9404",
+              "group_protected.geojson": "248dddb40640c61d230d0145af8462aac0fe6b909a79e979ec5bb7e0f36d2977",
+              "group_settlement.geojson": "0622290c29a2ae52809429e1ec785e3ae1a3c5d3948b01ac52227a646f6604bf",
+              "group_transport.geojson": "1bdab1d72d7233cc0137079b8f121495646b134f82996dfc584d5e994bcaa297",
+              "metadata.json": "f15e62e3b2f84d740b7711333f2b168e838d882580cad8310194a2fd5e3dcb8f"
+            }
+          }
+        ]
+      }
+    },
+    "database": {
+      "required_tables": [
+        "runtime.regions",
+        "runtime.h3_display_cells",
+        "runtime.landscape_cells",
+        "runtime.potential_cells",
+        "runtime.acceptance_cells"
+      ],
+      "status": "not_imported"
+    },
+    "file_fallbacks": [
+      {
+        "id": "bornholm_region_package",
+        "kind": "manifest",
+        "path": "data/runtime/fallbacks/bornholm/region.json",
+        "required_for_full_runtime": true,
+        "source": "V2 regions/bornholm/region.json"
+      },
+      {
+        "id": "bornholm_h3_display_r9",
+        "kind": "geojson",
+        "path": "data/runtime/fallbacks/bornholm/h3_display_r9.geojson",
+        "required_for_full_runtime": true,
+        "source": "V2 exports/v2_multiregion/bornholm/h3_display_geometries"
+      },
+      {
+        "id": "bornholm_potential_r9",
+        "kind": "csv_or_geojson",
+        "path": "data/runtime/fallbacks/bornholm/potential_r9.csv",
+        "required_for_full_runtime": true,
+        "source": "V2 exports/v2_multiregion/bornholm"
+      }
+    ]
+  },
+  "readiness_requirements": [
+    "Recover and freeze the Bornholm V1 repository checkpoint before selecting product behavior.",
+    "Define explicit regional acceptance checks independently from the frozen multiregion V2 snapshot.",
+    "R10-derived R9 PEY semantics remain labelled until true R9-native runtime exists.",
+    "File fallback paths stay documented until SpeedLocal Postgres imports pass validation.",
+    "Bornholm validation must run independently from Trondelag."
+  ],
+  "runtime_note": "Bornholm V2 artifacts remain available for provenance and diagnostics only. V2 Final is disabled until a V1- and data-backed regional acceptance baseline is approved.",
+  "analysis_runtime_manifest": "regions/bornholm/analysis-runtime.json",
+  "potential_manifest": "regions/shared_prototype_metadata/trondelag_potential_placeholder.json",
+  "solar_rules_manifest": "regions/shared_prototype_metadata/trondelag_solar_rules_placeholder.json",
+  "wind_rules_manifest": "regions/shared_prototype_metadata/trondelag_wind_rules_placeholder.json",
+  "scenario_manifest": "regions/bornholm/scenarios.json",
+  "social_acceptance_manifest": "regions/bornholm/social_acceptance.json",
+  "combined_result_manifest": "regions/bornholm/combined_result.json",
+  "context_runtime_manifest": "regions/bornholm/context-runtime.json",
+  "combined_result_validation": "regions/bornholm/data_migrations/combined_result_validation_coastal_20261008.json",
+  "combined_result_validation_sha256": "732963c49ecbda5094801dafc258b814fd485fa468c1aca6187c77fb74e91df4",
+  "default_map_bounds": [
+    [
+      54.901079951314,
+      11.3159
+    ],
+    [
+      55.416710844849995,
+      15.4299150010524
+    ]
+  ],
+  "outside_lp_schematic": {
+    "candidate_side": "west",
+    "anchor_latlng": {
+      "wind": [
+        55.300303,
+        12.989258
+      ],
+      "solar": [
+        55.017488,
+        12.989258
+      ]
+    },
+    "latitude_band": {
+      "wind": "north",
+      "solar": "south"
+    }
+  },
+  "landscape_manifest": "regions/bornholm/landscape.json"
+}

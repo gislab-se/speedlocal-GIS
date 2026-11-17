@@ -1,0 +1,301 @@
+{
+  "schema_version": "1.0",
+  "capability_id": "workspace.combined_result",
+  "region_id": "trondelag",
+  "materialization_status": "compiled_unvalidated",
+  "policy_contract": {
+    "schema_version": "1.2",
+    "capability_id": "workspace.combined_result",
+    "policy_id": "trondelag_landscape_potential_delivery10_v1",
+    "technology_order": [
+      "solar",
+      "wind"
+    ],
+    "finalization_resolution": 7,
+    "rollup_resolutions": [
+      6,
+      5
+    ],
+    "co_use_policy": "allow_with_reservation_tiebreak",
+    "outside_potential_policy": "allocate_declared_eligible_area",
+    "outside_ring_model": "selected_inside_h3_graph_distance_v1",
+    "rollup_model": "sum_finalized_children_without_reranking",
+    "score_input": {
+      "input_id": "trondelag_support_observation_landscape_v1",
+      "base_score_model": "landscape_potential_core_v1",
+      "executor_id": "support_observation_landscape_v1",
+      "numeric_parameters": [
+        {
+          "id": "solar_core_weight",
+          "value": 0.0
+        },
+        {
+          "id": "solar_landscape_weight",
+          "value": 0.75
+        },
+        {
+          "id": "solar_potential_weight",
+          "value": 0.25
+        },
+        {
+          "id": "wind_core_weight",
+          "value": 0.15
+        },
+        {
+          "id": "wind_landscape_weight",
+          "value": 0.65
+        },
+        {
+          "id": "wind_potential_weight",
+          "value": 0.2
+        }
+      ],
+      "layer_selections": [
+        {
+          "technology_id": "solar",
+          "analysis_id": "solar",
+          "group_id": "culture",
+          "layer_ids": [
+            "cultural_preservation",
+            "valuable_cultural_environment"
+          ]
+        },
+        {
+          "technology_id": "solar",
+          "analysis_id": "solar",
+          "group_id": "grid_infrastructure",
+          "layer_ids": [
+            "existing_wind_turbines",
+            "high_voltage_lines",
+            "underground_cables"
+          ]
+        },
+        {
+          "technology_id": "solar",
+          "analysis_id": "solar",
+          "group_id": "nature",
+          "layer_ids": [
+            "protected_areas"
+          ]
+        },
+        {
+          "technology_id": "solar",
+          "analysis_id": "solar",
+          "group_id": "population",
+          "layer_ids": [
+            "population_points"
+          ]
+        },
+        {
+          "technology_id": "solar",
+          "analysis_id": "solar",
+          "group_id": "roads",
+          "layer_ids": [
+            "roads_large",
+            "roads_medium"
+          ]
+        },
+        {
+          "technology_id": "wind",
+          "analysis_id": "wind",
+          "group_id": "culture",
+          "layer_ids": [
+            "cultural_preservation",
+            "valuable_cultural_environment"
+          ]
+        },
+        {
+          "technology_id": "wind",
+          "analysis_id": "wind",
+          "group_id": "grid_infrastructure",
+          "layer_ids": [
+            "existing_wind_turbines",
+            "high_voltage_lines",
+            "underground_cables"
+          ]
+        },
+        {
+          "technology_id": "wind",
+          "analysis_id": "wind",
+          "group_id": "nature",
+          "layer_ids": [
+            "protected_areas"
+          ]
+        },
+        {
+          "technology_id": "wind",
+          "analysis_id": "wind",
+          "group_id": "population",
+          "layer_ids": [
+            "built_centre",
+            "population_points"
+          ]
+        },
+        {
+          "technology_id": "wind",
+          "analysis_id": "wind",
+          "group_id": "roads",
+          "layer_ids": [
+            "roads_large",
+            "roads_medium"
+          ]
+        }
+      ]
+    },
+    "technology_priorities": [
+      {
+        "technology_id": "solar",
+        "phase_order": [
+          "inside_potential",
+          "outside_potential"
+        ],
+        "phase_policies": [
+          {
+            "phase_id": "inside_potential",
+            "entry_residual_threshold_km2": 0.0,
+            "stop_tolerance_km2": 1e-09
+          },
+          {
+            "phase_id": "outside_potential",
+            "entry_residual_threshold_km2": 1e-09,
+            "stop_tolerance_km2": 1e-09
+          }
+        ],
+        "inside_components": [
+          {
+            "component_id": "base_score",
+            "value_source": "base_score",
+            "direction": "descending"
+          },
+          {
+            "component_id": "potential_fraction",
+            "value_source": "potential_fraction",
+            "direction": "descending"
+          },
+          {
+            "component_id": "potential_area_km2",
+            "value_source": "potential_area_km2",
+            "direction": "descending"
+          },
+          {
+            "component_id": "reservation_state",
+            "value_source": "reservation_state",
+            "direction": "ascending"
+          },
+          {
+            "component_id": "stable_cell_id",
+            "value_source": "stable_cell_id",
+            "direction": "ascending"
+          }
+        ],
+        "outside_components": [
+          {
+            "component_id": "outside_ring",
+            "value_source": "outside_ring",
+            "direction": "ascending"
+          },
+          {
+            "component_id": "base_score",
+            "value_source": "base_score",
+            "direction": "descending"
+          },
+          {
+            "component_id": "stable_cell_id",
+            "value_source": "stable_cell_id",
+            "direction": "ascending"
+          }
+        ]
+      },
+      {
+        "technology_id": "wind",
+        "phase_order": [
+          "inside_potential",
+          "outside_potential"
+        ],
+        "phase_policies": [
+          {
+            "phase_id": "inside_potential",
+            "entry_residual_threshold_km2": 0.0,
+            "stop_tolerance_km2": 1e-09
+          },
+          {
+            "phase_id": "outside_potential",
+            "entry_residual_threshold_km2": 1e-09,
+            "stop_tolerance_km2": 1e-09
+          }
+        ],
+        "inside_components": [
+          {
+            "component_id": "base_score",
+            "value_source": "base_score",
+            "direction": "descending"
+          },
+          {
+            "component_id": "potential_fraction",
+            "value_source": "potential_fraction",
+            "direction": "descending"
+          },
+          {
+            "component_id": "wind_zone_size",
+            "value_source": "wind_zone_size",
+            "direction": "descending"
+          },
+          {
+            "component_id": "potential_area_km2",
+            "value_source": "potential_area_km2",
+            "direction": "descending"
+          },
+          {
+            "component_id": "reservation_state",
+            "value_source": "reservation_state",
+            "direction": "ascending"
+          },
+          {
+            "component_id": "stable_cell_id",
+            "value_source": "stable_cell_id",
+            "direction": "ascending"
+          }
+        ],
+        "outside_components": [
+          {
+            "component_id": "reservation_state",
+            "value_source": "reservation_state",
+            "direction": "ascending"
+          },
+          {
+            "component_id": "outside_ring",
+            "value_source": "outside_ring",
+            "direction": "ascending"
+          },
+          {
+            "component_id": "base_score",
+            "value_source": "base_score",
+            "direction": "descending"
+          },
+          {
+            "component_id": "wind_zone_size",
+            "value_source": "wind_zone_size",
+            "direction": "descending"
+          },
+          {
+            "component_id": "stable_cell_id",
+            "value_source": "stable_cell_id",
+            "direction": "ascending"
+          }
+        ]
+      }
+    ]
+  },
+  "policy_contract_signature_sha256": "d445ed166aac5ec278b09d142454bfbec674a81b2f69b1dcd90ec4adc200c5ae",
+  "allocation_policy_artifact": {
+    "provider": "generated_runtime",
+    "path": "data/generated/combined_result/trondelag_trondelag_landscape_potential_delivery10_v1_allocation_policy.json",
+    "format": "json",
+    "sha256": "e1aa213afa0eda8aabfcd171d13ec40c0dabcc6e3e9f728c88c3586b81377b62",
+    "bytes": 3963273,
+    "base_score_count": 28458,
+    "priority_value_count": 0,
+    "base_score_input_signature_sha256": "3283a1bea7e93b8e42885a469dd9996d296642daba2d341c1c4ac8fd388d2654",
+    "policy_signature_sha256": "4d88d058024d7759f2287a3929a233be9b0d4a61f372a5c24f7dc3731de372b4"
+  }
+}

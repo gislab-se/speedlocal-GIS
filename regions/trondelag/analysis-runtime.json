@@ -1,0 +1,204 @@
+{
+  "schema_version": "1.0",
+  "region_id": "trondelag",
+  "selection_sha256": "658cfdc17bdb9b0cca47d6a30f7720dcb91f66a346b8c9f7508b189a381d494f",
+  "group_ids": [
+    "roads",
+    "population",
+    "nature",
+    "culture",
+    "grid_infrastructure"
+  ],
+  "sources": {
+    "roads_large": {
+      "replaced_source_contract_sha256": "daa72b91b5c3759b17d5ec636ee9f947a09f24fc6e8d781f367bbb05a1527806",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "trondelag",
+        "database_schema": "trondelag",
+        "revision_sha256": "0c955802cf0a2ab3137bf8deb2bcbb13b8feadd6a8b948d2e8f5feb20bae63c1",
+        "source_id": "roads_large",
+        "domain_id": "standard_analysis",
+        "resolution": 7,
+        "upstream_geojson_bytes": 68136
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 13851,
+        "source_ids_sha256": "cc39dcdb8c50b8fb179c7003416adbd56ffa5ef95c78e082123e446398a46c33"
+      }
+    },
+    "roads_medium": {
+      "replaced_source_contract_sha256": "ec6d09a3d74b206029857f1f4189bd9df6331bfc80695521e20e75af05145872",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "trondelag",
+        "database_schema": "trondelag",
+        "revision_sha256": "0c955802cf0a2ab3137bf8deb2bcbb13b8feadd6a8b948d2e8f5feb20bae63c1",
+        "source_id": "roads_medium",
+        "domain_id": "standard_analysis",
+        "resolution": 7,
+        "upstream_geojson_bytes": 636917
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 13851,
+        "source_ids_sha256": "cc39dcdb8c50b8fb179c7003416adbd56ffa5ef95c78e082123e446398a46c33"
+      }
+    },
+    "population_points": {
+      "replaced_source_contract_sha256": "d34fd83772d6bebcd58388f0f545fda7435cf6d601a11001e16a5cc093ea446d",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "trondelag",
+        "database_schema": "trondelag",
+        "revision_sha256": "0c955802cf0a2ab3137bf8deb2bcbb13b8feadd6a8b948d2e8f5feb20bae63c1",
+        "source_id": "population_points",
+        "domain_id": "standard_analysis",
+        "resolution": 7,
+        "upstream_geojson_bytes": 2294070
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 13735,
+        "source_ids_sha256": "fdea5973b898319643b7c94ad43b3480c98e639a8f378cbc23e8bc56751fcbba"
+      }
+    },
+    "built_centre": {
+      "replaced_source_contract_sha256": "e808284484f5feae818efcd9cac4f0f1e31651471fd6c0cadbf113bbbe86f3e5",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "trondelag",
+        "database_schema": "trondelag",
+        "revision_sha256": "0c955802cf0a2ab3137bf8deb2bcbb13b8feadd6a8b948d2e8f5feb20bae63c1",
+        "source_id": "built_centre",
+        "domain_id": "standard_analysis",
+        "resolution": 7,
+        "upstream_geojson_bytes": 186847
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 13735,
+        "source_ids_sha256": "fdea5973b898319643b7c94ad43b3480c98e639a8f378cbc23e8bc56751fcbba"
+      }
+    },
+    "protected_areas": {
+      "replaced_source_contract_sha256": "77b47ce8714615d7c7455dd63d7bfa0b70a74c50c52cea77dac0b8bed0065ec1",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "trondelag",
+        "database_schema": "trondelag",
+        "revision_sha256": "0c955802cf0a2ab3137bf8deb2bcbb13b8feadd6a8b948d2e8f5feb20bae63c1",
+        "source_id": "protected_areas",
+        "domain_id": "standard_analysis",
+        "resolution": 7,
+        "upstream_geojson_bytes": 586906
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 13851,
+        "source_ids_sha256": "cc39dcdb8c50b8fb179c7003416adbd56ffa5ef95c78e082123e446398a46c33"
+      }
+    },
+    "cultural_preservation": {
+      "replaced_source_contract_sha256": "764569c6bbb5d6abe250eb5d40189f110f311c5839ea851d0bba53017a6c0403",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "trondelag",
+        "database_schema": "trondelag",
+        "revision_sha256": "0c955802cf0a2ab3137bf8deb2bcbb13b8feadd6a8b948d2e8f5feb20bae63c1",
+        "source_id": "cultural_preservation",
+        "domain_id": "standard_analysis",
+        "resolution": 7,
+        "upstream_geojson_bytes": 67359
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 13735,
+        "source_ids_sha256": "fdea5973b898319643b7c94ad43b3480c98e639a8f378cbc23e8bc56751fcbba"
+      }
+    },
+    "valuable_cultural_environment": {
+      "replaced_source_contract_sha256": "01cf39047b23677def870b8e5f18ad78dc6766fb5042fc5a1af837912f347b56",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "trondelag",
+        "database_schema": "trondelag",
+        "revision_sha256": "0c955802cf0a2ab3137bf8deb2bcbb13b8feadd6a8b948d2e8f5feb20bae63c1",
+        "source_id": "valuable_cultural_environment",
+        "domain_id": "standard_analysis",
+        "resolution": 7,
+        "upstream_geojson_bytes": 135796
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 13735,
+        "source_ids_sha256": "fdea5973b898319643b7c94ad43b3480c98e639a8f378cbc23e8bc56751fcbba"
+      }
+    },
+    "high_voltage_lines": {
+      "replaced_source_contract_sha256": "014c4e23da7f34dea4d1bdc17bbbbfaf9a0bbab3cf6c0599580dd068defc8c6f",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "trondelag",
+        "database_schema": "trondelag",
+        "revision_sha256": "0c955802cf0a2ab3137bf8deb2bcbb13b8feadd6a8b948d2e8f5feb20bae63c1",
+        "source_id": "high_voltage_lines",
+        "domain_id": "standard_analysis",
+        "resolution": 7,
+        "upstream_geojson_bytes": 2174757
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 13735,
+        "source_ids_sha256": "fdea5973b898319643b7c94ad43b3480c98e639a8f378cbc23e8bc56751fcbba"
+      }
+    },
+    "underground_cables": {
+      "replaced_source_contract_sha256": "660d0a5c26b498a631f566a7c99d0ba23c53ba498f3c1a1e155a36f0785cbf11",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "trondelag",
+        "database_schema": "trondelag",
+        "revision_sha256": "0c955802cf0a2ab3137bf8deb2bcbb13b8feadd6a8b948d2e8f5feb20bae63c1",
+        "source_id": "underground_cables",
+        "domain_id": "standard_analysis",
+        "resolution": 7,
+        "upstream_geojson_bytes": 137202
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 13735,
+        "source_ids_sha256": "fdea5973b898319643b7c94ad43b3480c98e639a8f378cbc23e8bc56751fcbba"
+      }
+    },
+    "existing_wind_turbines": {
+      "replaced_source_contract_sha256": "bfdc4fea3826cd3a3385f861c0aa4519d385934ce2a2e29ed46883f6d72e3a3c",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "trondelag",
+        "database_schema": "trondelag",
+        "revision_sha256": "0c955802cf0a2ab3137bf8deb2bcbb13b8feadd6a8b948d2e8f5feb20bae63c1",
+        "source_id": "existing_wind_turbines",
+        "domain_id": "standard_analysis",
+        "resolution": 7,
+        "upstream_geojson_bytes": 20959
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 13735,
+        "source_ids_sha256": "fdea5973b898319643b7c94ad43b3480c98e639a8f378cbc23e8bc56751fcbba"
+      }
+    }
+  }
+}

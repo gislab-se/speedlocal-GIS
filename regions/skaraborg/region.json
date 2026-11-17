@@ -1,0 +1,200 @@
+{
+  "schema_version": "2026-08-14",
+  "region_id": "skaraborg",
+  "workspace_guide": "energy_film_v1",
+  "workspace_guide_content": "tutorials/skaraborg/steps.json",
+  "workspace_start_parameters": "regions/workspace_profiles/exploratory_start_distances.json",
+  "display_name": "Skaraborg",
+  "country": "Sweden",
+  "country_code": "SE",
+  "status": "onboarding",
+  "data_status": "diagnostic_only",
+  "behavior_reference": {
+    "status": "diagnostic_only",
+    "source": "no_historical_reference",
+    "label": "No historical SpeedLocal behavior reference exists for Skaraborg",
+    "reference": "",
+    "frozen_v2_parity": false
+  },
+  "native_crs": "EPSG:3006",
+  "web_crs": "EPSG:4326",
+  "available_h3_resolutions": [
+    8,
+    7,
+    6,
+    5
+  ],
+  "default_h3_resolution": 8,
+  "default_map_center": [
+    58.491207,
+    13.662168
+  ],
+  "default_zoom": 7,
+  "workspace_profile": "regions/workspace_profiles/v2_final_standard.json",
+  "analysis_manifests": {
+    "solar": "regions/skaraborg/analyses/solar.json",
+    "wind": "regions/skaraborg/analyses/wind.json"
+  },
+  "landing_card": {
+    "title": "Skaraborg",
+    "subtitle": "Manifest-driven onboarding",
+    "description": "Skaraborg is being onboarded through reviewed regional data and the shared manifest program. The product route remains closed until its capabilities and regional acceptance evidence are complete.",
+    "badge": "Onboarding",
+    "sort_order": 30,
+    "enabled": false
+  },
+  "review_access": {
+    "enabled": true,
+    "mode": "review",
+    "surface": "shared_workspace",
+    "access_classification": "diagnostic_only",
+    "requires_environment_allowlist": true,
+    "entry_label": "Öppna lokal arbetsyta",
+    "entry_note": "Gemensam manifeststyrd arbetsyta för lokal, operatörstillåten granskning.",
+    "warning_title": "Regionpaketet är öppnat i lokal review.",
+    "warning_body": "Tillitsnivån är diagnostic_only. Landingkortet är avstängt; denna vy är inte en publicerad produktrutt.",
+    "status_intro": "Status kommer från aktiva manifest och kontroll av tillgängliga runtime-underlag.",
+    "allowed_use": "Lokal granskning av uttryckligen deklarerade capabilities.",
+    "forbidden_use": "Offentlig produktåtkomst; review får inte tolkas som publicering.",
+    "allowed_capabilities": [
+      "workspace.map",
+      "wind.area",
+      "wind.group.roads",
+      "wind.group.population",
+      "wind.group.nature",
+      "wind.group.culture",
+      "wind.group.grid_infrastructure",
+      "solar.area",
+      "solar.group.roads",
+      "solar.group.population",
+      "solar.group.nature",
+      "solar.group.culture",
+      "solar.group.grid_infrastructure",
+      "workspace.technology_context",
+      "workspace.scenario",
+      "workspace.social_acceptance",
+      "workspace.combined_result"
+    ],
+    "allowed_slices": [
+      {
+        "analysis_id": "wind",
+        "group_id": "roads",
+        "apply_required": true,
+        "auto_select_sources": true,
+        "explicit_parameters": [
+          "buffer_m"
+        ]
+      },
+      {
+        "analysis_id": "wind",
+        "group_id": "population",
+        "apply_required": true,
+        "auto_select_sources": true,
+        "explicit_parameters": [
+          "buffer_m"
+        ]
+      },
+      {
+        "analysis_id": "wind",
+        "group_id": "nature",
+        "apply_required": true,
+        "auto_select_sources": true,
+        "explicit_parameters": [
+          "buffer_m"
+        ]
+      },
+      {
+        "analysis_id": "wind",
+        "group_id": "culture",
+        "apply_required": true,
+        "auto_select_sources": true,
+        "explicit_parameters": [
+          "buffer_m"
+        ]
+      },
+      {
+        "analysis_id": "wind",
+        "group_id": "grid_infrastructure",
+        "apply_required": true,
+        "auto_select_sources": true,
+        "explicit_parameters": [
+          "buffer_m"
+        ]
+      },
+      {
+        "analysis_id": "solar",
+        "group_id": "roads",
+        "apply_required": true,
+        "auto_select_sources": true,
+        "explicit_parameters": [
+          "buffer_m"
+        ]
+      },
+      {
+        "analysis_id": "solar",
+        "group_id": "population",
+        "apply_required": true,
+        "auto_select_sources": true,
+        "explicit_parameters": [
+          "buffer_m"
+        ]
+      },
+      {
+        "analysis_id": "solar",
+        "group_id": "nature",
+        "apply_required": true,
+        "auto_select_sources": true,
+        "explicit_parameters": [
+          "buffer_m"
+        ]
+      },
+      {
+        "analysis_id": "solar",
+        "group_id": "culture",
+        "apply_required": true,
+        "auto_select_sources": true,
+        "explicit_parameters": [
+          "buffer_m"
+        ]
+      },
+      {
+        "analysis_id": "solar",
+        "group_id": "grid_infrastructure",
+        "apply_required": true,
+        "auto_select_sources": true,
+        "explicit_parameters": [
+          "buffer_m"
+        ]
+      }
+    ]
+  },
+  "geography_manifest": "regions/skaraborg/geography.json",
+  "source_catalog_manifest": "regions/skaraborg/source-catalog.json",
+  "analysis_runtime_manifest": "regions/skaraborg/analysis-runtime.json",
+  "potential_manifest": "regions/shared_prototype_metadata/trondelag_potential_placeholder.json",
+  "solar_rules_manifest": "regions/shared_prototype_metadata/trondelag_solar_rules_placeholder.json",
+  "wind_rules_manifest": "regions/shared_prototype_metadata/trondelag_wind_rules_placeholder.json",
+  "scenario_manifest": "regions/skaraborg/scenarios.json",
+  "social_acceptance_manifest": "regions/skaraborg/social_acceptance.json",
+  "combined_result_manifest": "regions/skaraborg/combined_result.json",
+  "context_runtime_manifest": "regions/skaraborg/context-runtime.json",
+  "combined_result_validation": "regions/skaraborg/data_migrations/combined_result_validation_context_20260908.json",
+  "combined_result_validation_sha256": "f06f1c81f3c6b733ecd5a4bee30919272458cdb65c07f6ffde478af4ffa2ccf2",
+  "outside_lp_schematic": {
+    "candidate_side": "west",
+    "anchor_latlng": {
+      "wind": [
+        58.929805,
+        11.888923
+      ],
+      "solar": [
+        58.03399,
+        11.888923
+      ]
+    },
+    "latitude_band": {
+      "wind": "north",
+      "solar": "south"
+    }
+  }
+}

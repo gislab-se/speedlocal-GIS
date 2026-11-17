@@ -1,0 +1,200 @@
+{
+  "schema_version": "1.0",
+  "region_id": "bornholm",
+  "native_crs": "EPSG:25833",
+  "geographies": {
+    "bornholm_region_identity": {
+      "label": "Bornholm reviewed regional identity surface",
+      "role": "regional_identity_surface",
+      "provider": "v2_archive",
+      "path": "exports/v2_multiregion/bornholm/landmask/bornholm_dagi_landsdel_landmask_wgs84.geojson",
+      "sha256": "274686465bd8c4f91102d56b787fa8a539335230be180a007049adbddd08831f",
+      "format": "geojson",
+      "geometry_family": "polygon",
+      "source_crs": "EPSG:4326",
+      "native_crs": "EPSG:25833",
+      "source_metadata": {
+        "authority": "Klimadatastyrelsen / Datafordeler (DAGI)",
+        "dataset_name": "DAGI V1 Landsdel, Bornholm 1:10,000",
+        "dataset_version": "DAGI Objektspecifikation 2.0",
+        "snapshot_date": "2024-12-06",
+        "license": "CC BY 4.0, documented in the recovered local project description and not live-verified in this build",
+        "provenance_status": "source_snapshot_pinned",
+        "derivation": "The checksum-pinned processed Bornholm landmask is used as the explicit Gate 1 regional identity surface. It is not relabelled as a general administrative-boundary source.",
+        "upstream_inputs": [
+          {
+            "dataset_name": "DAGI_V1_Landsdel_TotalDownload_gpkg_Current_115.zip",
+            "role": "raw_delivery_archive",
+            "checksum_status": "pinned",
+            "sha256": "7b9da10a7fb8e6ceb71cb5538d730225b0941ae8685ddb5a9edc6aea4171b334"
+          },
+          {
+            "dataset_name": "DAGI_Landsdel_Scale10000_BOL_33.shp",
+            "role": "processed_native_crs_boundary",
+            "checksum_status": "pinned",
+            "sha256": "af41bc37105aae118efb3249a9166e732614b38ded9cbf64cf1b5577291e12e3"
+          }
+        ]
+      }
+    },
+    "onshore_region_extent": {
+      "label": "Bornholm DAGI Landsdel boundary",
+      "role": "analysis_surface",
+      "provider": "v2_archive",
+      "path": "exports/v2_multiregion/bornholm/landmask/bornholm_dagi_landsdel_landmask_wgs84.geojson",
+      "sha256": "274686465bd8c4f91102d56b787fa8a539335230be180a007049adbddd08831f",
+      "format": "geojson",
+      "geometry_family": "polygon",
+      "source_crs": "EPSG:4326",
+      "native_crs": "EPSG:25833",
+      "water_policy": "exclude_all_water",
+      "source_metadata": {
+        "authority": "Klimadatastyrelsen / Datafordeler (DAGI)",
+        "dataset_name": "DAGI V1 Landsdel, Bornholm 1:10,000",
+        "dataset_version": "DAGI Objektspecifikation 2.0",
+        "snapshot_date": "2024-12-06",
+        "license": "CC BY 4.0, documented in the recovered local project description and not live-verified in this build",
+        "provenance_status": "source_snapshot_pinned",
+        "derivation": "The checksum-pinned processed EPSG:25833 Landsdel shapefile was transformed to WGS84. Independent comparison reproduces this GeoJSON within 1e-7 metre; the stale QMD sidecar is not used as CRS authority.",
+        "upstream_inputs": [
+          {
+            "dataset_name": "DAGI_V1_Landsdel_TotalDownload_gpkg_Current_115.zip",
+            "role": "raw_delivery_archive",
+            "checksum_status": "pinned",
+            "sha256": "7b9da10a7fb8e6ceb71cb5538d730225b0941ae8685ddb5a9edc6aea4171b334"
+          },
+          {
+            "dataset_name": "DAGI_Landsdel_Scale10000_BOL_33.shp",
+            "role": "processed_native_crs_boundary",
+            "checksum_status": "pinned",
+            "sha256": "af41bc37105aae118efb3249a9166e732614b38ded9cbf64cf1b5577291e12e3"
+          }
+        ]
+      }
+    },
+    "onshore_technology_extent": {
+      "label": "Bornholm DAGI Landsdel boundary",
+      "role": "technology_target_surface",
+      "provider": "v2_archive",
+      "path": "exports/v2_multiregion/bornholm/landmask/bornholm_dagi_landsdel_landmask_wgs84.geojson",
+      "sha256": "274686465bd8c4f91102d56b787fa8a539335230be180a007049adbddd08831f",
+      "format": "geojson",
+      "geometry_family": "polygon",
+      "source_crs": "EPSG:4326",
+      "native_crs": "EPSG:25833",
+      "water_policy": "exclude_all_water",
+      "source_metadata": {
+        "authority": "Klimadatastyrelsen / Datafordeler (DAGI)",
+        "dataset_name": "DAGI V1 Landsdel, Bornholm 1:10,000",
+        "dataset_version": "DAGI Objektspecifikation 2.0",
+        "snapshot_date": "2024-12-06",
+        "license": "CC BY 4.0, documented in the recovered local project description and not live-verified in this build",
+        "provenance_status": "source_snapshot_pinned",
+        "derivation": "The checksum-pinned processed EPSG:25833 Landsdel shapefile was transformed to WGS84. Independent comparison reproduces this GeoJSON within 1e-7 metre; the stale QMD sidecar is not used as CRS authority.",
+        "upstream_inputs": [
+          {
+            "dataset_name": "DAGI V1 Landsdel, Bornholm 1:10,000",
+            "role": "declared_technology_target_surface",
+            "checksum_status": "pinned",
+            "sha256": "274686465bd8c4f91102d56b787fa8a539335230be180a007049adbddd08831f"
+          }
+        ]
+      }
+    }
+  },
+  "analysis_domains": {
+    "standard_constraints_r9": {
+      "label": "Boundary-complete Bornholm standard-constraint domain",
+      "status": "candidate",
+      "purpose": "standard_group_analysis",
+      "domain_scope": "bornholm_standard_constraints",
+      "coverage_geometry_id": "onshore_region_extent",
+      "coverage_rule": "positive_area_intersection",
+      "empty_intersection_policy": "exclude",
+      "missing_observation_policy": "error",
+      "rollup_strategy": "derive_from_source_children",
+      "candidate_buffer_m": 5000,
+      "metadata": {
+        "provider": "generated_runtime",
+        "path": "data/generated/analysis_domain/bornholm_standard_metadata.json",
+        "sha256": "e72dc814935b3cf1497f884341882f2d6708621174dd59dc28ae97ce4af2f43f"
+      },
+      "cell_ids_sha256": {
+        "9": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653",
+        "8": "05bb0b3a679f926e8c5fbd8d2ff1146ed53497fde2880069b7a7e59ec9dd276b",
+        "7": "4b766e33b855d26a6fcc40a35293efaf3efbc0b003a1c334fdc5a95c537b5eef",
+        "6": "0751261cfb6152e767961d72ad85a73c438447068a2f58946ae38105a1a227ad"
+      },
+      "artifacts": {
+        "provider": "generated_runtime",
+        "path": "data/generated/analysis_domain/bornholm_standard_r9.geojson",
+        "sha256": "407640739604d98c3322c3b324cc228cc602a015321964b3626c8311adad61d7",
+        "id_field": "hex_id",
+        "area_field": "area_km2",
+        "area_unit": "km2",
+        "cell_kind": "h3",
+        "resolution": 9,
+        "expected_cell_count": 6882,
+        "expected_total_area_km2": 587.6353334140905,
+        "rollups": [
+          {
+            "provider": "generated_runtime",
+            "path": "data/generated/analysis_domain/bornholm_standard_r8.geojson",
+            "sha256": "bf5d6e23a4c3f2de9e68c2ace79a42aefc34f00227f54608ed20023f88c67955",
+            "id_field": "hex_id",
+            "area_field": "area_km2",
+            "area_unit": "km2",
+            "resolution": 8,
+            "expected_cell_count": 1044,
+            "expected_total_area_km2": 587.6353334140905
+          },
+          {
+            "provider": "generated_runtime",
+            "path": "data/generated/analysis_domain/bornholm_standard_r7.geojson",
+            "sha256": "3d71820a9ab67839a142f822d87241842e80709901052fd504e51a9c8859422f",
+            "id_field": "hex_id",
+            "area_field": "area_km2",
+            "area_unit": "km2",
+            "resolution": 7,
+            "expected_cell_count": 170,
+            "expected_total_area_km2": 587.6353334140905
+          },
+          {
+            "provider": "generated_runtime",
+            "path": "data/generated/analysis_domain/bornholm_standard_r6.geojson",
+            "sha256": "4fc5249eebc9af766d93b880a07e14621ab73f6406e95a362f75b0b5484a4a36",
+            "id_field": "hex_id",
+            "area_field": "area_km2",
+            "area_unit": "km2",
+            "resolution": 6,
+            "expected_cell_count": 35,
+            "expected_total_area_km2": 587.6353334140905
+          }
+        ]
+      }
+    }
+  },
+  "technology_support_domains": {
+    "onshore_technology_r9": {
+      "label": "Bornholm wind and solar land surface",
+      "status": "candidate",
+      "technologies": [
+        "wind",
+        "solar"
+      ],
+      "coverage_geometry_id": "onshore_technology_extent",
+      "coverage_rule": "positive_area_intersection",
+      "cell_kind": "h3",
+      "source_resolution": 9,
+      "native_crs": "EPSG:25833",
+      "empty_intersection_policy": "exclude",
+      "missing_observation_policy": "error",
+      "rollup_strategy": "derive_from_source_children",
+      "rollup_resolutions": [
+        8,
+        7,
+        6
+      ]
+    }
+  }
+}

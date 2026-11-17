@@ -1,0 +1,115 @@
+{
+  "$schema": "../../schemas/speedlocal/1.0/region-package-form.schema.json",
+  "form_schema_version": "1.0",
+  "region": {
+    "region_id": "example_region",
+    "display_name": "Exempelregion",
+    "country_code": "SE",
+    "country_name": "Sverige",
+    "native_crs": "EPSG:3006",
+    "web_crs": "EPSG:4326",
+    "behavior_reference": {
+      "state": "unavailable",
+      "reason": "Ingen historisk eller regionalt accepterad beteendereferens är ännu dokumenterad."
+    }
+  },
+  "access": {
+    "lifecycle": "planned",
+    "trust_classification": "diagnostic_only",
+    "product_route_requested": false,
+    "local_review": {
+      "enabled": false,
+      "allowed_capabilities": []
+    },
+    "landing_card": {
+      "title": "Exempelregion",
+      "subtitle": "Planerad region",
+      "description": "Kopiera blanketten, byt identitet och fyll endast regionens data- och beteendekontrakt.",
+      "badge": "Planerad",
+      "sort_order": 100
+    }
+  },
+  "map_h3": {
+    "center": [58.4, 13.5],
+    "zoom": 8,
+    "analysis_resolution": 9,
+    "rollup_resolutions": [8, 7, 6]
+  },
+  "geography": {
+    "boundary": {
+      "state": "unavailable",
+      "reason": "Ange en gränskälla och full provenance innan boundary byter till declared."
+    },
+    "standard_analysis_domain": {
+      "state": "unavailable",
+      "reason": "Analysdomänen kan deklareras först när boundary och H3-policyn är ifyllda."
+    },
+    "technology_support": {
+      "state": "unavailable",
+      "reason": "Deklarera en granskad teknikmålyta och teknikkontext först när båda källorna kan valideras."
+    }
+  },
+  "landscape": {
+    "state": "unavailable",
+    "reason": "Deklarera en domänbunden H3-källa, minst en visningsvy, legend, provenance och tillit innan landskapsgranskning aktiveras."
+  },
+  "standard_groups": [
+    {
+      "id": "roads",
+      "state": "unavailable",
+      "reason": "Vägkällor, urval och parameterpolicy är ännu inte deklarerade."
+    },
+    {
+      "id": "population",
+      "state": "unavailable",
+      "reason": "Befolknings- och bebyggelsekällor är ännu inte deklarerade."
+    },
+    {
+      "id": "nature",
+      "state": "unavailable",
+      "reason": "Naturkällor är ännu inte deklarerade."
+    },
+    {
+      "id": "culture",
+      "state": "unavailable",
+      "reason": "Kulturmiljökällor är ännu inte deklarerade."
+    },
+    {
+      "id": "grid_infrastructure",
+      "state": "unavailable",
+      "reason": "Elnätskällor är ännu inte deklarerade."
+    }
+  ],
+  "technologies": {
+    "wind": {
+      "technology_id": "wind",
+      "state": "unavailable",
+      "reason": "Vindkontrakt är ännu inte deklarerat."
+    },
+    "solar": {
+      "technology_id": "solar",
+      "state": "unavailable",
+      "reason": "Solkontrakt är ännu inte deklarerat."
+    }
+  },
+  "solar_rooftop": {
+    "state": "unavailable",
+    "reason": "Deklarera en domänbunden befolkningskälla, teknisk panelyteparameter, solutbyte, redovisningspolicy, provenance och tillit innan taksol aktiveras."
+  },
+  "scenario": {
+    "state": "unavailable",
+    "reason": "Regionalt scenario- och energimodellskontrakt saknas."
+  },
+  "social_acceptance": {
+    "state": "unavailable",
+    "reason": "Regionalt kontrakt för social acceptans saknas."
+  },
+  "combined_result": {
+    "state": "unavailable",
+    "reason": "A complete combined-result contract with an explicit policy and registered score executor is missing."
+  },
+  "notes": [
+    "Blanketten är strukturellt giltig men beskriver en planerad, stängd exempelregion.",
+    "Checksumma, cellantal, areor och observationsdigests ska genereras av verktyg och inte gissas manuellt."
+  ]
+}

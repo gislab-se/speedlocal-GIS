@@ -1,0 +1,206 @@
+{
+  "schema_version": "1.0",
+  "region_id": "skaraborg",
+  "native_crs": "EPSG:3006",
+  "geographies": {
+    "skaraborg_region_extent": {
+      "label": "Reviewed Skaraborg municipal union",
+      "role": "administrative_boundary",
+      "provider": "generated_runtime",
+      "path": "data/generated/source_snapshots/skaraborg_scb_deso_2025_2026_08_25/region_boundary.geojson",
+      "sha256": "c05b1ce1a78f2959e061c908b0f28d0d6a2a5e7eede7f6d52110c03ee81b2743",
+      "format": "geojson",
+      "geometry_family": "polygon",
+      "source_crs": "EPSG:4326",
+      "native_crs": "EPSG:3006",
+      "source_metadata": {
+        "authority": "Statistikmyndigheten SCB (Statistiska centralbyrån)",
+        "dataset_name": "DeSO 2025",
+        "dataset_version": "2025_v2",
+        "snapshot_date": "2025-01-01",
+        "license": "CC0 1.0; SCB open data",
+        "provenance_status": "processed_snapshot_only",
+        "derivation": "The accepted 15 municipality codes 1444, 1445, 1446, 1447, 1470, 1471, 1472, 1473, 1493, 1494, 1495, 1496, 1497, 1498 and 1499 were retained from the local SCB DeSO 2025 source, dissolved in EPSG:3006, transformed to EPSG:4326 and exported as RFC 7946 GeoJSON with 12-decimal coordinate precision. The reviewed QGIS layer and original working layer have zero square metres symmetric geometry difference; the accepted correction is the verified CRS declaration.",
+        "upstream_inputs": [
+          {
+            "dataset_name": "DeSO 2025",
+            "role": "declared_boundary_asset",
+            "checksum_status": "pinned",
+            "sha256": "c05b1ce1a78f2959e061c908b0f28d0d6a2a5e7eede7f6d52110c03ee81b2743"
+          }
+        ]
+      }
+    },
+    "skaraborg_land_analysis_surface": {
+      "label": "Skaraborg land analysis surface",
+      "role": "analysis_surface",
+      "provider": "generated_runtime",
+      "path": "data/generated/source_snapshots/skaraborg_lm_topografi_250_2026_04_14/analysis_surface.geojson",
+      "sha256": "b0d90d9ee1223283c7df1a07ea75fac4967ab9f7eefdfb29f047fe494c717532",
+      "format": "geojson",
+      "geometry_family": "polygon",
+      "source_crs": "EPSG:4326",
+      "native_crs": "EPSG:3006",
+      "water_policy": "exclude_all_water",
+      "source_metadata": {
+        "authority": "Statistikmyndigheten SCB (Statistiska centralbyrån) and Lantmäteriet",
+        "dataset_name": "Skaraborg land analysis surface",
+        "dataset_version": "SCB DeSO 2025_v2 boundary with Lantmäteriet Topografi 250 order delivered 2026-04-14",
+        "snapshot_date": "2026-04-14",
+        "license": "CC0 1.0; SCB and Lantmäteriet open data",
+        "provenance_status": "processed_snapshot_only",
+        "derivation": "The reviewed administrative boundary is retained for identity. The separate analysis surface subtracts the dissolved Topografi 250 polygon classes Sjö (2632) and Vattendragsyta (2633) in EPSG:3006. No extra area threshold, hydrographic line buffer or wetland exclusion is applied. Islands remain part of the land surface.",
+        "upstream_inputs": [
+          {
+            "dataset_name": "Skaraborg reviewed SCB DeSO boundary",
+            "role": "administrative_boundary",
+            "checksum_status": "pinned",
+            "sha256": "c05b1ce1a78f2959e061c908b0f28d0d6a2a5e7eede7f6d52110c03ee81b2743"
+          },
+          {
+            "dataset_name": "mark_sverige.gpkg / layer mark",
+            "role": "polygon_water_source",
+            "checksum_status": "pinned",
+            "sha256": "0e8b8421af346ef4d05fc767e787662a880883dea2f1bf417fee839226a4b710"
+          },
+          {
+            "dataset_name": "mark_sverige.zip",
+            "role": "raw_delivery_archive",
+            "checksum_status": "pinned",
+            "sha256": "123a2ae6a4b2454a7860a869083951c8477c71ffc31559f8632a17a955b07667"
+          },
+          {
+            "dataset_name": "uttag.json",
+            "role": "source_order_receipt",
+            "checksum_status": "pinned",
+            "sha256": "bc74005b86db098a37d3c893fe217624faa4502ec448113bba8858f5cba3691c"
+          }
+        ]
+      }
+    },
+    "onshore_technology_extent": {
+      "label": "Skaraborg land analysis surface",
+      "role": "technology_target_surface",
+      "provider": "generated_runtime",
+      "path": "data/generated/source_snapshots/skaraborg_lm_topografi_250_2026_04_14/analysis_surface.geojson",
+      "sha256": "b0d90d9ee1223283c7df1a07ea75fac4967ab9f7eefdfb29f047fe494c717532",
+      "format": "geojson",
+      "geometry_family": "polygon",
+      "source_crs": "EPSG:4326",
+      "native_crs": "EPSG:3006",
+      "water_policy": "exclude_all_water",
+      "source_metadata": {
+        "authority": "Statistikmyndigheten SCB (Statistiska centralbyrån) and Lantmäteriet",
+        "dataset_name": "Skaraborg land analysis surface",
+        "dataset_version": "SCB DeSO 2025_v2 boundary with Lantmäteriet Topografi 250 order delivered 2026-04-14",
+        "snapshot_date": "2026-04-14",
+        "license": "CC0 1.0; SCB and Lantmäteriet open data",
+        "provenance_status": "processed_snapshot_only",
+        "derivation": "The reviewed administrative boundary is retained for identity. The separate analysis surface subtracts the dissolved Topografi 250 polygon classes Sjö (2632) and Vattendragsyta (2633) in EPSG:3006. No extra area threshold, hydrographic line buffer or wetland exclusion is applied. Islands remain part of the land surface.",
+        "upstream_inputs": [
+          {
+            "dataset_name": "Skaraborg land analysis surface",
+            "role": "declared_technology_target_surface",
+            "checksum_status": "pinned",
+            "sha256": "b0d90d9ee1223283c7df1a07ea75fac4967ab9f7eefdfb29f047fe494c717532"
+          }
+        ]
+      }
+    }
+  },
+  "analysis_domains": {
+    "standard_constraints_r8": {
+      "label": "Skaraborg standard analysis domain",
+      "status": "candidate",
+      "purpose": "standard_group_analysis",
+      "domain_scope": "standard_constraints",
+      "coverage_geometry_id": "skaraborg_land_analysis_surface",
+      "coverage_rule": "positive_area_intersection",
+      "empty_intersection_policy": "exclude",
+      "missing_observation_policy": "error",
+      "rollup_strategy": "derive_from_source_children",
+      "candidate_buffer_m": 10000,
+      "metadata": {
+        "provider": "generated_runtime",
+        "path": "data/generated/analysis_domain/skaraborg_standard_metadata.json",
+        "sha256": "e2d282ec87e489e5b4449688c1a3629cd07871700bb6ac5e8f644473f12b842b"
+      },
+      "cell_ids_sha256": {
+        "8": "dd0a88f550df62739dd8e19e2037587e76ab837cf23836725ee3fd23485a72c4",
+        "7": "288782f4795971411d5ad2b48d2d4829afa0461ff04f4b88082fb0efe0c444f1",
+        "6": "778f1e44a00aa38f5b1380141d4a87c433e0acc09dad122c31f1d1ce4d267476",
+        "5": "aacabc92f45f96a05b3e3b2a6d6f2774ea9346b440cba2459b41eb79b59208f3"
+      },
+      "artifacts": {
+        "provider": "generated_runtime",
+        "path": "data/generated/analysis_domain/skaraborg_standard_r8.geojson",
+        "sha256": "965bffcf55d4dcaa95fcc8688393e169071e9df1679fbb0052b9596ccbe07d0b",
+        "id_field": "hex_id",
+        "area_field": "area_km2",
+        "area_unit": "km2",
+        "cell_kind": "h3",
+        "resolution": 8,
+        "expected_cell_count": 14164,
+        "expected_total_area_km2": 7389.258669207419,
+        "rollups": [
+          {
+            "provider": "generated_runtime",
+            "path": "data/generated/analysis_domain/skaraborg_standard_r7.geojson",
+            "sha256": "700b5e95ad1fde324f2c2a2b60da28c8139de45ac505560d8ca6322e17ba0120",
+            "id_field": "hex_id",
+            "area_field": "area_km2",
+            "area_unit": "km2",
+            "resolution": 7,
+            "expected_cell_count": 2183,
+            "expected_total_area_km2": 7389.258669207419
+          },
+          {
+            "provider": "generated_runtime",
+            "path": "data/generated/analysis_domain/skaraborg_standard_r6.geojson",
+            "sha256": "0778a9f1956b2088d16b1a844d3126b88af99643542895346288de7b1c45434e",
+            "id_field": "hex_id",
+            "area_field": "area_km2",
+            "area_unit": "km2",
+            "resolution": 6,
+            "expected_cell_count": 356,
+            "expected_total_area_km2": 7389.258669207419
+          },
+          {
+            "provider": "generated_runtime",
+            "path": "data/generated/analysis_domain/skaraborg_standard_r5.geojson",
+            "sha256": "3c38ddafa4ff8774233ff88f0b8aeab74966b0a00823ee8464085a7b46159d7f",
+            "id_field": "hex_id",
+            "area_field": "area_km2",
+            "area_unit": "km2",
+            "resolution": 5,
+            "expected_cell_count": 66,
+            "expected_total_area_km2": 7389.258669207419
+          }
+        ]
+      }
+    }
+  },
+  "technology_support_domains": {
+    "onshore_technology_r8": {
+      "label": "Skaraborg wind and solar land surface",
+      "status": "candidate",
+      "technologies": [
+        "wind",
+        "solar"
+      ],
+      "coverage_geometry_id": "onshore_technology_extent",
+      "coverage_rule": "positive_area_intersection",
+      "cell_kind": "h3",
+      "source_resolution": 8,
+      "native_crs": "EPSG:3006",
+      "empty_intersection_policy": "exclude",
+      "missing_observation_policy": "error",
+      "rollup_strategy": "derive_from_source_children",
+      "rollup_resolutions": [
+        7,
+        6,
+        5
+      ]
+    }
+  }
+}

@@ -1,0 +1,4 @@
+hex_id,h3_resolution,acceptance_low,acceptance_medium,acceptance_high,data_status,method_version
+891f230e80bffff,9,0.100,0.300,0.600,synthetic_test_data_not_research,fixture_social_acceptance_v1
+891f230e813ffff,9,0.200,0.500,0.800,synthetic_test_data_not_research,fixture_social_acceptance_v1
+891f230e81bffff,9,0.400,0.700,1.000,synthetic_test_data_not_research,fixture_social_acceptance_v1

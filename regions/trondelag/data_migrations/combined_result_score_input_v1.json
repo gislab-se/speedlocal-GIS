@@ -1,0 +1,166 @@
+{
+  "state": "declared",
+  "capability_id": "workspace.combined_result",
+  "policy_id": "trondelag_landscape_potential_core_v1",
+  "technology_order": ["solar", "wind"],
+  "finalization_resolution": 7,
+  "rollup_resolutions": [6, 5],
+  "co_use_policy": "allow_with_reservation_tiebreak",
+  "outside_potential_policy": "allocate_declared_eligible_area",
+  "outside_ring_model": "selected_inside_h3_graph_distance_v1",
+  "rollup_model": "sum_finalized_children_without_reranking",
+  "score_input": {
+    "input_id": "trondelag_support_observation_landscape_v1",
+    "base_score_model": "landscape_potential_core_v1",
+    "executor_id": "support_observation_landscape_v1",
+    "numeric_parameters": [
+      {"id": "solar_core_weight", "value": 0.0},
+      {"id": "solar_landscape_weight", "value": 0.75},
+      {"id": "solar_potential_weight", "value": 0.25},
+      {"id": "wind_core_weight", "value": 0.15},
+      {"id": "wind_landscape_weight", "value": 0.65},
+      {"id": "wind_potential_weight", "value": 0.2}
+    ],
+    "layer_selections": [
+      {
+        "technology_id": "solar",
+        "analysis_id": "solar",
+        "group_id": "culture",
+        "layer_ids": [
+          "cultural_preservation",
+          "valuable_cultural_environment"
+        ]
+      },
+      {
+        "technology_id": "solar",
+        "analysis_id": "solar",
+        "group_id": "grid_infrastructure",
+        "layer_ids": [
+          "existing_wind_turbines",
+          "high_voltage_lines",
+          "underground_cables"
+        ]
+      },
+      {
+        "technology_id": "solar",
+        "analysis_id": "solar",
+        "group_id": "nature",
+        "layer_ids": ["protected_areas"]
+      },
+      {
+        "technology_id": "solar",
+        "analysis_id": "solar",
+        "group_id": "population",
+        "layer_ids": ["population_points"]
+      },
+      {
+        "technology_id": "solar",
+        "analysis_id": "solar",
+        "group_id": "roads",
+        "layer_ids": ["roads_large", "roads_medium"]
+      },
+      {
+        "technology_id": "wind",
+        "analysis_id": "wind",
+        "group_id": "culture",
+        "layer_ids": [
+          "cultural_preservation",
+          "valuable_cultural_environment"
+        ]
+      },
+      {
+        "technology_id": "wind",
+        "analysis_id": "wind",
+        "group_id": "grid_infrastructure",
+        "layer_ids": [
+          "existing_wind_turbines",
+          "high_voltage_lines",
+          "underground_cables"
+        ]
+      },
+      {
+        "technology_id": "wind",
+        "analysis_id": "wind",
+        "group_id": "nature",
+        "layer_ids": ["protected_areas"]
+      },
+      {
+        "technology_id": "wind",
+        "analysis_id": "wind",
+        "group_id": "population",
+        "layer_ids": [
+          "built_centre",
+          "built_low_selection",
+          "population_points"
+        ]
+      },
+      {
+        "technology_id": "wind",
+        "analysis_id": "wind",
+        "group_id": "roads",
+        "layer_ids": ["roads_large", "roads_medium"]
+      }
+    ]
+  },
+  "technology_priorities": [
+    {
+      "technology_id": "solar",
+      "phase_order": ["inside_potential", "outside_potential"],
+      "phase_policies": [
+        {
+          "phase_id": "inside_potential",
+          "entry_residual_threshold_km2": 0.0,
+          "stop_tolerance_km2": 0.000000001
+        },
+        {
+          "phase_id": "outside_potential",
+          "entry_residual_threshold_km2": 0.000000001,
+          "stop_tolerance_km2": 0.000000001
+        }
+      ],
+      "inside_components": [
+        {"component_id": "base_score", "value_source": "base_score", "direction": "descending"},
+        {"component_id": "potential_fraction", "value_source": "potential_fraction", "direction": "descending"},
+        {"component_id": "potential_area_km2", "value_source": "potential_area_km2", "direction": "descending"},
+        {"component_id": "reservation_state", "value_source": "reservation_state", "direction": "ascending"},
+        {"component_id": "stable_cell_id", "value_source": "stable_cell_id", "direction": "ascending"}
+      ],
+      "outside_components": [
+        {"component_id": "outside_ring", "value_source": "outside_ring", "direction": "ascending"},
+        {"component_id": "base_score", "value_source": "base_score", "direction": "descending"},
+        {"component_id": "stable_cell_id", "value_source": "stable_cell_id", "direction": "ascending"}
+      ]
+    },
+    {
+      "technology_id": "wind",
+      "phase_order": ["inside_potential", "outside_potential"],
+      "phase_policies": [
+        {
+          "phase_id": "inside_potential",
+          "entry_residual_threshold_km2": 0.0,
+          "stop_tolerance_km2": 0.000000001
+        },
+        {
+          "phase_id": "outside_potential",
+          "entry_residual_threshold_km2": 0.000000001,
+          "stop_tolerance_km2": 0.000000001
+        }
+      ],
+      "inside_components": [
+        {"component_id": "base_score", "value_source": "base_score", "direction": "descending"},
+        {"component_id": "potential_fraction", "value_source": "potential_fraction", "direction": "descending"},
+        {"component_id": "wind_zone_size", "value_source": "wind_zone_size", "direction": "descending"},
+        {"component_id": "potential_area_km2", "value_source": "potential_area_km2", "direction": "descending"},
+        {"component_id": "reservation_state", "value_source": "reservation_state", "direction": "ascending"},
+        {"component_id": "stable_cell_id", "value_source": "stable_cell_id", "direction": "ascending"}
+      ],
+      "outside_components": [
+        {"component_id": "reservation_state", "value_source": "reservation_state", "direction": "ascending"},
+        {"component_id": "outside_ring", "value_source": "outside_ring", "direction": "ascending"},
+        {"component_id": "base_score", "value_source": "base_score", "direction": "descending"},
+        {"component_id": "wind_zone_size", "value_source": "wind_zone_size", "direction": "descending"},
+        {"component_id": "stable_cell_id", "value_source": "stable_cell_id", "direction": "ascending"}
+      ]
+    }
+  ]
+}

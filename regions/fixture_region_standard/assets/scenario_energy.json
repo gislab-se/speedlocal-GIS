@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "observations": [
+    {
+      "source_scenario": "reference_path",
+      "planning_year": 2040,
+      "technology_id": "wind",
+      "value_twh": 3.0
+    },
+    {
+      "source_scenario": "reference_path",
+      "planning_year": 2040,
+      "technology_id": "solar",
+      "value_twh": 1.0
+    }
+  ]
+}

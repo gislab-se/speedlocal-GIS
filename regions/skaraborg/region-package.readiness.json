@@ -1,0 +1,349 @@
+{
+  "schema_version": "1.0",
+  "receipt_type": "installed_candidate_integrity_receipt",
+  "region_id": "skaraborg",
+  "installation_status": "installed_unvalidated",
+  "authority": {
+    "source": "installed_region_contracts_and_checksum_pinned_runtime_assets",
+    "scope": "candidate_integrity_and_readiness_only",
+    "historical_onboarding_form_is_authority": false,
+    "compiler_output_is_authority": false
+  },
+  "activation_gate": {
+    "landing_card_enabled": false,
+    "state": "not_validated",
+    "reason": "The installed candidate remains closed until its technical, database, localhost-owner and regional gates pass."
+  },
+  "declared_assets": [
+    {
+      "pointer": "/geography/boundary/asset",
+      "provider": "generated_runtime",
+      "path": "data/generated/source_snapshots/skaraborg_scb_deso_2025_2026_08_25/region_boundary.geojson",
+      "format": "geojson",
+      "integrity_mode": "pinned",
+      "bytes": 165012,
+      "sha256": "c05b1ce1a78f2959e061c908b0f28d0d6a2a5e7eede7f6d52110c03ee81b2743"
+    },
+    {
+      "pointer": "/geography/analysis_surface/asset",
+      "provider": "generated_runtime",
+      "path": "data/generated/source_snapshots/skaraborg_lm_topografi_250_2026_04_14/analysis_surface.geojson",
+      "format": "geojson",
+      "integrity_mode": "pinned",
+      "bytes": 2600636,
+      "sha256": "b0d90d9ee1223283c7df1a07ea75fac4967ab9f7eefdfb29f047fe494c717532"
+    },
+    {
+      "pointer": "/geography/analysis_surface/derivation_metadata",
+      "provider": "generated_runtime",
+      "path": "data/generated/source_snapshots/skaraborg_lm_topografi_250_2026_04_14/analysis_surface.metadata.json",
+      "format": "json",
+      "integrity_mode": "pinned",
+      "bytes": 2111,
+      "sha256": "733d58220d8cf324ea61839ae6e259e59aaeecb922714671e2e12f178ef85fac"
+    },
+    {
+      "pointer": "/standard_groups/0/layers/0/source/asset",
+      "provider": "generated_runtime",
+      "path": "data/generated/source_snapshots/skaraborg_nvdb_funktionell_vagklass_2026_08_18/roads_large.geojson",
+      "format": "geojson",
+      "integrity_mode": "pinned",
+      "bytes": 1965613,
+      "sha256": "e66c07c33ab8c0400016642fe3abe8a2388d7ec0b27b87755c90858d05ae9a10"
+    },
+    {
+      "pointer": "/standard_groups/0/layers/1/source/asset",
+      "provider": "generated_runtime",
+      "path": "data/generated/source_snapshots/skaraborg_nvdb_funktionell_vagklass_2026_08_18/roads_medium.geojson",
+      "format": "geojson",
+      "integrity_mode": "pinned",
+      "bytes": 5849951,
+      "sha256": "16111b5a5160ba14946fdc38d439aa4e0474ea376b98690620aeb44b7e1fd21a"
+    }
+  ],
+  "analysis_domain": {
+    "schema_version": "1.0",
+    "domain_id": "standard_constraints_r8",
+    "domain_scope": "standard_constraints",
+    "status": "candidate",
+    "geometry_operation": "intersection",
+    "coverage_rule": "positive_area_intersection",
+    "empty_intersection_policy": "exclude",
+    "missing_observation_policy": "error",
+    "rollup_strategy": "derive_from_source_children",
+    "source_h3_resolution": 8,
+    "rollup_resolutions": [
+      7,
+      6,
+      5
+    ],
+    "native_crs": "EPSG:3006",
+    "area_field": "area_km2",
+    "area_unit": "km2",
+    "coverage_geometry": {
+      "id": "skaraborg_land_analysis_surface",
+      "provider": "generated_runtime",
+      "path": "data/generated/source_snapshots/skaraborg_lm_topografi_250_2026_04_14/analysis_surface.geojson",
+      "bytes": 2600636,
+      "sha256": "b0d90d9ee1223283c7df1a07ea75fac4967ab9f7eefdfb29f047fe494c717532",
+      "source_crs": "EPSG:4326"
+    },
+    "candidate_generation": {
+      "method": "native_boundary_buffer_polyfill_plus_one_h3_ring",
+      "candidate_buffer_m": 10000.0,
+      "candidate_buffer_to_average_h3_edge_ratio": 18.81771991671804,
+      "candidate_cell_count": 24533,
+      "selection_rule": "strictly_positive_projected_intersection_area"
+    },
+    "topology": {
+      "tolerance_m2": 0.01,
+      "output_coordinate_decimals": 12,
+      "target_area_km2": 7389.258669207415,
+      "source_area_sum_km2": 7389.258669207419
+    },
+    "id_digest_canonicalization": "lowercase H3 ids sorted lexicographically, one id plus LF per row",
+    "levels": [
+      {
+        "resolution": 8,
+        "path": "data/generated/analysis_domain/skaraborg_standard_r8.geojson",
+        "cell_count": 14164,
+        "cell_ids_sha256": "dd0a88f550df62739dd8e19e2037587e76ab837cf23836725ee3fd23485a72c4",
+        "total_area_km2": 7389.258669207419,
+        "bytes": 10138288,
+        "sha256": "965bffcf55d4dcaa95fcc8688393e169071e9df1679fbb0052b9596ccbe07d0b",
+        "geometry_union_area_km2": 7389.258669207402,
+        "overlap_area_m2": 1.71661376953125e-05,
+        "uncovered_target_m2": 0.0,
+        "outside_target_m2": 0.0
+      },
+      {
+        "resolution": 7,
+        "path": "data/generated/analysis_domain/skaraborg_standard_r7.geojson",
+        "cell_count": 2183,
+        "cell_ids_sha256": "288782f4795971411d5ad2b48d2d4829afa0461ff04f4b88082fb0efe0c444f1",
+        "total_area_km2": 7389.258669207419,
+        "bytes": 3171103,
+        "sha256": "700b5e95ad1fde324f2c2a2b60da28c8139de45ac505560d8ca6322e17ba0120",
+        "geometry_union_area_km2": 7389.258669207418,
+        "overlap_area_m2": 9.5367431640625e-07,
+        "uncovered_target_m2": 0.0,
+        "outside_target_m2": 0.0
+      },
+      {
+        "resolution": 6,
+        "path": "data/generated/analysis_domain/skaraborg_standard_r6.geojson",
+        "cell_count": 356,
+        "cell_ids_sha256": "778f1e44a00aa38f5b1380141d4a87c433e0acc09dad122c31f1d1ce4d267476",
+        "total_area_km2": 7389.258669207419,
+        "bytes": 1670668,
+        "sha256": "0778a9f1956b2088d16b1a844d3126b88af99643542895346288de7b1c45434e",
+        "geometry_union_area_km2": 7389.258669207407,
+        "overlap_area_m2": 1.239776611328125e-05,
+        "uncovered_target_m2": 0.0,
+        "outside_target_m2": 0.0
+      },
+      {
+        "resolution": 5,
+        "path": "data/generated/analysis_domain/skaraborg_standard_r5.geojson",
+        "cell_count": 66,
+        "cell_ids_sha256": "aacabc92f45f96a05b3e3b2a6d6f2774ea9346b440cba2459b41eb79b59208f3",
+        "total_area_km2": 7389.258669207419,
+        "bytes": 1249159,
+        "sha256": "3c38ddafa4ff8774233ff88f0b8aeab74966b0a00823ee8464085a7b46159d7f",
+        "geometry_union_area_km2": 7389.2586692074465,
+        "overlap_area_m2": 0.0,
+        "uncovered_target_m2": 0.0,
+        "outside_target_m2": 0.0
+      }
+    ],
+    "metadata": {
+      "path": "data/generated/analysis_domain/skaraborg_standard_metadata.json",
+      "bytes": 3651,
+      "sha256": "e2d282ec87e489e5b4449688c1a3629cd07871700bb6ac5e8f644473f12b842b"
+    }
+  },
+  "technology_support": null,
+  "landscape": null,
+  "solar_rooftop": null,
+  "scenario": null,
+  "social_acceptance": null,
+  "combined_result": null,
+  "layers": [
+    {
+      "layer_id": "roads_large",
+      "operation": "distance_exclusion",
+      "geometry_family": "line",
+      "data_representation": "network",
+      "processing_adapter": "line_distance",
+      "source_feature_count": 1285,
+      "observation_row_count": 14164,
+      "cell_ids_sha256": "dd0a88f550df62739dd8e19e2037587e76ab837cf23836725ee3fd23485a72c4",
+      "source_sha256": "d894406b9476d90e0f92a8b5e4892f0a2496b6e50e1d7123b4c0e5c7395bf5be",
+      "observations_sha256": "0c1b0c0c84be21dc679d512a8a6102f98c9012672895a2dd33507d92a1cfd926",
+      "technical_initial_value": 100,
+      "accepted_recommended_default": {
+        "state": "unavailable",
+        "reason": "Skaraborg has not adopted a regional recommended road distance; 100 m is only an owner-approved technical review start value."
+      },
+      "materialized_engine_default": 100,
+      "materialized_engine_default_semantics": "technical_initial_value_not_regional_recommendation"
+    },
+    {
+      "layer_id": "roads_medium",
+      "operation": "distance_exclusion",
+      "geometry_family": "line",
+      "data_representation": "network",
+      "processing_adapter": "line_distance",
+      "source_feature_count": 3946,
+      "observation_row_count": 14164,
+      "cell_ids_sha256": "dd0a88f550df62739dd8e19e2037587e76ab837cf23836725ee3fd23485a72c4",
+      "source_sha256": "489bb1ba79634f15193f8fba051ed1f97900a1528ff3117eca3c69cdd67157a0",
+      "observations_sha256": "e6f5733ce968ba5883b6c92995b449dbcbf5e6f562c9162e92aad5dfdbb31a09",
+      "technical_initial_value": 100,
+      "accepted_recommended_default": {
+        "state": "unavailable",
+        "reason": "Skaraborg has not adopted a regional recommended road distance; 100 m is only an owner-approved technical review start value."
+      },
+      "materialized_engine_default": 100,
+      "materialized_engine_default_semantics": "technical_initial_value_not_regional_recommendation"
+    }
+  ],
+  "manifests": {
+    "analyses/solar.json": {
+      "bytes": 3754,
+      "sha256": "305f520ae370d1e80327e9efd0488bc5f372b84148c5968983b73c093ca570e7"
+    },
+    "analyses/standard_constraints.json": {
+      "bytes": 3870,
+      "sha256": "1c50a888cfddf00d3dfa9c061adc78ca83c69c7b858430c824f72f103e5e650e"
+    },
+    "analyses/wind.json": {
+      "bytes": 3753,
+      "sha256": "ad636c9e22abf62f3b266ab7059f5bad94ab4c121270603aba99a7e10ba26041"
+    },
+    "geography.json": {
+      "bytes": 7202,
+      "sha256": "976ec79b606cc7b233abc94dea285b5104f2322e06c61f74ecc363abdac8a458"
+    },
+    "region.json": {
+      "bytes": 2789,
+      "sha256": "a02e6f1961161248a63f1e3094ed84171f9023b5967a0dae4c4b3d157b5cc6e9"
+    }
+  },
+  "capabilities": [
+    {
+      "capability_id": "workspace.map",
+      "state": "not_validated",
+      "reason": "Geografimanifest, domän och genererad integritet är materialiserade men den tekniska kartgrinden återstår.",
+      "next_action": "Kör geografins och kartans tekniska gates innan capabilityn promoveras."
+    },
+    {
+      "capability_id": "workspace.landscape",
+      "state": "missing_manifest",
+      "reason": "The delivered landscape sources have not yet been mapped to a reviewed display-only categorical contract.",
+      "next_action": "Deklarera ett komplett display-only-landskapskontrakt; använd ingen annan regions data."
+    },
+    {
+      "capability_id": "wind.area",
+      "state": "missing_manifest",
+      "reason": "Wind establishment area remains unavailable until a reviewed Skaraborg technology-support contract exists.",
+      "next_action": "Deklarera teknikens area_result och berättigade yta."
+    },
+    {
+      "capability_id": "wind.group.roads",
+      "state": "not_validated",
+      "reason": "Manifest, data och genererad integritet är kompletta men capabilityns tekniska gate återstår.",
+      "next_action": "Kör capabilityns tekniska gate och därefter regionens egen acceptansjämförelse."
+    },
+    {
+      "capability_id": "wind.group.population",
+      "state": "missing_manifest",
+      "reason": "The population and settlement sources are present, but their representation, selection and parameter policies have not yet been accepted.",
+      "next_action": "Deklarera gruppens källor eller behåll capabilityn låst."
+    },
+    {
+      "capability_id": "wind.group.nature",
+      "state": "missing_manifest",
+      "reason": "No reviewed Skaraborg nature-source mapping has been declared.",
+      "next_action": "Deklarera gruppens källor eller behåll capabilityn låst."
+    },
+    {
+      "capability_id": "wind.group.culture",
+      "state": "missing_manifest",
+      "reason": "No reviewed Skaraborg cultural-environment source mapping has been declared.",
+      "next_action": "Deklarera gruppens källor eller behåll capabilityn låst."
+    },
+    {
+      "capability_id": "wind.group.grid_infrastructure",
+      "state": "missing_manifest",
+      "reason": "No reviewed Skaraborg grid-infrastructure source mapping has been declared.",
+      "next_action": "Deklarera gruppens källor eller behåll capabilityn låst."
+    },
+    {
+      "capability_id": "solar.area",
+      "state": "missing_manifest",
+      "reason": "Solar establishment area remains unavailable until a reviewed Skaraborg technology-support contract exists.",
+      "next_action": "Deklarera teknikens area_result och berättigade yta."
+    },
+    {
+      "capability_id": "solar.group.roads",
+      "state": "not_validated",
+      "reason": "Manifest, data och genererad integritet är kompletta men capabilityns tekniska gate återstår.",
+      "next_action": "Kör capabilityns tekniska gate och därefter regionens egen acceptansjämförelse."
+    },
+    {
+      "capability_id": "solar.group.population",
+      "state": "missing_manifest",
+      "reason": "The population and settlement sources are present, but their representation, selection and parameter policies have not yet been accepted.",
+      "next_action": "Deklarera gruppens källor eller behåll capabilityn låst."
+    },
+    {
+      "capability_id": "solar.group.nature",
+      "state": "missing_manifest",
+      "reason": "No reviewed Skaraborg nature-source mapping has been declared.",
+      "next_action": "Deklarera gruppens källor eller behåll capabilityn låst."
+    },
+    {
+      "capability_id": "solar.group.culture",
+      "state": "missing_manifest",
+      "reason": "No reviewed Skaraborg cultural-environment source mapping has been declared.",
+      "next_action": "Deklarera gruppens källor eller behåll capabilityn låst."
+    },
+    {
+      "capability_id": "solar.group.grid_infrastructure",
+      "state": "missing_manifest",
+      "reason": "No reviewed Skaraborg grid-infrastructure source mapping has been declared.",
+      "next_action": "Deklarera gruppens källor eller behåll capabilityn låst."
+    },
+    {
+      "capability_id": "solar.rooftop",
+      "state": "missing_manifest",
+      "reason": "A domain-bound population source and reviewed rooftop parameters have not yet been declared.",
+      "next_action": "Deklarera taksolens domän, befolkningskälla, parameter, solutbyte, redovisningspolicy, provenance och tillit komplett."
+    },
+    {
+      "capability_id": "workspace.technology_context",
+      "state": "missing_manifest",
+      "reason": "Beroendet wind.area är inte klart: Wind establishment area remains unavailable until a reviewed Skaraborg technology-support contract exists.",
+      "next_action": "Slutför båda teknikernas deklarerade etableringsytor först."
+    },
+    {
+      "capability_id": "workspace.scenario",
+      "state": "missing_manifest",
+      "reason": "No accepted regional energy-scenario contract has been supplied for Skaraborg.",
+      "next_action": "Deklarera scenariots källor, adapter, nivåer och tillitsvillkor komplett eller behåll capabilityn låst."
+    },
+    {
+      "capability_id": "workspace.social_acceptance",
+      "state": "missing_manifest",
+      "reason": "No accepted regional social-acceptance contract has been supplied for Skaraborg.",
+      "next_action": "Deklarera capabilityns regionala kontrakt eller behåll den låst."
+    },
+    {
+      "capability_id": "workspace.combined_result",
+      "state": "missing_manifest",
+      "reason": "Combined result remains unavailable until its required upstream Skaraborg contracts can execute and be signed.",
+      "next_action": "Declare the complete combined policy or keep the capability locked."
+    }
+  ]
+}

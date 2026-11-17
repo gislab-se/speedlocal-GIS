@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "factors": [
+    {
+      "area_demand_scenario": "compact",
+      "technology_id": "wind",
+      "km2_per_twh": 4.0
+    },
+    {
+      "area_demand_scenario": "compact",
+      "technology_id": "solar",
+      "km2_per_twh": 2.0
+    },
+    {
+      "area_demand_scenario": "broad",
+      "technology_id": "wind",
+      "km2_per_twh": 8.0
+    },
+    {
+      "area_demand_scenario": "broad",
+      "technology_id": "solar",
+      "km2_per_twh": 5.0
+    }
+  ]
+}

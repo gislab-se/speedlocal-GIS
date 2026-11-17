@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "profile_id": "v2_final_standard",
+  "missing_policy": "render_disabled",
+  "technologies": ["wind", "solar"],
+  "standard_groups": [
+    {
+      "id": "roads",
+      "label": "Vägar",
+      "analysis_label": "Minsta avstånd",
+      "interpretation": "För nära är dåligt. Valda väglager kombineras till en gemensam avståndsrestriktion.",
+      "source_map_default_visible": false
+    },
+    {
+      "id": "population",
+      "label": "Befolkning och bebyggelse",
+      "analysis_label": "Minsta avstånd",
+      "interpretation": "För nära är dåligt. Valda befolknings- och bebyggelselager kombineras till en gemensam avståndsrestriktion.",
+      "source_map_default_visible": true
+    },
+    {
+      "id": "nature",
+      "label": "Natur",
+      "analysis_label": "Valfri buffert",
+      "interpretation": "Skyddad natur är en binär restriktion när en deklarerad källa skär analysytan eller dess buffert.",
+      "source_map_default_visible": false
+    },
+    {
+      "id": "culture",
+      "label": "Kulturmiljöer",
+      "analysis_label": "Valfri buffert",
+      "interpretation": "Kulturmiljöer är en binär restriktion när en deklarerad källa skär analysytan eller dess buffert.",
+      "source_map_default_visible": false
+    },
+    {
+      "id": "grid_infrastructure",
+      "label": "Elnät",
+      "analysis_label": "Största anslutningsavstånd",
+      "interpretation": "För långt bort är dåligt. Deklarerad nätinfrastruktur används som en närhetsbaserad genomförbarhetsrestriktion.",
+      "source_map_default_visible": false
+    }
+  ],
+  "capabilities": [
+    "workspace.map",
+    "workspace.landscape",
+    "wind.area",
+    "wind.group.roads",
+    "wind.group.population",
+    "wind.group.nature",
+    "wind.group.culture",
+    "wind.group.grid_infrastructure",
+    "solar.area",
+    "solar.group.roads",
+    "solar.group.population",
+    "solar.group.nature",
+    "solar.group.culture",
+    "solar.group.grid_infrastructure",
+    "solar.rooftop",
+    "workspace.technology_context",
+    "workspace.scenario",
+    "workspace.social_acceptance",
+    "workspace.combined_result"
+  ]
+}

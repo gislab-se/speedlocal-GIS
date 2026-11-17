@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "capability_id": "workspace.combined_result",
+  "region_id": "trondelag",
+  "validation_status": "technically_validated",
+  "validator_id": "validate_trondelag_combined_dynamic_runtime",
+  "validator_version": "2.0",
+  "validated_utc_date": "2026-09-07",
+  "check_count": 5232,
+  "reference_scope": "active_ten_source_app_local_r7_oracle_and_exact_r6_r5_rollups;historical_solar_and_allocation_totals_retained;intentional_wind_ranking_delta;no_owner_gate_approval",
+  "policy_contract_signature_sha256": "d445ed166aac5ec278b09d142454bfbec674a81b2f69b1dcd90ec4adc200c5ae",
+  "allocation_policy_artifact_sha256": "e1aa213afa0eda8aabfcd171d13ec40c0dabcc6e3e9f728c88c3586b81377b62",
+  "allocation_policy_signature_sha256": "4d88d058024d7759f2287a3929a233be9b0d4a61f372a5c24f7dc3731de372b4",
+  "validated_default_execution_signature_sha256": "25be8105227f5fc70271516d7bf231bd5f13cb558c4c530237f854d1173ca25f"
+}

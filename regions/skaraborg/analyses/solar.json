@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "analysis_id": "solar",
+  "region_id": "skaraborg",
+  "extends": "regions/skaraborg/analyses/standard_constraints.json",
+  "area_result": {
+    "technology": "solar",
+    "applicable_group_ids": [
+      "roads",
+      "population",
+      "nature",
+      "culture",
+      "grid_infrastructure"
+    ],
+    "restriction_combination": "geometry_union",
+    "operation_order": "feasibility_then_exclusion",
+    "denominator": "eligible_surface",
+    "geometry_semantics": "exact_vector_clip",
+    "eligible_surface_id": "onshore_land"
+  }
+}

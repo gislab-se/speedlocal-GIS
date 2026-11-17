@@ -1,0 +1,204 @@
+{
+  "schema_version": "1.0",
+  "region_id": "skaraborg",
+  "selection_sha256": "eb9aacd9ae249fc6453c2eb761257589a3ff215ad3b1efdcc6a95dd335669845",
+  "group_ids": [
+    "roads",
+    "population",
+    "nature",
+    "culture",
+    "grid_infrastructure"
+  ],
+  "sources": {
+    "roads_large": {
+      "replaced_source_contract_sha256": "48edda781a05cd659e7d9e8a8bfa78e47befb7ec7756fc48208ba10b8cf2e63b",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "skaraborg",
+        "database_schema": "skaraborg",
+        "revision_sha256": "4b7ce9d65ce1298af2438c1299f15722c57eeac367f5bbf1a9318f5fc8215f3a",
+        "source_id": "roads_large",
+        "domain_id": "standard_analysis",
+        "resolution": 8,
+        "upstream_geojson_bytes": 1761371
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 14164,
+        "source_ids_sha256": "dd0a88f550df62739dd8e19e2037587e76ab837cf23836725ee3fd23485a72c4"
+      }
+    },
+    "roads_medium": {
+      "replaced_source_contract_sha256": "de45f2a53bf27ec026be7f28a7b2192907120913b1c569c13196328d1275b0d6",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "skaraborg",
+        "database_schema": "skaraborg",
+        "revision_sha256": "4b7ce9d65ce1298af2438c1299f15722c57eeac367f5bbf1a9318f5fc8215f3a",
+        "source_id": "roads_medium",
+        "domain_id": "standard_analysis",
+        "resolution": 8,
+        "upstream_geojson_bytes": 5208971
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 14164,
+        "source_ids_sha256": "dd0a88f550df62739dd8e19e2037587e76ab837cf23836725ee3fd23485a72c4"
+      }
+    },
+    "urban_areas": {
+      "replaced_source_contract_sha256": "87613c04507e3de52d156af3e3597109a43171b0a00566916e5c7e81d279f5b8",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "skaraborg",
+        "database_schema": "skaraborg",
+        "revision_sha256": "4b7ce9d65ce1298af2438c1299f15722c57eeac367f5bbf1a9318f5fc8215f3a",
+        "source_id": "urban_areas",
+        "domain_id": "standard_analysis",
+        "resolution": 8,
+        "upstream_geojson_bytes": 2004590
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 14164,
+        "source_ids_sha256": "dd0a88f550df62739dd8e19e2037587e76ab837cf23836725ee3fd23485a72c4"
+      }
+    },
+    "small_settlements": {
+      "replaced_source_contract_sha256": "8957811f70a293b2b097c4a6141d3e3f136444c6c15765d6028298142038cdda",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "skaraborg",
+        "database_schema": "skaraborg",
+        "revision_sha256": "4b7ce9d65ce1298af2438c1299f15722c57eeac367f5bbf1a9318f5fc8215f3a",
+        "source_id": "small_settlements",
+        "domain_id": "standard_analysis",
+        "resolution": 8,
+        "upstream_geojson_bytes": 2309400
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 14164,
+        "source_ids_sha256": "dd0a88f550df62739dd8e19e2037587e76ab837cf23836725ee3fd23485a72c4"
+      }
+    },
+    "holiday_home_areas": {
+      "replaced_source_contract_sha256": "45d135769d6f80773ce81c0505545aceb79f4f87dc996cb50a26bb3c55cd6044",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "skaraborg",
+        "database_schema": "skaraborg",
+        "revision_sha256": "4b7ce9d65ce1298af2438c1299f15722c57eeac367f5bbf1a9318f5fc8215f3a",
+        "source_id": "holiday_home_areas",
+        "domain_id": "standard_analysis",
+        "resolution": 8,
+        "upstream_geojson_bytes": 173629
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 14164,
+        "source_ids_sha256": "dd0a88f550df62739dd8e19e2037587e76ab837cf23836725ee3fd23485a72c4"
+      }
+    },
+    "nature_reserves": {
+      "replaced_source_contract_sha256": "46dcb7ea3d3b5158a3a352c6f4ea08ab7255873cf24e9c40f5f602e229a24d37",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "skaraborg",
+        "database_schema": "skaraborg",
+        "revision_sha256": "4b7ce9d65ce1298af2438c1299f15722c57eeac367f5bbf1a9318f5fc8215f3a",
+        "source_id": "nature_reserves",
+        "domain_id": "standard_analysis",
+        "resolution": 8,
+        "upstream_geojson_bytes": 1057759
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 14164,
+        "source_ids_sha256": "dd0a88f550df62739dd8e19e2037587e76ab837cf23836725ee3fd23485a72c4"
+      }
+    },
+    "nature_conservation_areas": {
+      "replaced_source_contract_sha256": "17430cb1c3edbe9c3e3de4be7d8694c1abb21e42c37f7d65ae1f062c39ca2b27",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "skaraborg",
+        "database_schema": "skaraborg",
+        "revision_sha256": "4b7ce9d65ce1298af2438c1299f15722c57eeac367f5bbf1a9318f5fc8215f3a",
+        "source_id": "nature_conservation_areas",
+        "domain_id": "standard_analysis",
+        "resolution": 8,
+        "upstream_geojson_bytes": 263922
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 14164,
+        "source_ids_sha256": "dd0a88f550df62739dd8e19e2037587e76ab837cf23836725ee3fd23485a72c4"
+      }
+    },
+    "cultural_environment_national_interest": {
+      "replaced_source_contract_sha256": "5ab1af7650d94c7b455dbbacc9e469aaf6add2c98ff3ffaa223cf230a527a31d",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "skaraborg",
+        "database_schema": "skaraborg",
+        "revision_sha256": "4b7ce9d65ce1298af2438c1299f15722c57eeac367f5bbf1a9318f5fc8215f3a",
+        "source_id": "cultural_environment_national_interest",
+        "domain_id": "standard_analysis",
+        "resolution": 8,
+        "upstream_geojson_bytes": 186983
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 14164,
+        "source_ids_sha256": "dd0a88f550df62739dd8e19e2037587e76ab837cf23836725ee3fd23485a72c4"
+      }
+    },
+    "high_voltage_lines": {
+      "replaced_source_contract_sha256": "f95f2414e7d8fb0171c8f8a3eb6e71a06599526e43de23cc2bd61d87bbed7101",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "skaraborg",
+        "database_schema": "skaraborg",
+        "revision_sha256": "4b7ce9d65ce1298af2438c1299f15722c57eeac367f5bbf1a9318f5fc8215f3a",
+        "source_id": "high_voltage_lines",
+        "domain_id": "standard_analysis",
+        "resolution": 8,
+        "upstream_geojson_bytes": 64032
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 14164,
+        "source_ids_sha256": "dd0a88f550df62739dd8e19e2037587e76ab837cf23836725ee3fd23485a72c4"
+      }
+    },
+    "existing_wind_turbines": {
+      "replaced_source_contract_sha256": "94b7b32e34e221f1d62e512ade10bd45afcfc7c793245086a43659b2624828d9",
+      "postgis_reference": {
+        "connection_alias": "speedlocal",
+        "region_id": "skaraborg",
+        "database_schema": "skaraborg",
+        "revision_sha256": "4b7ce9d65ce1298af2438c1299f15722c57eeac367f5bbf1a9318f5fc8215f3a",
+        "source_id": "existing_wind_turbines",
+        "domain_id": "standard_analysis",
+        "resolution": 8,
+        "upstream_geojson_bytes": 113483
+      },
+      "distance_coverage": {
+        "mode": "complete",
+        "missing_policy": "error",
+        "expected_source_row_count": 14164,
+        "source_ids_sha256": "dd0a88f550df62739dd8e19e2037587e76ab837cf23836725ee3fd23485a72c4"
+      }
+    }
+  }
+}

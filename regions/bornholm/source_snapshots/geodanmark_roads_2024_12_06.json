@@ -1,0 +1,197 @@
+{
+  "schema_version": "1.0",
+  "snapshot_id": "bornholm_geodanmark_roads_2024_12_06",
+  "region_id": "bornholm",
+  "classification": "diagnostic_candidate_only",
+  "accepted_public_reference": false,
+  "product_route_eligible": false,
+  "source_root_environment_variable": "SPEEDLOCAL_BORNHOLM_SOURCE_ROOT",
+  "source_identity": {
+    "authority": "Klimadatastyrelsen / GeoDanmark",
+    "dataset_name": "GeoDanmark Vektor 6.0, Bornholm",
+    "delivery_name": "GeoDanmark60_Bornholm-0400_25833_20241206102343",
+    "snapshot_timestamp": "2024-12-06T10:23:43.916+01:00",
+    "native_crs": "EPSG:25833",
+    "delivery_format": "GeoPackage (GPKG)",
+    "recovered_processing_format": "ESRI Shapefile",
+    "provenance_status": "source_snapshot_pinned",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/deed.da",
+    "terms_url": "https://confluence.sdfi.dk/display/DML/GeoDanmark+Vektor",
+    "license_status": "locally_documented_not_live_verified"
+  },
+  "inputs": {
+    "road_network": {
+      "base_path": "Geodatakatalog_SL01/Utkommande_SL01/UT_Bornholm_SL01/Basmap_BOR/GD-V_Vej-Road_Centre_BOL_33",
+      "shape_type": 13,
+      "shape_type_name": "PolyLineZ",
+      "native_crs": "EPSG:25833",
+      "category_field": "vejkategor",
+      "expected_record_count": 31093,
+      "record_count_semantics": "31,093 active DBF rows, 31,093 PolyLineZ SHP records and 31,093 SHX index entries; no deleted or null-shape records",
+      "expected_bbox": [
+        479875.19465454284,
+        6093542.420692839,
+        512182.15349344065,
+        6130774.044424521
+      ],
+      "expected_category_counts": {
+        "Adgangsvej": 6329,
+        "Anden vej": 3942,
+        "Cykelbane langs vej": 388,
+        "Cykelsti langs vej": 520,
+        "Fordelingsrute": 2212,
+        "Gennemfartsrute": 383,
+        "Hovedsti": 1718,
+        "Lille vej": 6705,
+        "Mellem vej": 3771,
+        "Mindre sti": 2827,
+        "Stor vej": 2298
+      },
+      "components": [
+        {
+          "extension": ".shp",
+          "bytes": 9154324,
+          "sha256": "fa98aa28b0badd7aa97e73ca43a1cf36afadf33916deaa34821b07e0c9694544"
+        },
+        {
+          "extension": ".shx",
+          "bytes": 248844,
+          "sha256": "55f1dd3b41dcf57d207b89fa72e5def7d18d355109e4d999cf384b1196b33202"
+        },
+        {
+          "extension": ".dbf",
+          "bytes": 224461521,
+          "sha256": "7f0c3dbb1ea64675287205dbbab7f49ab6036d20d80c776c5aa752f899d9f0bf"
+        },
+        {
+          "extension": ".prj",
+          "bytes": 404,
+          "sha256": "e65678526a7a86d34803b06c1b2412a74ea6df15b446507b8d2c89548af78c9d"
+        },
+        {
+          "extension": ".cpg",
+          "bytes": 5,
+          "sha256": "3ad3031f5503a4404af825262ee8232cc04d4ea6683d42c5dd0a2f2a27ac9824"
+        }
+      ]
+    },
+    "processed_v1_reference": {
+      "base_path": "Geodatakatalog_SL01/Utkommande_SL01/UT_Bornholm_SL01/Basmap_BOR/GD-V_Vej-Road_Merged_BOL_33",
+      "shape_type": 13,
+      "shape_type_name": "PolyLineZ",
+      "native_crs": "EPSG:25833",
+      "category_field": "vejkategor",
+      "expected_record_count": 2,
+      "equivalence_semantics": "topological_line_equality_with_zero_bidirectional_difference_and_zero_hausdorff_distance",
+      "components": [
+        {
+          "extension": ".shp",
+          "bytes": 1559220,
+          "sha256": "dbd787fcd646ea13732bb2bbb5d6c0624b16a87927104855b96deb4448e07236"
+        },
+        {
+          "extension": ".shx",
+          "bytes": 116,
+          "sha256": "1d16c2d6a530faa679614e360d03a6822a16cf96d075267ab89d68eaa0a1b6e1"
+        },
+        {
+          "extension": ".dbf",
+          "bytes": 15592,
+          "sha256": "6d80604ffab75985926bc3226ced79475570b131ef5b0f60472adaaeaedf6bfc"
+        },
+        {
+          "extension": ".prj",
+          "bytes": 404,
+          "sha256": "e65678526a7a86d34803b06c1b2412a74ea6df15b446507b8d2c89548af78c9d"
+        },
+        {
+          "extension": ".cpg",
+          "bytes": 5,
+          "sha256": "3ad3031f5503a4404af825262ee8232cc04d4ea6683d42c5dd0a2f2a27ac9824"
+        }
+      ]
+    },
+    "provenance_document": {
+      "path": "Geodatakatalog_SL01/Inkommande_SL01/Beskrivning_SL01/Beskrivning_SL01_Bornholm/Beskrivning-Data_SL01_BOR.docx",
+      "bytes": 218222,
+      "sha256": "fa8ca51ed06b2cf0fd3480614487ef4599235d8fda4d823763a5e29243fbfa0b",
+      "format": "docx",
+      "dataset_entry": "GeoDanmark60_GPKG_HF_Bornholm-0400_25833",
+      "access_date": "2024-12-06",
+      "source_date": "2024-05-23",
+      "native_crs": "EPSG:25833",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/deed.da",
+      "terms_url": "https://confluence.sdfi.dk/display/DML/GeoDanmark+Vektor",
+      "verification_status": "locally_documented_not_live_verified",
+      "handling": "Checksum-validate read only; do not copy the DOCX into Git or generated runtime."
+    },
+    "delivery_metadata": {
+      "path": "Geodatakatalog_SL01/Inkommande_SL01/IN_Bornholm_SL01/DATAKÄLLA_INNEHÅLL_BOL_SL01/Klimadatastyrelsen/GeoDanmark Vektor/GeoDanmark60_GPKG_HF_Bornholm-0400_25833/GeoDanmark60_Bornholm-0400_25833_20241206102343_Metadata.json",
+      "bytes": 1188,
+      "sha256": "b5df199a2b2e04d7b54a055e28b7e9dde8a606dc2d2f68383b583af938d64a2e",
+      "required_public_fields": {
+        "leveranceNavn": "GeoDanmark60_Bornholm-0400_25833_20241206102343",
+        "miljoe": "PROD01",
+        "fortroligData": "Nej",
+        "dataOmfattetAfPersondataloven": "Nej"
+      },
+      "sanitization": "Only the listed non-sensitive fields may be copied into generated metadata. Subscription and service-user fields remain source-local."
+    }
+  },
+  "layers": {
+    "roads_medium": {
+      "label": "Mellanvägar",
+      "source_categories": [
+        "Mellem vej"
+      ],
+      "processed_reference_category": "Mellem vej",
+      "expected_source_feature_count": 3771,
+      "geometry_family": "line",
+      "derivation": "exact_attribute_membership_then_native_crs_union"
+    },
+    "roads_large": {
+      "label": "Stora vägar",
+      "source_categories": [
+        "Stor vej",
+        "Fordelingsrute",
+        "Gennemfartsrute"
+      ],
+      "processed_reference_category": "Stor vej",
+      "expected_source_feature_count": 4893,
+      "geometry_family": "line",
+      "derivation": "exact_attribute_membership_then_native_crs_union"
+    }
+  },
+  "analysis_domain": {
+    "domain_id": "standard_constraints_r9",
+    "cell_kind": "h3",
+    "resolution": 9,
+    "expected_cell_count": 6882,
+    "cell_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653",
+    "coverage_rule": "positive_area_intersection",
+    "required_feature_properties": {
+      "domain_id": "standard_constraints_r9",
+      "source_h3_resolution": 9,
+      "target_h3_resolution": 9,
+      "coverage_rule": "positive_area_intersection",
+      "geometry_status": "analysis_domain_intersection"
+    }
+  },
+  "output": {
+    "relative_directory": "data/generated/source_snapshots/bornholm_geodanmark_roads_2024_12_06",
+    "metadata_name": "road_source_snapshot_metadata.json",
+    "artifact_status": "checksum_pinned",
+    "metadata_sha256": "0c11f54abac2127211021d521c7cf252577575f56527498039f1d838f4f61fe2",
+    "distance_semantics": "analysis_cell_representative_point_to_source",
+    "intersection_semantics": "analysis_cell_geometry_intersects_source"
+  },
+  "acceptance_blockers": [
+    "CC BY 4.0 and the GeoDanmark terms URL are pinned from the recovered local source-description document but have not been live-verified against the authority.",
+    "Bornholm has no accepted V2 behavioral parity baseline.",
+    "The V1 processed roads_large classification is reproducible as Stor vej plus Fordelingsrute plus Gennemfartsrute, but that policy has not yet received regional acceptance.",
+    "Ordinary road-layer defaults and distance defaults have not been accepted for Bornholm.",
+    "This snapshot must not activate a public region or product route."
+  ]
+}

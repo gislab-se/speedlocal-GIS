@@ -1,0 +1,207 @@
+{
+  "schema_version": "1.0",
+  "region_id": "trondelag",
+  "landscape_id": "trondelag_lablab_landscape_r7_app_extent",
+  "label": "Trøndelag LABLAB landskapstyper",
+  "status": "hand_maintained_compatibility",
+  "purpose": "display_review_only",
+  "numerical_use": "forbidden",
+  "source_reference": {
+    "kind": "independent_asset",
+    "context_id": "trondelag_lablab_landscape_r7_app_extent",
+    "relationship": "display_projection_only"
+  },
+  "source": {
+    "provider": "v2_archive",
+    "path": "docs/geocontext/potential_framework/data/trondelag_lablab_landscape_h3_r7/trondelag_lablab_landskapsanalys_h3_r7_app_extent.geojson",
+    "format": "geojson",
+    "sha256": "f5d9e03763ba2ecae5ded8bdd40673e5160a32a3f9eb8dfe5140918d2cb009eb",
+    "id_field": "hex_id",
+    "cell_kind": "h3",
+    "resolution": 7
+  },
+  "domain": {
+    "role": "standard_analysis_domain",
+    "domain_id": "standard_constraints",
+    "provider": "v2_archive",
+    "path": "docs/geocontext/potential_framework/data/trondelag_r7_app_bundle/hex.geojson",
+    "format": "geojson",
+    "sha256": "0bd493f93f55fe47e4deabe683eccdaa798969913fcdc9e12ee1523ae87d7f90",
+    "id_field": "hex_id",
+    "area_field": "display_area_m2",
+    "area_unit": "m2",
+    "cell_kind": "h3",
+    "resolution": 7,
+    "expected_cell_count": 13735,
+    "cell_ids_sha256": "fdea5973b898319643b7c94ad43b3480c98e639a8f378cbc23e8bc56751fcbba"
+  },
+  "views": [
+    {
+      "view_id": "lablab_landscape_types",
+      "label": "Landskapstyper",
+      "value_field": "landscape_type_id",
+      "value_semantics": "categorical_id",
+      "legend": [
+        {
+          "value_id": "LT01",
+          "label": "Ytterkustlandskap",
+          "color": "#4e79a7"
+        },
+        {
+          "value_id": "LT02",
+          "label": "Fjordlandskap",
+          "color": "#59a14f"
+        },
+        {
+          "value_id": "LT03",
+          "label": "Fjordnära jordbrukslandskap",
+          "color": "#f28e2b"
+        },
+        {
+          "value_id": "LT04",
+          "label": "Fjällnära skogslandskap",
+          "color": "#76b7b2"
+        },
+        {
+          "value_id": "LT05",
+          "label": "Dalgångslandskap",
+          "color": "#9c755f"
+        },
+        {
+          "value_id": "LT06",
+          "label": "Lågfjällslandskap",
+          "color": "#b07aa1"
+        },
+        {
+          "value_id": "LT07",
+          "label": "Högfjällslandskap",
+          "color": "#edc948"
+        },
+        {
+          "value_id": "LT08",
+          "label": "Sjö- och våtmarkslandskap",
+          "color": "#8cd17d"
+        },
+        {
+          "value_id": "LT09",
+          "label": "Vidsträckt fjällandskap",
+          "color": "#e15759"
+        }
+      ]
+    }
+  ],
+  "default_view_id": "lablab_landscape_types",
+  "product_default_visible": true,
+  "rollup_resolutions": [
+    6,
+    5
+  ],
+  "rollup_rule": "dominant_child_count_then_legend_order",
+  "missing_policy": "explicit_not_assessed",
+  "outside_domain_policy": "ignore_with_evidence",
+  "missing_label": "Ej bedömd",
+  "provenance": {
+    "authority": "LABLAB",
+    "dataset_name": "LABLAB:s Landskapsanalys",
+    "dataset_version": "reviewed_app_extent_2026-06-23",
+    "snapshot_date": "2026-06-23",
+    "license": "Inte dokumenterad i den frysta V2-evidensen",
+    "provenance_status": "reviewed_pdf_derived_app_extent",
+    "derivation": "PDF-derived LABLAB R7, clipped to the QGIS-reviewed V2 app extent"
+  },
+  "trust": {
+    "classification": "regionally_accepted",
+    "regional_acceptance": true,
+    "allowed_use": "display_review_only",
+    "decision_support": false
+  },
+  "review_evidence": {
+    "status": "accepted_display_behavior",
+    "method": "qgis_visual_review",
+    "review_date": "2026-06-23",
+    "source_manifest": {
+      "provider": "v2_archive",
+      "path": "apps/potential_model/manifests/landscape/trondelag_lablab_landscape_r7.json",
+      "sha256": "e29f6651fb60dd3f60d06e19a8f8909a0874133c94eca09e3bbdbea855aad2be"
+    },
+    "handoff": {
+      "provider": "v2_archive",
+      "path": "docs/LANDSCAPE_QGIS_REVIEW_AND_BASELAYER_AUDIT_2026-06-23.md",
+      "sha256": "ea77182f85f85a6ec47ebdc19fe92d2504c6f12bf8eb6705d91ba6befa30340e"
+    },
+    "accepted_scope": "current_app_extent_r7",
+    "accepted_cell_count": 13735,
+    "full_reference_cell_count": 18530,
+    "excluded_reference_cell_count": 4795,
+    "views": [
+      {
+        "view_id": "lablab_landscape_types",
+        "value_counts": {
+          "LT01": 1255,
+          "LT02": 1648,
+          "LT03": 1015,
+          "LT04": 1254,
+          "LT05": 1076,
+          "LT06": 4661,
+          "LT07": 1892,
+          "LT08": 575,
+          "LT09": 359
+        }
+      }
+    ],
+    "boundary_gap_behavior_accepted": true,
+    "decision": "Keep the reviewed offshore-trimmed app extent; exclude the 4,795 outside-extent reference cells."
+  },
+  "generated_evidence": {
+    "source_bytes": 10249198,
+    "field_names": [
+      "assignment_method",
+      "class_k8",
+      "class_km",
+      "hex_id",
+      "landscape_type",
+      "landscape_type_id",
+      "landscape_type_name_sv",
+      "review_scope",
+      "source_model",
+      "v10_type_id",
+      "v10_type_name"
+    ],
+    "field_names_sha256": "33338f078c0e5d8c75aa6be4e80de907c5df1e8b688d3e2cc74a803de7c7c3f9",
+    "feature_count": 13735,
+    "source_cell_count": 13735,
+    "source_cell_ids_sha256": "fdea5973b898319643b7c94ad43b3480c98e639a8f378cbc23e8bc56751fcbba",
+    "view_ids_sha256": "c8744f11da2bc07d929c8577ded6fb392397749c16bfa090f16d64ee76406386",
+    "views": [
+      {
+        "view_id": "lablab_landscape_types",
+        "observed_cell_count": 13735,
+        "not_assessed_cell_count": 0,
+        "observed_cell_ids_sha256": "fdea5973b898319643b7c94ad43b3480c98e639a8f378cbc23e8bc56751fcbba",
+        "observed_value_ids": [
+          "LT01",
+          "LT02",
+          "LT03",
+          "LT04",
+          "LT05",
+          "LT06",
+          "LT07",
+          "LT08",
+          "LT09"
+        ],
+        "observed_value_ids_sha256": "8990253871686a5b79346c09bfb963a77d06886ed387c74d3d760728ac1804ae"
+      }
+    ],
+    "coverage": {
+      "domain_cell_count": 13735,
+      "domain_cell_ids_sha256": "fdea5973b898319643b7c94ad43b3480c98e639a8f378cbc23e8bc56751fcbba",
+      "covered_domain_cell_count": 13735,
+      "uncovered_domain_cell_count": 0,
+      "outside_domain_source_cell_count": 0,
+      "covered_domain_cell_ids_sha256": "fdea5973b898319643b7c94ad43b3480c98e639a8f378cbc23e8bc56751fcbba",
+      "uncovered_domain_cell_ids_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "outside_domain_source_cell_ids_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "coverage_fraction": 1.0
+    }
+  }
+}

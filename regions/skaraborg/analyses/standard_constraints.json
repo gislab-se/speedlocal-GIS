@@ -1,0 +1,667 @@
+{
+  "schema_version": "1.0",
+  "region_id": "skaraborg",
+  "groups": [
+    "roads",
+    "population",
+    "nature",
+    "culture",
+    "grid_infrastructure"
+  ],
+  "ui": {
+    "groups": [
+      {
+        "id": "roads",
+        "label": "Vägar",
+        "analysis_label": "Minsta avstånd",
+        "interpretation": "För nära är dåligt. Valda väglager kombineras till en gemensam avståndsrestriktion.",
+        "expanded_by_default": true,
+        "blend_default": 50,
+        "group_color": "#b18421",
+        "source_map_default_visible": false
+      },
+      {
+        "id": "population",
+        "label": "Befolkning och bebyggelse",
+        "analysis_label": "Minsta avstånd",
+        "interpretation": "För nära är dåligt. Valda grid-, polygon- och punktkällor kombineras till en gemensam avståndsrestriktion.",
+        "expanded_by_default": true,
+        "blend_default": 50,
+        "group_color": "#b7532d"
+      },
+      {
+        "id": "nature",
+        "label": "Skyddad natur",
+        "analysis_label": "Valfri buffert",
+        "interpretation": "Skyddad natur är en binär restriktion. En hexagon utesluts när vald naturkälla skär den eller ligger inom den valda bufferten.",
+        "expanded_by_default": false,
+        "blend_default": 60,
+        "group_color": "#407749"
+      },
+      {
+        "id": "culture",
+        "label": "Värdefulla kulturmiljöer",
+        "analysis_label": "Valfri buffert",
+        "interpretation": "Kulturmiljöer är en binär restriktion. En hexagon utesluts när någon vald kulturkälla skär den eller ligger inom den valda bufferten.",
+        "expanded_by_default": false,
+        "blend_default": 60,
+        "group_color": "#844e94"
+      },
+      {
+        "id": "grid_infrastructure",
+        "label": "Elinfrastruktur / nätanslutning",
+        "analysis_label": "Största anslutningsavstånd",
+        "interpretation": "För långt bort är dåligt. Valda lednings-, kabel- och punktkällor kombineras till en gemensam närhetsbaserad genomförbarhet.",
+        "expanded_by_default": true,
+        "blend_default": 50,
+        "group_color": "#227371"
+      }
+    ]
+  },
+  "default_request": {
+    "selected_layer_ids": []
+  },
+  "layers": [
+    {
+      "id": "roads_large",
+      "label": "Nationellt och regionalt huvudnät",
+      "group_id": "roads",
+      "source": {
+        "provider": "generated_runtime",
+        "asset_manifest": "data/generated/region_package/skaraborg/source_assets.csv",
+        "layer_id": "roads_large",
+        "expected_geometry_families": [
+          "line"
+        ],
+        "data_representation": "network",
+        "distance_provider": "generated_runtime",
+        "distance_path": "data/generated/region_package/skaraborg/observations/roads_large.csv",
+        "distance_h3_resolution": 8,
+        "distance_coverage": {
+          "mode": "complete",
+          "missing_policy": "error",
+          "expected_source_row_count": 14164,
+          "source_ids_sha256": "dd0a88f550df62739dd8e19e2037587e76ab837cf23836725ee3fd23485a72c4"
+        }
+      },
+      "operation": "distance_exclusion",
+      "parameters": {
+        "buffer_m": {
+          "type": "number",
+          "unit": "m",
+          "default": 100,
+          "minimum": 100,
+          "maximum": 2000,
+          "step": 25
+        }
+      },
+      "ui": {
+        "note": "Owner-approved NVDB functional road classes 0-3; 100 m is a technical review value, not a regional recommendation. Tekniskt startvärde: 100 m; detta är inte en regional rekommendation. Ingen accepterad regional rekommendation: Skaraborg has not adopted a regional recommended road distance; 100 m is only an owner-approved technical review start value.",
+        "source_color": "#b18421",
+        "point_radius": 40
+      }
+    },
+    {
+      "id": "roads_medium",
+      "label": "Övrigt huvud- och uppsamlingsnät",
+      "group_id": "roads",
+      "source": {
+        "provider": "generated_runtime",
+        "asset_manifest": "data/generated/region_package/skaraborg/source_assets.csv",
+        "layer_id": "roads_medium",
+        "expected_geometry_families": [
+          "line"
+        ],
+        "data_representation": "network",
+        "distance_provider": "generated_runtime",
+        "distance_path": "data/generated/region_package/skaraborg/observations/roads_medium.csv",
+        "distance_h3_resolution": 8,
+        "distance_coverage": {
+          "mode": "complete",
+          "missing_policy": "error",
+          "expected_source_row_count": 14164,
+          "source_ids_sha256": "dd0a88f550df62739dd8e19e2037587e76ab837cf23836725ee3fd23485a72c4"
+        }
+      },
+      "operation": "distance_exclusion",
+      "parameters": {
+        "buffer_m": {
+          "type": "number",
+          "unit": "m",
+          "default": 100,
+          "minimum": 100,
+          "maximum": 2000,
+          "step": 25
+        }
+      },
+      "ui": {
+        "note": "Owner-approved NVDB functional road classes 4-6; 100 m is a technical review value, not a regional recommendation. Tekniskt startvärde: 100 m; detta är inte en regional rekommendation. Ingen accepterad regional rekommendation: Skaraborg has not adopted a regional recommended road distance; 100 m is only an owner-approved technical review start value.",
+        "source_color": "#fd2116",
+        "point_radius": 40
+      }
+    },
+    {
+      "id": "urban_areas",
+      "label": "Tätort",
+      "group_id": "population",
+      "source": {
+        "provider": "generated_runtime",
+        "asset_manifest": "data/generated/delivery_groups/selected30_2026_09_07_1/skaraborg/source_assets.csv",
+        "layer_id": "urban_areas",
+        "expected_geometry_families": [
+          "polygon"
+        ],
+        "data_representation": "features",
+        "distance_provider": "generated_runtime",
+        "distance_path": "data/generated/delivery_groups/selected30_2026_09_07_1/skaraborg/standard/population/urban_areas.csv",
+        "distance_h3_resolution": 8,
+        "distance_coverage": {
+          "mode": "complete",
+          "missing_policy": "error",
+          "expected_source_row_count": 14164,
+          "source_ids_sha256": "dd0a88f550df62739dd8e19e2037587e76ab837cf23836725ee3fd23485a72c4"
+        }
+      },
+      "operation": "distance_exclusion",
+      "parameters": {
+        "buffer_m": {
+          "type": "number",
+          "unit": "m",
+          "default": 100,
+          "minimum": 100,
+          "maximum": 3000,
+          "step": 50
+        }
+      },
+      "ui": {
+        "note": "Statistiska centralbyrån (SCB): Tätorter 2023. Tekniskt startvärde: 100 m; detta är inte en regional rekommendation.",
+        "source_color": "#b7532d",
+        "point_radius": 40
+      }
+    },
+    {
+      "id": "small_settlements",
+      "label": "Småort",
+      "group_id": "population",
+      "source": {
+        "provider": "generated_runtime",
+        "asset_manifest": "data/generated/delivery_groups/selected30_2026_09_07_1/skaraborg/source_assets.csv",
+        "layer_id": "small_settlements",
+        "expected_geometry_families": [
+          "polygon"
+        ],
+        "data_representation": "features",
+        "distance_provider": "generated_runtime",
+        "distance_path": "data/generated/delivery_groups/selected30_2026_09_07_1/skaraborg/standard/population/small_settlements.csv",
+        "distance_h3_resolution": 8,
+        "distance_coverage": {
+          "mode": "complete",
+          "missing_policy": "error",
+          "expected_source_row_count": 14164,
+          "source_ids_sha256": "dd0a88f550df62739dd8e19e2037587e76ab837cf23836725ee3fd23485a72c4"
+        }
+      },
+      "operation": "distance_exclusion",
+      "parameters": {
+        "buffer_m": {
+          "type": "number",
+          "unit": "m",
+          "default": 100,
+          "minimum": 100,
+          "maximum": 3000,
+          "step": 50
+        }
+      },
+      "ui": {
+        "note": "Statistiska centralbyrån (SCB): Småorter 2023. Tekniskt startvärde: 100 m; detta är inte en regional rekommendation.",
+        "source_color": "#b7532d",
+        "point_radius": 40
+      }
+    },
+    {
+      "id": "holiday_home_areas",
+      "label": "Fritidshusområde",
+      "group_id": "population",
+      "source": {
+        "provider": "generated_runtime",
+        "asset_manifest": "data/generated/delivery_groups/selected30_2026_09_07_1/skaraborg/source_assets.csv",
+        "layer_id": "holiday_home_areas",
+        "expected_geometry_families": [
+          "polygon"
+        ],
+        "data_representation": "features",
+        "distance_provider": "generated_runtime",
+        "distance_path": "data/generated/delivery_groups/selected30_2026_09_07_1/skaraborg/standard/population/holiday_home_areas.csv",
+        "distance_h3_resolution": 8,
+        "distance_coverage": {
+          "mode": "complete",
+          "missing_policy": "error",
+          "expected_source_row_count": 14164,
+          "source_ids_sha256": "dd0a88f550df62739dd8e19e2037587e76ab837cf23836725ee3fd23485a72c4"
+        }
+      },
+      "operation": "distance_exclusion",
+      "parameters": {
+        "buffer_m": {
+          "type": "number",
+          "unit": "m",
+          "default": 100,
+          "minimum": 100,
+          "maximum": 3000,
+          "step": 50
+        }
+      },
+      "ui": {
+        "note": "Statistiska centralbyrån (SCB): Statistiska fritidshusområden 2020. Tekniskt startvärde: 100 m; detta är inte en regional rekommendation.",
+        "source_color": "#b7532d",
+        "point_radius": 40
+      }
+    },
+    {
+      "id": "nature_reserves",
+      "label": "Naturreservat",
+      "group_id": "nature",
+      "source": {
+        "provider": "generated_runtime",
+        "asset_manifest": "data/generated/delivery_groups/selected30_2026_09_07_1/skaraborg/source_assets.csv",
+        "layer_id": "nature_reserves",
+        "expected_geometry_families": [
+          "polygon"
+        ],
+        "data_representation": "features",
+        "distance_provider": "generated_runtime",
+        "distance_path": "data/generated/delivery_groups/selected30_2026_09_07_1/skaraborg/standard/nature/nature_reserves.csv",
+        "distance_h3_resolution": 8,
+        "distance_coverage": {
+          "mode": "complete",
+          "missing_policy": "error",
+          "expected_source_row_count": 14164,
+          "source_ids_sha256": "dd0a88f550df62739dd8e19e2037587e76ab837cf23836725ee3fd23485a72c4"
+        }
+      },
+      "operation": "hard_exclusion",
+      "parameters": {
+        "buffer_m": {
+          "type": "number",
+          "unit": "m",
+          "default": 0,
+          "minimum": 0,
+          "maximum": 2000,
+          "step": 50
+        }
+      },
+      "ui": {
+        "note": "Naturvårdsverket: Naturvårdsregistret / Naturreservat. Tekniskt startvärde: 0 m; detta är inte en regional rekommendation.",
+        "source_color": "#407749",
+        "point_radius": 40
+      }
+    },
+    {
+      "id": "nature_conservation_areas",
+      "label": "Naturvårdsområden",
+      "group_id": "nature",
+      "source": {
+        "provider": "generated_runtime",
+        "asset_manifest": "data/generated/delivery_groups/selected30_2026_09_07_1/skaraborg/source_assets.csv",
+        "layer_id": "nature_conservation_areas",
+        "expected_geometry_families": [
+          "polygon"
+        ],
+        "data_representation": "features",
+        "distance_provider": "generated_runtime",
+        "distance_path": "data/generated/delivery_groups/selected30_2026_09_07_1/skaraborg/standard/nature/nature_conservation_areas.csv",
+        "distance_h3_resolution": 8,
+        "distance_coverage": {
+          "mode": "complete",
+          "missing_policy": "error",
+          "expected_source_row_count": 14164,
+          "source_ids_sha256": "dd0a88f550df62739dd8e19e2037587e76ab837cf23836725ee3fd23485a72c4"
+        }
+      },
+      "operation": "hard_exclusion",
+      "parameters": {
+        "buffer_m": {
+          "type": "number",
+          "unit": "m",
+          "default": 0,
+          "minimum": 0,
+          "maximum": 2000,
+          "step": 50
+        }
+      },
+      "ui": {
+        "note": "Naturvårdsverket: Naturvårdsregistret / Naturvårdsområden. Tekniskt startvärde: 0 m; detta är inte en regional rekommendation.",
+        "source_color": "#407749",
+        "point_radius": 40
+      }
+    },
+    {
+      "id": "cultural_environment_national_interest",
+      "label": "Riksintresse för kulturmiljövård",
+      "group_id": "culture",
+      "source": {
+        "provider": "generated_runtime",
+        "asset_manifest": "data/generated/delivery_groups/selected30_2026_09_07_1/skaraborg/source_assets.csv",
+        "layer_id": "cultural_environment_national_interest",
+        "expected_geometry_families": [
+          "polygon"
+        ],
+        "data_representation": "features",
+        "distance_provider": "generated_runtime",
+        "distance_path": "data/generated/delivery_groups/selected30_2026_09_07_1/skaraborg/standard/culture/cultural_environment_national_interest.csv",
+        "distance_h3_resolution": 8,
+        "distance_coverage": {
+          "mode": "complete",
+          "missing_policy": "error",
+          "expected_source_row_count": 14164,
+          "source_ids_sha256": "dd0a88f550df62739dd8e19e2037587e76ab837cf23836725ee3fd23485a72c4"
+        }
+      },
+      "operation": "hard_exclusion",
+      "parameters": {
+        "buffer_m": {
+          "type": "number",
+          "unit": "m",
+          "default": 0,
+          "minimum": 0,
+          "maximum": 1500,
+          "step": 50
+        }
+      },
+      "ui": {
+        "note": "Riksantikvarieämbetet: Riksintresse kulturmiljövård, miljöbalken 3 kap. 6 §. Tekniskt startvärde: 0 m; detta är inte en regional rekommendation.",
+        "source_color": "#844e94",
+        "point_radius": 40
+      }
+    },
+    {
+      "id": "high_voltage_lines",
+      "label": "Högspänningsledningar",
+      "group_id": "grid_infrastructure",
+      "source": {
+        "provider": "generated_runtime",
+        "asset_manifest": "data/generated/delivery_groups/selected30_2026_09_07_1/skaraborg/source_assets.csv",
+        "layer_id": "high_voltage_lines",
+        "expected_geometry_families": [
+          "line"
+        ],
+        "data_representation": "network",
+        "distance_provider": "generated_runtime",
+        "distance_path": "data/generated/delivery_groups/selected30_2026_09_07_1/skaraborg/standard/grid_infrastructure/high_voltage_lines.csv",
+        "distance_h3_resolution": 8,
+        "distance_coverage": {
+          "mode": "complete",
+          "missing_policy": "error",
+          "expected_source_row_count": 14164,
+          "source_ids_sha256": "dd0a88f550df62739dd8e19e2037587e76ab837cf23836725ee3fd23485a72c4"
+        }
+      },
+      "operation": "proximity_feasibility",
+      "parameters": {
+        "buffer_m": {
+          "type": "number",
+          "unit": "m",
+          "default": 2000,
+          "minimum": 500,
+          "maximum": 15000,
+          "step": 250
+        }
+      },
+      "ui": {
+        "note": "Lantmäteriet: Topografi 250 Nedladdning, vektor / ledningslinje. Tekniskt startvärde: 2000 m; detta är inte en regional rekommendation.",
+        "source_color": "#227371",
+        "point_radius": 40
+      }
+    },
+    {
+      "id": "existing_wind_turbines",
+      "label": "Befintliga vindkraftverk",
+      "group_id": "grid_infrastructure",
+      "source": {
+        "provider": "generated_runtime",
+        "asset_manifest": "data/generated/delivery_groups/selected30_2026_09_07_1/skaraborg/source_assets.csv",
+        "layer_id": "existing_wind_turbines",
+        "expected_geometry_families": [
+          "point"
+        ],
+        "data_representation": "features",
+        "distance_provider": "generated_runtime",
+        "distance_path": "data/generated/delivery_groups/selected30_2026_09_07_1/skaraborg/standard/grid_infrastructure/existing_wind_turbines.csv",
+        "distance_h3_resolution": 8,
+        "distance_coverage": {
+          "mode": "complete",
+          "missing_policy": "error",
+          "expected_source_row_count": 14164,
+          "source_ids_sha256": "dd0a88f550df62739dd8e19e2037587e76ab837cf23836725ee3fd23485a72c4"
+        }
+      },
+      "operation": "proximity_feasibility",
+      "parameters": {
+        "buffer_m": {
+          "type": "number",
+          "unit": "m",
+          "default": 2000,
+          "minimum": 500,
+          "maximum": 15000,
+          "step": 250
+        }
+      },
+      "ui": {
+        "note": "Länsstyrelserna / Vindbrukskollen: Vindbrukskollen – vindkraftverk. Tekniskt startvärde: 2000 m; detta är inte en regional rekommendation.",
+        "source_color": "#227371",
+        "point_radius": 4
+      }
+    }
+  ],
+  "eligible_surfaces": {
+    "onshore_land": {
+      "label": "Skaraborg analyserbar landyta",
+      "support_domain_id": "onshore_technology_r8",
+      "technologies": [
+        "wind",
+        "solar"
+      ],
+      "surface_scope": "onshore_land",
+      "water_policy": "exclude_all_water",
+      "outside_region_policy": "exclude",
+      "geometry_operation": "intersection",
+      "source": {
+        "provider": "generated_runtime",
+        "path": "data/generated/source_snapshots/skaraborg_lm_topografi_250_2026_04_14/analysis_surface.geojson",
+        "sha256": "b0d90d9ee1223283c7df1a07ea75fac4967ab9f7eefdfb29f047fe494c717532",
+        "geometry_family": "polygon",
+        "coverage_geometry_id": "onshore_technology_extent",
+        "derivation": "reviewed_web_crs_derivative"
+      },
+      "provider": "generated_runtime",
+      "path": "data/generated/eligible_surface/skaraborg_onshore_land_r8.geojson",
+      "sha256": "75c42873f76d1ec595e8529c1ed97bb28a9a931ffd50d7ba5a7c446e5923d42b",
+      "id_field": "hex_id",
+      "area_field": "area_km2",
+      "area_unit": "km2",
+      "cell_kind": "h3",
+      "resolution": 8,
+      "expected_cell_count": 14164,
+      "expected_total_area_km2": 7389.258669207419,
+      "technology_context": {
+        "id": "eligible_cell_area_r8",
+        "provider": "generated_runtime",
+        "path": "data/generated/analysis_domain/skaraborg_standard_r8.geojson",
+        "sha256": "965bffcf55d4dcaa95fcc8688393e169071e9df1679fbb0052b9596ccbe07d0b",
+        "id_field": "hex_id",
+        "cell_kind": "h3",
+        "resolution": 8,
+        "expected_cell_count": 14164,
+        "cell_ids_sha256": "dd0a88f550df62739dd8e19e2037587e76ab837cf23836725ee3fd23485a72c4",
+        "context_fields": [
+          "area_km2"
+        ],
+        "missing_policy": "explicit_not_assessed"
+      },
+      "support_observations": {
+        "provider": "generated_runtime",
+        "path": "data/generated/delivery_groups/selected30_2026_09_07_1/skaraborg/support/support_domain_observations.json",
+        "sha256": "a72a0a1462b0724c34040fbe3d223bb65206325f75127777dbcd68b4f75759d4",
+        "resolution": 8,
+        "expected_cell_count": 14164,
+        "cell_ids_sha256": "dd0a88f550df62739dd8e19e2037587e76ab837cf23836725ee3fd23485a72c4",
+        "missing_policy": "error",
+        "layers": [
+          {
+            "layer_id": "roads_large",
+            "provider": "generated_runtime",
+            "path": "data/generated/delivery_groups/selected30_2026_09_07_1/skaraborg/support/roads_large.csv",
+            "sha256": "0c1b0c0c84be21dc679d512a8a6102f98c9012672895a2dd33507d92a1cfd926",
+            "rows_sha256": "2e3abc3392be2b6bdeb00885e3766a48e35cb92d6c5803560dd3f49b60129edc"
+          },
+          {
+            "layer_id": "roads_medium",
+            "provider": "generated_runtime",
+            "path": "data/generated/delivery_groups/selected30_2026_09_07_1/skaraborg/support/roads_medium.csv",
+            "sha256": "e6f5733ce968ba5883b6c92995b449dbcbf5e6f562c9162e92aad5dfdbb31a09",
+            "rows_sha256": "a98d33f05250f380d656819ac60d2dd7edb15c8a9053e9b7c70438b6fbcec437"
+          },
+          {
+            "layer_id": "holiday_home_areas",
+            "provider": "generated_runtime",
+            "path": "data/generated/delivery_groups/selected30_2026_09_07_1/skaraborg/support/holiday_home_areas.csv",
+            "sha256": "07c3ce16c82a057018f8fcdf9daf3e8c9564a5d14332d8faafcf83c24b186dd6",
+            "rows_sha256": "bd1d86b237a0c073459568439ed4cb767c0fcef0a8309777c683704241b8ee79"
+          },
+          {
+            "layer_id": "small_settlements",
+            "provider": "generated_runtime",
+            "path": "data/generated/delivery_groups/selected30_2026_09_07_1/skaraborg/support/small_settlements.csv",
+            "sha256": "1ae0270bda9956540f837d55ec2c603c1ef2604422a2b9dc5f641f008005ca71",
+            "rows_sha256": "781eb1b04c5e23423c8f7716c2c16e33f7b90247bda394833133ed2fd5854594"
+          },
+          {
+            "layer_id": "urban_areas",
+            "provider": "generated_runtime",
+            "path": "data/generated/delivery_groups/selected30_2026_09_07_1/skaraborg/support/urban_areas.csv",
+            "sha256": "bea70378553d3395ed1ff395aee73901216dc46670f04c465c957207bef3ae4f",
+            "rows_sha256": "7bb58facf6751c03f24af20b0d38beb4ea7eb860ad8b2baec6dc33e683fe0040"
+          },
+          {
+            "layer_id": "nature_conservation_areas",
+            "provider": "generated_runtime",
+            "path": "data/generated/delivery_groups/selected30_2026_09_07_1/skaraborg/support/nature_conservation_areas.csv",
+            "sha256": "862c148f715eba5c14463eb81a0a46c419c7d72bcf3997ae4c6ed01955d54233",
+            "rows_sha256": "85647bb3ef7ad1bcf57902a9955850073288c4067925ac6863ebbf0922782470"
+          },
+          {
+            "layer_id": "nature_reserves",
+            "provider": "generated_runtime",
+            "path": "data/generated/delivery_groups/selected30_2026_09_07_1/skaraborg/support/nature_reserves.csv",
+            "sha256": "09eaefa979822136f0db0351cc516ebb5c844726c60785c109a97b41017ab6f7",
+            "rows_sha256": "f7fe1b1d29a0ba13f86f3cfd3e9a697be4869ee0873d8dd7e8d81a44a9f3e179"
+          },
+          {
+            "layer_id": "cultural_environment_national_interest",
+            "provider": "generated_runtime",
+            "path": "data/generated/delivery_groups/selected30_2026_09_07_1/skaraborg/support/cultural_environment_national_interest.csv",
+            "sha256": "cbf27adf5b7417c7af0dbce682084cfb95ed00b74c80dddd48f244a14e2211ad",
+            "rows_sha256": "8b2cb6a211bed4ecf37053b4ac1217a5504927d6b96a23755498e236c9543441"
+          },
+          {
+            "layer_id": "existing_wind_turbines",
+            "provider": "generated_runtime",
+            "path": "data/generated/delivery_groups/selected30_2026_09_07_1/skaraborg/support/existing_wind_turbines.csv",
+            "sha256": "4073921389f819ce17280269c4500255aac011ced4a5ac15d5f9e019e8eb84a5",
+            "rows_sha256": "68f17f2638d8ac1c8e5fa19acc5d47b0f30c8029521bcce6ef4dd0c9f3365298"
+          },
+          {
+            "layer_id": "high_voltage_lines",
+            "provider": "generated_runtime",
+            "path": "data/generated/delivery_groups/selected30_2026_09_07_1/skaraborg/support/high_voltage_lines.csv",
+            "sha256": "6afa1bfe9c685ac899791008102828404cef222e616d4aa3e54a99313730dc96",
+            "rows_sha256": "b61fc372756fbd1824a6c6047d1b7f5837bdf180eacf263ef51e078dce15c731"
+          }
+        ]
+      },
+      "rollups": [
+        {
+          "provider": "generated_runtime",
+          "path": "data/generated/eligible_surface/skaraborg_onshore_land_r7.geojson",
+          "sha256": "e16dd07eb703166c69752c661b0cc4ded7f8d592b7d12507ef6ef24a7328ebaf",
+          "id_field": "hex_id",
+          "area_field": "area_km2",
+          "area_unit": "km2",
+          "resolution": 7,
+          "expected_cell_count": 2183,
+          "expected_total_area_km2": 7389.258669207419
+        },
+        {
+          "provider": "generated_runtime",
+          "path": "data/generated/eligible_surface/skaraborg_onshore_land_r6.geojson",
+          "sha256": "d6f66c309e87487109a2a037a2bc01b546186f93b7e8bd4fb896b7982f05d49e",
+          "id_field": "hex_id",
+          "area_field": "area_km2",
+          "area_unit": "km2",
+          "resolution": 6,
+          "expected_cell_count": 356,
+          "expected_total_area_km2": 7389.258669207419
+        },
+        {
+          "provider": "generated_runtime",
+          "path": "data/generated/eligible_surface/skaraborg_onshore_land_r5.geojson",
+          "sha256": "845f51b2ecf1830bea545776396ed495b0c75279970c9f219ed951801575f828",
+          "id_field": "hex_id",
+          "area_field": "area_km2",
+          "area_unit": "km2",
+          "resolution": 5,
+          "expected_cell_count": 66,
+          "expected_total_area_km2": 7389.258669207419
+        }
+      ]
+    }
+  },
+  "analysis_domain": {
+    "provider": "generated_runtime",
+    "path": "data/generated/analysis_domain/skaraborg_standard_r8.geojson",
+    "sha256": "965bffcf55d4dcaa95fcc8688393e169071e9df1679fbb0052b9596ccbe07d0b",
+    "id_field": "hex_id",
+    "area_field": "area_km2",
+    "area_unit": "km2",
+    "cell_kind": "h3",
+    "resolution": 8,
+    "expected_cell_count": 14164,
+    "expected_total_area_km2": 7389.258669207419,
+    "rollups": [
+      {
+        "provider": "generated_runtime",
+        "path": "data/generated/analysis_domain/skaraborg_standard_r7.geojson",
+        "sha256": "700b5e95ad1fde324f2c2a2b60da28c8139de45ac505560d8ca6322e17ba0120",
+        "id_field": "hex_id",
+        "area_field": "area_km2",
+        "area_unit": "km2",
+        "resolution": 7,
+        "expected_cell_count": 2183,
+        "expected_total_area_km2": 7389.258669207419
+      },
+      {
+        "provider": "generated_runtime",
+        "path": "data/generated/analysis_domain/skaraborg_standard_r6.geojson",
+        "sha256": "0778a9f1956b2088d16b1a844d3126b88af99643542895346288de7b1c45434e",
+        "id_field": "hex_id",
+        "area_field": "area_km2",
+        "area_unit": "km2",
+        "resolution": 6,
+        "expected_cell_count": 356,
+        "expected_total_area_km2": 7389.258669207419
+      },
+      {
+        "provider": "generated_runtime",
+        "path": "data/generated/analysis_domain/skaraborg_standard_r5.geojson",
+        "sha256": "3c38ddafa4ff8774233ff88f0b8aeab74966b0a00823ee8464085a7b46159d7f",
+        "id_field": "hex_id",
+        "area_field": "area_km2",
+        "area_unit": "km2",
+        "resolution": 5,
+        "expected_cell_count": 66,
+        "expected_total_area_km2": 7389.258669207419
+      }
+    ]
+  },
+  "analysis_id": "standard_constraints"
+}

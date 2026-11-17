@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "capability_id": "workspace.combined_result",
+  "region_id": "trondelag",
+  "validation_status": "technically_validated",
+  "validator_id": "validate_trondelag_combined_dynamic_runtime",
+  "validator_version": "1.0",
+  "validated_utc_date": "2026-08-27",
+  "check_count": 5228,
+  "reference_scope": "exact_app_local_selected_r7_cells_and_areas_with_r6_r5_derived_from_r7",
+  "policy_contract_signature_sha256": "e37836868f21e1d52d534db8da3bc1bc7a6f286d0f4c9bdd47ea7200e48b6254",
+  "allocation_policy_artifact_sha256": "126a68e3253f1172d51f9515df0f6a791808f64c6949d694d68bca5af11e17b6",
+  "allocation_policy_signature_sha256": "76eb109548bac2ce08370ae10ee23c97d968826f11a5c67fdb8eec7633d49793",
+  "validated_default_execution_signature_sha256": "63fe6d4ccaa389cd02c561753ac0a6ff0d6cb9bb20ab88c2333b5a4bb398d342"
+}

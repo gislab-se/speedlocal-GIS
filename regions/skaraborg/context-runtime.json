@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "region_id": "skaraborg",
+  "connection_alias": "speedlocal",
+  "database_schema": "skaraborg",
+  "revision_sha256": "84b78878af7229c47353617cbc2f8eceef620359bdb72d438ad369bebeac80c0",
+  "scope": {
+    "analysis_contract_signatures": [
+      [
+        "solar",
+        "1be3124b4c537bf3c278d072407f828abce3e4118b95fe7287c6d5b6ca14a917"
+      ],
+      [
+        "wind",
+        "244bdacabe35657220a7fc3175af12f614a3177f79cae9f5e241b930ba9e928b"
+      ]
+    ],
+    "analysis_revision_sha256": "4b7ce9d65ce1298af2438c1299f15722c57eeac367f5bbf1a9318f5fc8215f3a",
+    "region_id": "skaraborg",
+    "support_domain": {
+      "cell_count": 14164,
+      "cell_ids_sha256": "dd0a88f550df62739dd8e19e2037587e76ab837cf23836725ee3fd23485a72c4",
+      "cells_sha256": "6115f5762a7dca69b9272ab5de1f3d4b9e8099047b765755955e70affa490e9c",
+      "domain_id": "onshore_technology_r8",
+      "resolution": 8,
+      "source_sha256": "75c42873f76d1ec595e8529c1ed97bb28a9a931ffd50d7ba5a7c446e5923d42b"
+    }
+  },
+  "required_datasets": [
+    "combined_policy",
+    "scenario",
+    "social_acceptance",
+    "technology_context"
+  ]
+}

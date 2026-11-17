@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "region": {"id": "skaraborg", "name": "Skaraborg", "country_code": "SE"},
+  "database": {
+    "connection": "speedlocal",
+    "schema": "skaraborg",
+    "boundary_view": "region_boundary",
+    "analysis_surface_view": "analysis_surface"
+  },
+  "landscape": {
+    "roads": ["roads_large", "roads_medium"],
+    "nature": ["nature_reserves", "nature_conservation_areas"],
+    "culture": ["cultural_environment_national_interest"],
+    "population": ["urban_areas", "small_settlements", "holiday_home_areas"],
+    "grid_infrastructure": ["high_voltage_lines", "existing_wind_turbines"]
+  },
+  "energy": {"source_id": "energy_island_placeholder", "evidence": "provisional_fallback"},
+  "social_acceptance": {"source_id": "skaraborg_synthetic", "evidence": "synthetic_demo"},
+  "extra_landscape_groups": [],
+  "contracts": {
+    "region": "regions/skaraborg/region.json",
+    "geography": "regions/skaraborg/geography.json"
+  }
+}

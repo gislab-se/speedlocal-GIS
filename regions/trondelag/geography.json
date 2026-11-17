@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "region_id": "trondelag",
+  "native_crs": "EPSG:25832",
+  "geographies": {
+    "trondelag_region_identity": {
+      "label": "Trondelag reviewed regional identity surface",
+      "role": "regional_identity_surface",
+      "provider": "v2_archive",
+      "path": "data/processed/trondelag/mask/trondelag_land_region_mask_25832.gpkg",
+      "sha256": "c135589dc627beab07ecff68eefc46829c85accc68793398a68878e94f0e0b4e",
+      "format": "gpkg",
+      "geometry_family": "polygon",
+      "native_crs": "EPSG:25832",
+      "source_metadata": {
+        "authority": "Kartverket upstream; frozen V2 processed artifact is the current byte authority",
+        "dataset_name": "Trondelag reviewed regional display extent",
+        "dataset_version": "potential_app_minimal_2026-05-12",
+        "snapshot_date": "2026-05-12",
+        "license": "not recorded in frozen V2 provenance",
+        "provenance_status": "processed_snapshot_only",
+        "derivation": "The existing checksum-pinned onshore land-region mask is declared separately as the Gate 1 regional identity surface. It is not represented as a pure administrative boundary.",
+        "upstream_inputs": [
+          {
+            "dataset_name": "ADM_FY_TRL_33.gpkg",
+            "role": "administrative_region_clip",
+            "checksum_status": "pending_source_snapshot"
+          },
+          {
+            "dataset_name": "N500_AD_Merged_TRL_32.gpkg",
+            "role": "onshore_land_cover",
+            "checksum_status": "pending_source_snapshot"
+          }
+        ]
+      }
+    },
+    "onshore_region_extent": {
+      "label": "Trondelag onshore land-region extent",
+      "role": "technology_target_surface",
+      "provider": "v2_archive",
+      "path": "data/processed/trondelag/mask/trondelag_land_region_mask_25832.gpkg",
+      "sha256": "c135589dc627beab07ecff68eefc46829c85accc68793398a68878e94f0e0b4e",
+      "format": "gpkg",
+      "geometry_family": "polygon",
+      "native_crs": "EPSG:25832",
+      "water_policy": "exclude_sea_retain_inland_water",
+      "source_metadata": {
+        "authority": "Kartverket upstream; frozen V2 processed artifact is the current byte authority",
+        "dataset_name": "Trondelag administrative clip combined with N500 land-cover geometry",
+        "dataset_version": "potential_app_minimal_2026-05-12",
+        "snapshot_date": "2026-05-12",
+        "license": "not recorded in frozen V2 provenance",
+        "provenance_status": "processed_snapshot_only",
+        "derivation": "Processed from the declared ADM_FY and N500 inputs; Havflate is excluded, inland water is retained, and the result is stored in the regional native CRS.",
+        "upstream_inputs": [
+          {
+            "dataset_name": "ADM_FY_TRL_33.gpkg",
+            "role": "administrative_region_clip",
+            "checksum_status": "pending_source_snapshot"
+          },
+          {
+            "dataset_name": "N500_AD_Merged_TRL_32.gpkg",
+            "role": "onshore_land_cover",
+            "checksum_status": "pending_source_snapshot"
+          }
+        ]
+      }
+    }
+  },
+  "technology_support_domains": {
+    "onshore_technology_r7": {
+      "label": "Boundary-complete onshore wind and solar support domain",
+      "status": "candidate",
+      "technologies": ["wind", "solar"],
+      "coverage_geometry_id": "onshore_region_extent",
+      "coverage_rule": "positive_area_intersection",
+      "cell_kind": "h3",
+      "source_resolution": 7,
+      "native_crs": "EPSG:25832",
+      "empty_intersection_policy": "exclude",
+      "missing_observation_policy": "error",
+      "rollup_strategy": "derive_from_source_children",
+      "rollup_resolutions": [6, 5]
+    }
+  }
+}

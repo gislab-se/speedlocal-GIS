@@ -1,0 +1,151 @@
+{
+  "schema_version": "1.0",
+  "region_id": "skaraborg",
+  "scenario_set_id": "skaraborg_illustrative_bornholm_demo_levels_20261026",
+  "status": "provisional_fallback",
+  "scenario_levels": [
+    "year_2030",
+    "year_2040",
+    "year_2050"
+  ],
+  "layers": [],
+  "source_contract": {
+    "schema_version": "1.0",
+    "status": "provisional_fallback",
+    "intended_region_id": "skaraborg",
+    "source_region_id": "bornholm",
+    "source_dataset_id": "bornholm_capacities_20260924",
+    "source_label": "Bornholm cp-ei – demonstrationsnivåer ×20 / ×100 / ×250 för Skaraborg",
+    "provider": "repo",
+    "regional_acceptance": false,
+    "allowed_use": "planning_exploration_only",
+    "provenance": "20260924_Capacities (1).xlsx, Area need. Preliminary simplified Bornholm capacities and corrected area factors following Kenneth Karlsson’s September 30 input and Henrik’s October 8 instruction. For Skaraborg visualization, Henrik’s October 26 instruction is implemented as Low ×20, Base ×100 and High ×250 relative to the unscaled source year. Factors were calculated against current default-filter GIS potential before selection: High ×200 still fits at its model mix; ×250 demonstrates wind-area shortfall directly. Exact source observations and land-per-MW factors are retained.",
+    "limitation": "Visualization-only demonstration levels for Skaraborg, not a calibrated or validated regional forecast or observed installed capacity. Factors 20 / 100 / 250 are chosen to demonstrate area headroom and shortage, not derived from regional energy demand or generation. The years are Bornholm cp-ei source reference years; both year and illustrative scale differ across levels. Changing the mix conserves that level’s scaled MW only. Annual generation is unavailable and land demand per MW is unchanged. Actual shortfall depends on applied GIS filters and mix.",
+    "replacement_condition": "Ersätt demonstrationsvärdena med checksumskyddade och regionalt granskade kapaciteter, ytbehovsfaktorer och eventuell årsproduktion för Skaraborg genom en ny validerad kontextrevision.",
+    "display_warning": {
+      "sv": "Demonstrationsdata för Skaraborg: Bornholms preliminära kapaciteter ×20 / ×100 / ×250 för Low / Base / High. Faktorerna illustrerar ytbrist, inte en regional prognos. Ytbehov per MW är oförändrat. Årsproduktion saknas; MW är installerad effekt, inte TWh.",
+      "en": "Skaraborg demonstration levels: preliminary Bornholm capacities ×20 / ×100 / ×250 for Low / Base / High. Factors illustrate area shortage, not a regional forecast. Land demand per MW is unchanged. Annual production is unavailable; MW is installed capacity, not TWh.",
+      "da_no": "Demonstrationsdata for Skaraborg: Bornholms foreløbige kapaciteter ×20 / ×100 / ×250 for Low / Base / High. Faktorerne illustrerer arealmangel, ikke en regional prognose. Arealbehov pr. MW er uændret. Årsproduktion mangler; MW er installeret effekt, ikke TWh."
+    },
+    "assets": {
+      "energy_model": {
+        "path": "data/energimodell_area_demand/20260924_Capacities (1).xlsx",
+        "format": "xlsx",
+        "sha256": "563d891033bdf5b723422f3d77437f47a4f95b36dc46a2393bd29864aae6a720"
+      },
+      "area_demand": {
+        "path": "data/energimodell_area_demand/20260924_Capacities (1).xlsx",
+        "format": "xlsx",
+        "sha256": "563d891033bdf5b723422f3d77437f47a4f95b36dc46a2393bd29864aae6a720"
+      }
+    }
+  },
+  "energy_model": {
+    "adapter_id": "capacity_area_xlsx_v1",
+    "technology_ids": [
+      "wind",
+      "solar"
+    ],
+    "energy_source": {
+      "path": "data/energimodell_area_demand/20260924_Capacities (1).xlsx"
+    },
+    "area_demand": {
+      "path": "data/energimodell_area_demand/20260924_Capacities (1).xlsx"
+    },
+    "capacity": {
+      "sheet": "Area need",
+      "year_row": 6,
+      "year_columns": {
+        "year_2030": "F",
+        "year_2040": "G",
+        "year_2050": "H"
+      },
+      "model_shares": {
+        "year_2030": {
+          "wind": 59.101654846335705,
+          "solar": 40.898345153664295
+        },
+        "year_2040": {
+          "wind": 48.632218844984806,
+          "solar": 51.367781155015194
+        },
+        "year_2050": {
+          "wind": 44.44444444444444,
+          "solar": 55.55555555555556
+        }
+      },
+      "technologies": {
+        "wind": {
+          "existing_row": 7,
+          "new_row": 8,
+          "capacity_unit_cell": "D6",
+          "factor_cell": "A13",
+          "factor_unit_cell": "B13",
+          "factor_unit": "MW/km2"
+        },
+        "solar": {
+          "existing_row": 17,
+          "new_row": 18,
+          "capacity_unit_cell": "D16",
+          "factor_cell": "A17",
+          "factor_unit_cell": "B17",
+          "factor_unit": "m2/MW"
+        }
+      },
+      "capacity_scale_by_scenario": {
+        "year_2030": 20.0,
+        "year_2040": 100.0,
+        "year_2050": 250.0
+      }
+    },
+    "planning": {
+      "default_scenario": "year_2040",
+      "area_demand_options": [
+        {
+          "id": "model",
+          "label": "Modellens ytbehov"
+        }
+      ],
+      "default_area_demand_scenario": "model",
+      "technology_mix": {
+        "share_step_pct": 1.0,
+        "default_shares": [
+          {
+            "technology_id": "wind",
+            "share_pct": 50.0
+          },
+          {
+            "technology_id": "solar",
+            "share_pct": 50.0
+          }
+        ]
+      },
+      "scenarios": [
+        {
+          "id": "year_2030",
+          "label": "Low · 2030 · ×20",
+          "source_scenario": "cp-ei",
+          "planning_year": 2030,
+          "energy_scale": 1.0,
+          "area_demand_scenario": "model"
+        },
+        {
+          "id": "year_2040",
+          "label": "Base · 2040 · ×100",
+          "source_scenario": "cp-ei",
+          "planning_year": 2040,
+          "energy_scale": 1.0,
+          "area_demand_scenario": "model"
+        },
+        {
+          "id": "year_2050",
+          "label": "High · 2050 · ×250",
+          "source_scenario": "cp-ei",
+          "planning_year": 2050,
+          "energy_scale": 1.0,
+          "area_demand_scenario": "model"
+        }
+      ]
+    }
+  }
+}

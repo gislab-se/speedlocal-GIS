@@ -1,0 +1,945 @@
+{
+  "schema_version": "1.0",
+  "region_id": "bornholm",
+  "classification": "diagnostic_candidate_only",
+  "groups": [
+    "roads",
+    "population",
+    "nature",
+    "culture",
+    "grid_infrastructure"
+  ],
+  "ui": {
+    "groups": [
+      {
+        "id": "roads",
+        "label": "Vägar",
+        "analysis_label": "Minsta avstånd",
+        "interpretation": "För nära är dåligt. Valda väglager kombineras till en gemensam avståndsrestriktion utan regionspecifik kod.",
+        "expanded_by_default": true,
+        "blend_default": 50,
+        "group_color": "#b18421"
+      },
+      {
+        "id": "population",
+        "label": "Befolkning och bebyggelse",
+        "analysis_label": "Minsta avstånd",
+        "interpretation": "För nära är dåligt. Valda grid-, polygon- och punktkällor kombineras till en gemensam avståndsrestriktion.",
+        "expanded_by_default": true,
+        "blend_default": 50,
+        "group_color": "#b7532d"
+      },
+      {
+        "id": "nature",
+        "label": "Skyddad natur",
+        "analysis_label": "Valfri buffert",
+        "interpretation": "Skyddad natur är en binär restriktion. En hexagon utesluts när vald naturkälla skär den eller ligger inom den valda bufferten.",
+        "expanded_by_default": false,
+        "blend_default": 60,
+        "group_color": "#407749"
+      },
+      {
+        "id": "culture",
+        "label": "Värdefulla kulturmiljöer",
+        "analysis_label": "Valfri buffert",
+        "interpretation": "Kulturmiljöer är en binär restriktion. En hexagon utesluts när någon vald kulturkälla skär den eller ligger inom den valda bufferten.",
+        "expanded_by_default": false,
+        "blend_default": 60,
+        "group_color": "#844e94"
+      },
+      {
+        "id": "grid_infrastructure",
+        "label": "Elinfrastruktur / nätanslutning",
+        "analysis_label": "Största anslutningsavstånd",
+        "interpretation": "För långt bort är dåligt. Valda lednings-, kabel- och punktkällor kombineras till en gemensam närhetsbaserad genomförbarhet.",
+        "expanded_by_default": true,
+        "blend_default": 50,
+        "group_color": "#227371"
+      }
+    ]
+  },
+  "default_request": {
+    "selected_layer_ids": []
+  },
+  "layers": [
+    {
+      "id": "roads_large",
+      "label": "Stora vägar",
+      "group_id": "roads",
+      "source": {
+        "diagnostic_source_snapshot": {
+          "region_id": "bornholm",
+          "snapshot_id": "roads"
+        },
+        "layer_id": "roads_large",
+        "expected_geometry_families": [
+          "line"
+        ],
+        "data_representation": "network",
+        "distance_h3_resolution": 9,
+        "distance_coverage": {
+          "mode": "complete",
+          "missing_policy": "error",
+          "expected_source_row_count": 6882,
+          "source_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653"
+        }
+      },
+      "operation": "distance_exclusion",
+      "parameters": {
+        "buffer_m": {
+          "type": "number",
+          "unit": "m",
+          "default": 100,
+          "minimum": 0,
+          "maximum": 2000,
+          "step": 25
+        }
+      },
+      "ui": {
+        "note": "GeoDanmark-kategorierna Stor vej, Fordelingsrute och Gennemfartsrute i den deklarerade Bornholm-snapshoten.",
+        "source_color": "#855913",
+        "point_radius": 40
+      }
+    },
+    {
+      "id": "roads_medium",
+      "label": "Mellanvägar",
+      "group_id": "roads",
+      "source": {
+        "diagnostic_source_snapshot": {
+          "region_id": "bornholm",
+          "snapshot_id": "roads"
+        },
+        "layer_id": "roads_medium",
+        "expected_geometry_families": [
+          "line"
+        ],
+        "data_representation": "network",
+        "distance_h3_resolution": 9,
+        "distance_coverage": {
+          "mode": "complete",
+          "missing_policy": "error",
+          "expected_source_row_count": 6882,
+          "source_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653"
+        }
+      },
+      "operation": "distance_exclusion",
+      "parameters": {
+        "buffer_m": {
+          "type": "number",
+          "unit": "m",
+          "default": 100,
+          "minimum": 0,
+          "maximum": 2000,
+          "step": 25
+        }
+      },
+      "ui": {
+        "note": "GeoDanmark-kategorin Mellem vej i den deklarerade Bornholm-snapshoten.",
+        "source_color": "#b18421",
+        "point_radius": 40
+      }
+    },
+    {
+      "id": "built_centre",
+      "label": "Tät bebyggelse",
+      "group_id": "population",
+      "source": {
+        "provider": "generated_runtime",
+        "asset_manifest": "data/generated/delivery_groups/selected30_2026_09_07_1/bornholm/source_assets.csv",
+        "layer_id": "built_centre",
+        "expected_geometry_families": [
+          "polygon"
+        ],
+        "data_representation": "features",
+        "distance_provider": "generated_runtime",
+        "distance_path": "data/generated/delivery_groups/selected30_2026_09_07_1/bornholm/standard/population/built_centre.csv",
+        "distance_h3_resolution": 9,
+        "distance_coverage": {
+          "mode": "complete",
+          "missing_policy": "error",
+          "expected_source_row_count": 6882,
+          "source_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653"
+        }
+      },
+      "operation": "distance_exclusion",
+      "parameters": {
+        "buffer_m": {
+          "type": "number",
+          "unit": "m",
+          "default": 100,
+          "minimum": 100,
+          "maximum": 3000,
+          "step": 50
+        }
+      },
+      "ui": {
+        "note": "GeoDanmark: Bykärna, historiskt V1-underlag. Tekniskt startvärde: 100 m; detta är inte en regional rekommendation.",
+        "source_color": "#b7532d",
+        "point_radius": 40
+      }
+    },
+    {
+      "id": "built_low_selection",
+      "label": "Låg bebyggelse",
+      "group_id": "population",
+      "source": {
+        "provider": "generated_runtime",
+        "asset_manifest": "data/generated/delivery_groups/selected30_2026_09_07_1/bornholm/source_assets.csv",
+        "layer_id": "built_low_selection",
+        "expected_geometry_families": [
+          "polygon"
+        ],
+        "data_representation": "features",
+        "distance_provider": "generated_runtime",
+        "distance_path": "data/generated/delivery_groups/selected30_2026_09_07_1/bornholm/standard/population/built_low_selection.csv",
+        "distance_h3_resolution": 9,
+        "distance_coverage": {
+          "mode": "complete",
+          "missing_policy": "error",
+          "expected_source_row_count": 6882,
+          "source_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653"
+        }
+      },
+      "operation": "distance_exclusion",
+      "parameters": {
+        "buffer_m": {
+          "type": "number",
+          "unit": "m",
+          "default": 100,
+          "minimum": 100,
+          "maximum": 3000,
+          "step": 50
+        }
+      },
+      "ui": {
+        "note": "GeoDanmark: Låg bebyggelse, historiskt V1-underlag. Tekniskt startvärde: 100 m; detta är inte en regional rekommendation.",
+        "source_color": "#b7532d",
+        "point_radius": 40
+      }
+    },
+    {
+      "id": "protected_areas",
+      "label": "Fredade områden",
+      "group_id": "nature",
+      "source": {
+        "provider": "generated_runtime",
+        "asset_manifest": "data/generated/delivery_groups/selected30_2026_09_07_1/bornholm/source_assets.csv",
+        "layer_id": "protected_areas",
+        "expected_geometry_families": [
+          "polygon"
+        ],
+        "data_representation": "features",
+        "distance_provider": "generated_runtime",
+        "distance_path": "data/generated/delivery_groups/selected30_2026_09_07_1/bornholm/standard/nature/protected_areas.csv",
+        "distance_h3_resolution": 9,
+        "distance_coverage": {
+          "mode": "complete",
+          "missing_policy": "error",
+          "expected_source_row_count": 6882,
+          "source_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653"
+        }
+      },
+      "operation": "hard_exclusion",
+      "parameters": {
+        "buffer_m": {
+          "type": "number",
+          "unit": "m",
+          "default": 0,
+          "minimum": 0,
+          "maximum": 2000,
+          "step": 50
+        }
+      },
+      "ui": {
+        "note": "Miljøstyrelsen / Danmarks Miljøportal: Fredede områder. Tekniskt startvärde: 0 m; detta är inte en regional rekommendation.",
+        "source_color": "#407749",
+        "point_radius": 40
+      }
+    },
+    {
+      "id": "cultural_preservation",
+      "label": "Kulturhistoriska bevarandevärden",
+      "group_id": "culture",
+      "source": {
+        "provider": "generated_runtime",
+        "asset_manifest": "data/generated/delivery_groups/selected30_2026_09_07_1/bornholm/source_assets.csv",
+        "layer_id": "cultural_preservation",
+        "expected_geometry_families": [
+          "polygon"
+        ],
+        "data_representation": "features",
+        "distance_provider": "generated_runtime",
+        "distance_path": "data/generated/delivery_groups/selected30_2026_09_07_1/bornholm/standard/culture/cultural_preservation.csv",
+        "distance_h3_resolution": 9,
+        "distance_coverage": {
+          "mode": "complete",
+          "missing_policy": "error",
+          "expected_source_row_count": 6882,
+          "source_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653"
+        }
+      },
+      "operation": "hard_exclusion",
+      "parameters": {
+        "buffer_m": {
+          "type": "number",
+          "unit": "m",
+          "default": 0,
+          "minimum": 0,
+          "maximum": 1500,
+          "step": 50
+        }
+      },
+      "ui": {
+        "note": "Bornholms Regionskommune / Plandata.dk: Kulturhistoriske bevaringsværdier, Bornholms Kommuneplan 2020. Tekniskt startvärde: 0 m; detta är inte en regional rekommendation.",
+        "source_color": "#844e94",
+        "point_radius": 40
+      }
+    },
+    {
+      "id": "valuable_cultural_environment",
+      "label": "Värdefulla kulturmiljöer",
+      "group_id": "culture",
+      "source": {
+        "provider": "generated_runtime",
+        "asset_manifest": "data/generated/delivery_groups/selected30_2026_09_07_1/bornholm/source_assets.csv",
+        "layer_id": "valuable_cultural_environment",
+        "expected_geometry_families": [
+          "polygon"
+        ],
+        "data_representation": "features",
+        "distance_provider": "generated_runtime",
+        "distance_path": "data/generated/delivery_groups/selected30_2026_09_07_1/bornholm/standard/culture/valuable_cultural_environment.csv",
+        "distance_h3_resolution": 9,
+        "distance_coverage": {
+          "mode": "complete",
+          "missing_policy": "error",
+          "expected_source_row_count": 6882,
+          "source_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653"
+        }
+      },
+      "operation": "hard_exclusion",
+      "parameters": {
+        "buffer_m": {
+          "type": "number",
+          "unit": "m",
+          "default": 0,
+          "minimum": 0,
+          "maximum": 1500,
+          "step": 50
+        }
+      },
+      "ui": {
+        "note": "Bornholms Regionskommune / Plandata.dk: Værdifulde kulturmiljøer, Bornholms Kommuneplan 2020. Tekniskt startvärde: 0 m; detta är inte en regional rekommendation.",
+        "source_color": "#844e94",
+        "point_radius": 40
+      }
+    },
+    {
+      "id": "high_voltage_lines",
+      "label": "Högspänningsledningar",
+      "group_id": "grid_infrastructure",
+      "source": {
+        "provider": "generated_runtime",
+        "asset_manifest": "data/generated/delivery_groups/selected30_2026_09_07_1/bornholm/source_assets.csv",
+        "layer_id": "high_voltage_lines",
+        "expected_geometry_families": [
+          "line"
+        ],
+        "data_representation": "features",
+        "distance_provider": "generated_runtime",
+        "distance_path": "data/generated/delivery_groups/selected30_2026_09_07_1/bornholm/standard/grid_infrastructure/high_voltage_lines.csv",
+        "distance_h3_resolution": 9,
+        "distance_coverage": {
+          "mode": "complete",
+          "missing_policy": "error",
+          "expected_source_row_count": 6882,
+          "source_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653"
+        }
+      },
+      "operation": "proximity_feasibility",
+      "parameters": {
+        "buffer_m": {
+          "type": "number",
+          "unit": "m",
+          "default": 2000,
+          "minimum": 500,
+          "maximum": 15000,
+          "step": 250
+        }
+      },
+      "ui": {
+        "note": "OpenStreetMap contributors: OSM 60 kV overhead lines, Overpass 2026-09-05. Tekniskt startvärde: 2000 m; detta är inte en regional rekommendation.",
+        "source_color": "#227371",
+        "point_radius": 40
+      }
+    },
+    {
+      "id": "underground_cables",
+      "label": "Markkablar",
+      "group_id": "grid_infrastructure",
+      "source": {
+        "provider": "generated_runtime",
+        "asset_manifest": "data/generated/delivery_groups/selected30_2026_09_07_1/bornholm/source_assets.csv",
+        "layer_id": "underground_cables",
+        "expected_geometry_families": [
+          "line"
+        ],
+        "data_representation": "features",
+        "distance_provider": "generated_runtime",
+        "distance_path": "data/generated/delivery_groups/selected30_2026_09_07_1/bornholm/standard/grid_infrastructure/underground_cables.csv",
+        "distance_h3_resolution": 9,
+        "distance_coverage": {
+          "mode": "complete",
+          "missing_policy": "error",
+          "expected_source_row_count": 6882,
+          "source_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653"
+        }
+      },
+      "operation": "proximity_feasibility",
+      "parameters": {
+        "buffer_m": {
+          "type": "number",
+          "unit": "m",
+          "default": 2000,
+          "minimum": 500,
+          "maximum": 15000,
+          "step": 250
+        }
+      },
+      "ui": {
+        "note": "OpenStreetMap contributors: OSM 60 kV underground cables, Overpass 2026-09-05. Tekniskt startvärde: 2000 m; detta är inte en regional rekommendation.",
+        "source_color": "#227371",
+        "point_radius": 40
+      }
+    },
+    {
+      "id": "power_substations",
+      "label": "Transformatorstationer",
+      "group_id": "grid_infrastructure",
+      "source": {
+        "provider": "generated_runtime",
+        "asset_manifest": "data/generated/delivery_groups/selected30_2026_09_07_1/bornholm/source_assets.csv",
+        "layer_id": "power_substations",
+        "expected_geometry_families": [
+          "polygon"
+        ],
+        "data_representation": "features",
+        "distance_provider": "generated_runtime",
+        "distance_path": "data/generated/delivery_groups/selected30_2026_09_07_1/bornholm/standard/grid_infrastructure/power_substations.csv",
+        "distance_h3_resolution": 9,
+        "distance_coverage": {
+          "mode": "complete",
+          "missing_policy": "error",
+          "expected_source_row_count": 6882,
+          "source_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653"
+        }
+      },
+      "operation": "proximity_feasibility",
+      "parameters": {
+        "buffer_m": {
+          "type": "number",
+          "unit": "m",
+          "default": 2000,
+          "minimum": 500,
+          "maximum": 15000,
+          "step": 250
+        }
+      },
+      "ui": {
+        "note": "OpenStreetMap contributors: OSM 60 kV distribution substations, Overpass 2026-09-05. Tekniskt startvärde: 2000 m; detta är inte en regional rekommendation.",
+        "source_color": "#227371",
+        "point_radius": 40
+      }
+    },
+    {
+      "id": "natura_bird_protection",
+      "label": "Natura 2000 – fågelskydd",
+      "group_id": "nature",
+      "source": {
+        "provider": "generated_runtime",
+        "asset_manifest": "data/generated/delivery_groups/bornholm_sources_2026_10_08/source_assets.csv",
+        "layer_id": "natura_bird_protection",
+        "expected_geometry_families": [
+          "polygon"
+        ],
+        "data_representation": "features",
+        "distance_provider": "generated_runtime",
+        "distance_path": "data/generated/delivery_groups/bornholm_sources_2026_10_08/standard/nature/natura_bird_protection.csv",
+        "distance_h3_resolution": 9,
+        "distance_coverage": {
+          "mode": "complete",
+          "missing_policy": "error",
+          "expected_source_row_count": 6882,
+          "source_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653"
+        }
+      },
+      "operation": "hard_exclusion",
+      "parameters": {
+        "buffer_m": {
+          "type": "number",
+          "unit": "m",
+          "default": 0,
+          "minimum": 0,
+          "maximum": 2000,
+          "step": 50
+        }
+      },
+      "ui": {
+        "note": "Miljøstyrelsen / Danmarks Miljøportal: Natura 2000 – fuglebeskyttelsesområder. Kompletterar Fredade områden; överlapp räknas en gång.",
+        "source_color": "#407749",
+        "point_radius": 40
+      }
+    },
+    {
+      "id": "natura_habitat_areas",
+      "label": "Natura 2000 – habitatområden",
+      "group_id": "nature",
+      "source": {
+        "provider": "generated_runtime",
+        "asset_manifest": "data/generated/delivery_groups/bornholm_sources_2026_10_08/source_assets.csv",
+        "layer_id": "natura_habitat_areas",
+        "expected_geometry_families": [
+          "polygon"
+        ],
+        "data_representation": "features",
+        "distance_provider": "generated_runtime",
+        "distance_path": "data/generated/delivery_groups/bornholm_sources_2026_10_08/standard/nature/natura_habitat_areas.csv",
+        "distance_h3_resolution": 9,
+        "distance_coverage": {
+          "mode": "complete",
+          "missing_policy": "error",
+          "expected_source_row_count": 6882,
+          "source_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653"
+        }
+      },
+      "operation": "hard_exclusion",
+      "parameters": {
+        "buffer_m": {
+          "type": "number",
+          "unit": "m",
+          "default": 0,
+          "minimum": 0,
+          "maximum": 2000,
+          "step": 50
+        }
+      },
+      "ui": {
+        "note": "Miljøstyrelsen / Danmarks Miljøportal: Natura 2000 – habitatområder. Kompletterar Fredade områden; överlapp räknas en gång.",
+        "source_color": "#407749",
+        "point_radius": 40
+      }
+    },
+    {
+      "id": "wind_turbines_osm",
+      "label": "Befintliga vindkraftverk (OSM)",
+      "group_id": "grid_infrastructure",
+      "source": {
+        "provider": "generated_runtime",
+        "asset_manifest": "data/generated/delivery_groups/bornholm_sources_2026_10_08/source_assets.csv",
+        "layer_id": "wind_turbines_osm",
+        "expected_geometry_families": [
+          "point"
+        ],
+        "data_representation": "features",
+        "distance_provider": "generated_runtime",
+        "distance_path": "data/generated/delivery_groups/bornholm_sources_2026_10_08/standard/grid_infrastructure/wind_turbines_osm.csv",
+        "distance_h3_resolution": 9,
+        "distance_coverage": {
+          "mode": "complete",
+          "missing_policy": "error",
+          "expected_source_row_count": 6882,
+          "source_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653"
+        }
+      },
+      "operation": "proximity_feasibility",
+      "parameters": {
+        "buffer_m": {
+          "type": "number",
+          "unit": "m",
+          "default": 2000,
+          "minimum": 500,
+          "maximum": 15000,
+          "step": 250
+        }
+      },
+      "ui": {
+        "note": "OpenStreetMap contributors: OSM mapped wind generators, Overpass 2026-10-08. Registrerade lägen som anslutningsproxy; driftsstatus och ledig nätkapacitet är inte verifierade.",
+        "source_color": "#227371",
+        "point_radius": 40
+      }
+    },
+    {
+      "id": "solar_parks_osm",
+      "label": "Befintliga solanläggningar (OSM)",
+      "group_id": "grid_infrastructure",
+      "source": {
+        "provider": "generated_runtime",
+        "asset_manifest": "data/generated/delivery_groups/bornholm_sources_2026_10_08/source_assets.csv",
+        "layer_id": "solar_parks_osm",
+        "expected_geometry_families": [
+          "polygon"
+        ],
+        "data_representation": "features",
+        "distance_provider": "generated_runtime",
+        "distance_path": "data/generated/delivery_groups/bornholm_sources_2026_10_08/standard/grid_infrastructure/solar_parks_osm.csv",
+        "distance_h3_resolution": 9,
+        "distance_coverage": {
+          "mode": "complete",
+          "missing_policy": "error",
+          "expected_source_row_count": 6882,
+          "source_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653"
+        }
+      },
+      "operation": "proximity_feasibility",
+      "parameters": {
+        "buffer_m": {
+          "type": "number",
+          "unit": "m",
+          "default": 2000,
+          "minimum": 500,
+          "maximum": 15000,
+          "step": 250
+        }
+      },
+      "ui": {
+        "note": "OpenStreetMap contributors: OSM mapped photovoltaic plant boundaries, Overpass 2026-10-08. Registrerade lägen som anslutningsproxy; driftsstatus och ledig nätkapacitet är inte verifierade.",
+        "source_color": "#227371",
+        "point_radius": 40
+      }
+    },
+    {
+      "id": "population_points",
+      "label": "Fastboende befolkning – buffertyta",
+      "group_id": "population",
+      "source": {
+        "provider": "generated_runtime",
+        "asset_manifest": "data/generated/delivery_groups/bornholm_population_2026_10_08/source_assets.csv",
+        "layer_id": "population_points",
+        "expected_geometry_families": [
+          "polygon"
+        ],
+        "data_representation": "privacy_protected_surface",
+        "distance_provider": "generated_runtime",
+        "distance_path": "data/generated/delivery_groups/bornholm_population_2026_10_08/standard/population/population_points.csv",
+        "distance_h3_resolution": 9,
+        "distance_coverage": {
+          "mode": "complete",
+          "missing_policy": "error",
+          "expected_source_row_count": 6882,
+          "source_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653"
+        },
+        "analysis_base_buffer_m": 100,
+        "source_geometry_required": true
+      },
+      "operation": "distance_exclusion",
+      "parameters": {
+        "buffer_m": {
+          "type": "number",
+          "unit": "m",
+          "default": 100,
+          "minimum": 100,
+          "maximum": 3000,
+          "step": 50
+        }
+      },
+      "ui": {
+        "note": "Befintlig, sammanslagen 100-metersbuffert runt befolkningspunkter. Avståndsreglaget anger det totala avståndet. Endast buffertytan visas.",
+        "source_color": "#b7532d",
+        "point_radius": 40
+      }
+    },
+    {
+      "id": "coastal_proximity_zone",
+      "label": "Kustnärhetszon – planeringshänsyn",
+      "group_id": "nature",
+      "source": {
+        "provider": "generated_runtime",
+        "asset_manifest": "data/generated/delivery_groups/bornholm_coastal_2026_10_08_2d/source_assets.csv",
+        "layer_id": "coastal_proximity_zone",
+        "expected_geometry_families": [
+          "polygon"
+        ],
+        "data_representation": "features",
+        "distance_provider": "generated_runtime",
+        "distance_path": "data/generated/delivery_groups/bornholm_coastal_2026_10_08_2d/standard/nature/coastal_proximity_zone.csv",
+        "distance_h3_resolution": 9,
+        "distance_coverage": {
+          "mode": "complete",
+          "missing_policy": "error",
+          "expected_source_row_count": 6882,
+          "source_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653"
+        }
+      },
+      "operation": "hard_exclusion",
+      "parameters": {
+        "buffer_m": {
+          "type": "number",
+          "unit": "m",
+          "default": 0,
+          "minimum": 0,
+          "maximum": 2000,
+          "step": 50
+        }
+      },
+      "ui": {
+        "note": "Planeringszon för kusthänsyn. När vald räknas zonen bort i denna analys; det är ett modellval, inte ett generellt byggförbud. Polygonen visar den befintliga zonen. Avståndsreglaget anger en eventuell tilläggsbuffert.",
+        "source_color": "#6492b1",
+        "point_radius": 40
+      }
+    }
+  ],
+  "eligible_surfaces": {
+    "onshore_land": {
+      "label": "Bornholm analyserbar landyta",
+      "support_domain_id": "onshore_technology_r9",
+      "technologies": [
+        "wind",
+        "solar"
+      ],
+      "surface_scope": "onshore_land",
+      "water_policy": "exclude_all_water",
+      "outside_region_policy": "exclude",
+      "geometry_operation": "intersection",
+      "source": {
+        "provider": "v2_archive",
+        "path": "exports/v2_multiregion/bornholm/landmask/bornholm_dagi_landsdel_landmask_wgs84.geojson",
+        "sha256": "274686465bd8c4f91102d56b787fa8a539335230be180a007049adbddd08831f",
+        "geometry_family": "polygon",
+        "coverage_geometry_id": "onshore_technology_extent",
+        "derivation": "reviewed_web_crs_derivative"
+      },
+      "provider": "generated_runtime",
+      "path": "data/generated/eligible_surface/bornholm_onshore_land_r9.geojson",
+      "sha256": "81fad7accc34b30d7d7267be01d7b81eab9ba94d2041fc50e75c1f850f45d85c",
+      "id_field": "hex_id",
+      "area_field": "area_km2",
+      "area_unit": "km2",
+      "cell_kind": "h3",
+      "resolution": 9,
+      "expected_cell_count": 6882,
+      "expected_total_area_km2": 587.6353334140905,
+      "technology_context": {
+        "id": "eligible_cell_area_r9",
+        "provider": "generated_runtime",
+        "path": "data/generated/analysis_domain/bornholm_standard_r9.geojson",
+        "sha256": "407640739604d98c3322c3b324cc228cc602a015321964b3626c8311adad61d7",
+        "id_field": "hex_id",
+        "cell_kind": "h3",
+        "resolution": 9,
+        "expected_cell_count": 6882,
+        "cell_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653",
+        "context_fields": [
+          "area_km2"
+        ],
+        "missing_policy": "explicit_not_assessed"
+      },
+      "support_observations": {
+        "provider": "generated_runtime",
+        "path": "data/generated/delivery_groups/bornholm_coastal_2026_10_08_2d/support/support_domain_observations.json",
+        "sha256": "476c6fe530205366e323829bb687aa5e0d7202ca5fd76abc711451486090f28b",
+        "resolution": 9,
+        "expected_cell_count": 6882,
+        "cell_ids_sha256": "d28f996c5855a25704b3d4e8ef3fd63248ab77ea9b8bbd2a8de4326814541653",
+        "missing_policy": "error",
+        "layers": [
+          {
+            "layer_id": "roads_large",
+            "provider": "generated_runtime",
+            "path": "data/generated/delivery_groups/bornholm_coastal_2026_10_08_2d/support/roads_large.csv",
+            "sha256": "bdacebf11c234e2d896fe1dadc2867086455c325f2cc4a827cf563b9e45c4c10",
+            "rows_sha256": "8c00f4a2f87bb7c13fb61be57f7604ceca10af5c4afbbbe94f012907887b82d7"
+          },
+          {
+            "layer_id": "roads_medium",
+            "provider": "generated_runtime",
+            "path": "data/generated/delivery_groups/bornholm_coastal_2026_10_08_2d/support/roads_medium.csv",
+            "sha256": "be9184d79bc0cb983f59a8eb117a2ddc8c63e4856219754b8fbf9ec3029cbaa5",
+            "rows_sha256": "04146379b8234e0016b75b5f12e47d581171a9f460233c1afbfb45ab6198fc2d"
+          },
+          {
+            "layer_id": "built_centre",
+            "provider": "generated_runtime",
+            "path": "data/generated/delivery_groups/bornholm_coastal_2026_10_08_2d/support/built_centre.csv",
+            "sha256": "04729806d0d93a6ac2210ab4bfb019964bd223f51468b7c314556c6d7f5c84b6",
+            "rows_sha256": "aa952877403caa825043892e645215ce3c32fb8d01fd83768ae12ba79b530922"
+          },
+          {
+            "layer_id": "built_low_selection",
+            "provider": "generated_runtime",
+            "path": "data/generated/delivery_groups/bornholm_coastal_2026_10_08_2d/support/built_low_selection.csv",
+            "sha256": "35b5bfa994924f7e53d4b4ec518b16e0d960912bf7ba3f21b074bf6ca4358285",
+            "rows_sha256": "ef8d0f92fe94187eefb62601bba35528059f33fc0ce1908393deceea01a958e7"
+          },
+          {
+            "layer_id": "population_points",
+            "provider": "generated_runtime",
+            "path": "data/generated/delivery_groups/bornholm_coastal_2026_10_08_2d/support/population_points.csv",
+            "sha256": "aa80ce269edc0a584c9aaac034d91649648b9676ddb69079a0d4c1c16e4bc9d2",
+            "rows_sha256": "545a2c667d49b5671480aed7d78b85a2b285042fbc61cc6e5c46374af6bd5978"
+          },
+          {
+            "layer_id": "coastal_proximity_zone",
+            "provider": "generated_runtime",
+            "path": "data/generated/delivery_groups/bornholm_coastal_2026_10_08_2d/support/coastal_proximity_zone.csv",
+            "sha256": "e424a550b91f93b25cf7ef8d09a568b0ff8d28cef698b6ce6aa2411094dad99c",
+            "rows_sha256": "7602e9618f1388b08bfdb1dea495a6c132b050ca3bf1e5e91a00cbdbabfea00b"
+          },
+          {
+            "layer_id": "natura_bird_protection",
+            "provider": "generated_runtime",
+            "path": "data/generated/delivery_groups/bornholm_coastal_2026_10_08_2d/support/natura_bird_protection.csv",
+            "sha256": "42646cf8638f7f1df4855154dfe1f52423bbd7a0ce2a0cb231c124ce7630ae87",
+            "rows_sha256": "da4e350b39b2f4b5b76a577208b4154bf4fa6d85be5b1fe1d352d6542ff872f3"
+          },
+          {
+            "layer_id": "natura_habitat_areas",
+            "provider": "generated_runtime",
+            "path": "data/generated/delivery_groups/bornholm_coastal_2026_10_08_2d/support/natura_habitat_areas.csv",
+            "sha256": "7c3c893a7235116847599cc5f742e619f22710013b618db65ed5fecdfa0c37b1",
+            "rows_sha256": "a659f1c359981a322bbe44286bf52db037077b57131462ae9e91cdca3b1868a1"
+          },
+          {
+            "layer_id": "protected_areas",
+            "provider": "generated_runtime",
+            "path": "data/generated/delivery_groups/bornholm_coastal_2026_10_08_2d/support/protected_areas.csv",
+            "sha256": "a350982411a59a89f970c237f19f59d0d4094dd043d118ae20717002a9ad8048",
+            "rows_sha256": "2f152220999e378fe3548746b8296837f118c10be36fc777295c12c1b7e01451"
+          },
+          {
+            "layer_id": "cultural_preservation",
+            "provider": "generated_runtime",
+            "path": "data/generated/delivery_groups/bornholm_coastal_2026_10_08_2d/support/cultural_preservation.csv",
+            "sha256": "cc8052f76593207bf83a9d6c3b63c5038a11bb4186ff9b73ae84936a62c462d3",
+            "rows_sha256": "03e16f66b31ad925400ff0c468603fde5662c8ed5ead21f22d9847fedc0aee5d"
+          },
+          {
+            "layer_id": "valuable_cultural_environment",
+            "provider": "generated_runtime",
+            "path": "data/generated/delivery_groups/bornholm_coastal_2026_10_08_2d/support/valuable_cultural_environment.csv",
+            "sha256": "99867025ba1d8419bec96619c12d1112b9af944356ea29c6ae908b9d7703f97d",
+            "rows_sha256": "e8729ca8c9b1cf67c49a10357d5f8e40a26f9890079b6d0459d5779b31813705"
+          },
+          {
+            "layer_id": "high_voltage_lines",
+            "provider": "generated_runtime",
+            "path": "data/generated/delivery_groups/bornholm_coastal_2026_10_08_2d/support/high_voltage_lines.csv",
+            "sha256": "e13711e4f6faeeca6a2f9e1e66c6a5ff58f2fb3b427ed9ebecbc0133b70604c9",
+            "rows_sha256": "0b8a15358a8bb0fe8821b2f16d712ab91976e214f22560336a295ab67f9cf496"
+          },
+          {
+            "layer_id": "power_substations",
+            "provider": "generated_runtime",
+            "path": "data/generated/delivery_groups/bornholm_coastal_2026_10_08_2d/support/power_substations.csv",
+            "sha256": "78d49fc9521900cc1920cb09c91d699c88e02c615ae1724cd80d0076fb3ab8b3",
+            "rows_sha256": "2bca39141b26e295484ba86749004fe4e07e5f530bc3958170c12a1b13a63dd7"
+          },
+          {
+            "layer_id": "solar_parks_osm",
+            "provider": "generated_runtime",
+            "path": "data/generated/delivery_groups/bornholm_coastal_2026_10_08_2d/support/solar_parks_osm.csv",
+            "sha256": "b29618b22feff498083692e8e2d66151876b9fb692f30253ce4b766c14568c0c",
+            "rows_sha256": "423166347b1dae3ac1a6680b94a7fb4e2b06a49124dbc27dea87e80d0abc4a8c"
+          },
+          {
+            "layer_id": "underground_cables",
+            "provider": "generated_runtime",
+            "path": "data/generated/delivery_groups/bornholm_coastal_2026_10_08_2d/support/underground_cables.csv",
+            "sha256": "612c08e5f623ab96bdf85e36128e43dc28b895b4d43dec37dc86e7828488114c",
+            "rows_sha256": "51506af8d447fdfc9c6257279771505d7771c74424421f2d53fd95dcda1d813e"
+          },
+          {
+            "layer_id": "wind_turbines_osm",
+            "provider": "generated_runtime",
+            "path": "data/generated/delivery_groups/bornholm_coastal_2026_10_08_2d/support/wind_turbines_osm.csv",
+            "sha256": "24454086b1593f783dd2fc1d38b5289e1d7057d18230517f2a3455f06884d9c9",
+            "rows_sha256": "6990eef7e7d6f4410a86568c46c14a5ce033e784efea31632ba45e82cdc50edd"
+          }
+        ]
+      },
+      "rollups": [
+        {
+          "provider": "generated_runtime",
+          "path": "data/generated/eligible_surface/bornholm_onshore_land_r8.geojson",
+          "sha256": "b24ac591524a09485553b61c96de941cc921f7ec28551263998626d674c3339b",
+          "id_field": "hex_id",
+          "area_field": "area_km2",
+          "area_unit": "km2",
+          "resolution": 8,
+          "expected_cell_count": 1044,
+          "expected_total_area_km2": 587.6353334140905
+        },
+        {
+          "provider": "generated_runtime",
+          "path": "data/generated/eligible_surface/bornholm_onshore_land_r7.geojson",
+          "sha256": "5e6962eea4ae5f6f7cf654f5d3160b7c4414bb8124a3f923974dd49e4cfc87f8",
+          "id_field": "hex_id",
+          "area_field": "area_km2",
+          "area_unit": "km2",
+          "resolution": 7,
+          "expected_cell_count": 170,
+          "expected_total_area_km2": 587.6353334140905
+        },
+        {
+          "provider": "generated_runtime",
+          "path": "data/generated/eligible_surface/bornholm_onshore_land_r6.geojson",
+          "sha256": "08eeae21e57e91cb121312c6e566304b0daf1d3e972241646d64e56c9042ca39",
+          "id_field": "hex_id",
+          "area_field": "area_km2",
+          "area_unit": "km2",
+          "resolution": 6,
+          "expected_cell_count": 35,
+          "expected_total_area_km2": 587.6353334140905
+        }
+      ]
+    }
+  },
+  "analysis_domain": {
+    "provider": "generated_runtime",
+    "path": "data/generated/analysis_domain/bornholm_standard_r9.geojson",
+    "sha256": "407640739604d98c3322c3b324cc228cc602a015321964b3626c8311adad61d7",
+    "id_field": "hex_id",
+    "area_field": "area_km2",
+    "area_unit": "km2",
+    "cell_kind": "h3",
+    "resolution": 9,
+    "expected_cell_count": 6882,
+    "expected_total_area_km2": 587.6353334140905,
+    "rollups": [
+      {
+        "provider": "generated_runtime",
+        "path": "data/generated/analysis_domain/bornholm_standard_r8.geojson",
+        "sha256": "bf5d6e23a4c3f2de9e68c2ace79a42aefc34f00227f54608ed20023f88c67955",
+        "id_field": "hex_id",
+        "area_field": "area_km2",
+        "area_unit": "km2",
+        "resolution": 8,
+        "expected_cell_count": 1044,
+        "expected_total_area_km2": 587.6353334140905
+      },
+      {
+        "provider": "generated_runtime",
+        "path": "data/generated/analysis_domain/bornholm_standard_r7.geojson",
+        "sha256": "3d71820a9ab67839a142f822d87241842e80709901052fd504e51a9c8859422f",
+        "id_field": "hex_id",
+        "area_field": "area_km2",
+        "area_unit": "km2",
+        "resolution": 7,
+        "expected_cell_count": 170,
+        "expected_total_area_km2": 587.6353334140905
+      },
+      {
+        "provider": "generated_runtime",
+        "path": "data/generated/analysis_domain/bornholm_standard_r6.geojson",
+        "sha256": "4fc5249eebc9af766d93b880a07e14621ab73f6406e95a362f75b0b5484a4a36",
+        "id_field": "hex_id",
+        "area_field": "area_km2",
+        "area_unit": "km2",
+        "resolution": 6,
+        "expected_cell_count": 35,
+        "expected_total_area_km2": 587.6353334140905
+      }
+    ]
+  },
+  "analysis_id": "standard_constraints"
+}

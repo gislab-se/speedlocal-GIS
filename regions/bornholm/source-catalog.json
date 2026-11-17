@@ -1,0 +1,593 @@
+{
+  "schema_version": "1.0",
+  "region_id": "bornholm",
+  "groups": [
+    {
+      "id": "roads",
+      "status": "candidate",
+      "reason": "Checksum-pinned GeoDanmark delivery from 2024-12-06. GeoDanmark's official 2024 terms confirm CC BY 4.0 and required @geodanmark attribution; the two road sources are eligible for delivery review without implying Bornholm V2 parity.",
+      "sources": [
+        {
+          "id": "roads_large",
+          "label": "Stora vägar",
+          "database_view": "roads_large",
+          "authority": "Klimadatastyrelsen / GeoDanmark",
+          "dataset": "GeoDanmark Vektor 6.0, Bornholm",
+          "snapshot_date": "2024-12-06",
+          "license": {
+            "name": "CC BY 4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/deed.da",
+            "status": "verified_local_delivery"
+          },
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "Stor vej, Fordelingsrute och Gennemfartsrute",
+          "source_feature_count": 4893,
+          "geometry_family": "line",
+          "data_representation": "network",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/bornholm_geodanmark_roads_2024_12_06/roads_large.geojson",
+            "sha256": "15c483299e215c81f565c5e04540b422356d15bdea7268c4d8d5ec880e3b603f",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 1
+          }
+        },
+        {
+          "id": "roads_medium",
+          "label": "Mellanvägar",
+          "database_view": "roads_medium",
+          "authority": "Klimadatastyrelsen / GeoDanmark",
+          "dataset": "GeoDanmark Vektor 6.0, Bornholm",
+          "snapshot_date": "2024-12-06",
+          "license": {
+            "name": "CC BY 4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/deed.da",
+            "status": "verified_local_delivery"
+          },
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "Mellem vej",
+          "source_feature_count": 3771,
+          "geometry_family": "line",
+          "data_representation": "network",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/bornholm_geodanmark_roads_2024_12_06/roads_medium.geojson",
+            "sha256": "5195ed8cf3f7cd27cc770b30d9e50789dda982715fa77b1c8048606bc5d784fb",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "population",
+      "status": "candidate",
+      "reason": "Two verified GeoDanmark settlement sources plus the municipality-derived 100 m dissolved population surface, explicitly authorized by Henrik for local review on 2026-10-08 while reuse terms remain unverified. Only the polygon buffer is used; raw resident points and attributes are not exposed.",
+      "sources": [
+        {
+          "id": "population_points",
+          "label": "Fastboende befolkning – buffertyta",
+          "database_view": "population_points",
+          "authority": "Bornholms Regionskommune",
+          "dataset": "Fastboende befolkning, historiskt bearbetat V1-underlag",
+          "snapshot_date": null,
+          "license": {
+            "name": null,
+            "url": null,
+            "status": "unverified"
+          },
+          "public_display_status": "local_review_only",
+          "selection": "Integritetsskyddad, upplöst påverkansyta; underliggande individnära punkter visas inte",
+          "source_feature_count": 38954,
+          "geometry_family": "polygon",
+          "data_representation": "privacy_protected_surface",
+          "asset": {
+            "provider": "v2_archive",
+            "path": "docs/geocontext/acceptance_framework/data/prototype_assets/source_geojson/population_points.geojson",
+            "sha256": "21e994af549a4980062fece612298ae480c2865349b429c87ec0a0325a008754",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 1
+          },
+          "local_review_authorization": {
+            "scope": "local_review",
+            "authorized_by": "Henrik",
+            "authorized_on": "2026-10-08",
+            "reason": "Owner explicitly requested local activation while reuse terms remain unresolved."
+          }
+        },
+        {
+          "id": "built_centre",
+          "label": "Tät bebyggelse",
+          "database_view": "built_centre",
+          "authority": "GeoDanmark",
+          "dataset": "Bykärna, historiskt V1-underlag",
+          "snapshot_date": "2024-12-06",
+          "license": {
+            "name": "CC BY 4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/deed.da",
+            "status": "verified_local_delivery"
+          },
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "Bebyggda centrumytor på Bornholm",
+          "source_feature_count": 3,
+          "geometry_family": "polygon",
+          "data_representation": "features",
+          "asset": {
+            "provider": "v2_archive",
+            "path": "docs/geocontext/acceptance_framework/data/prototype_assets/source_geojson/built_centre.geojson",
+            "sha256": "96e040c5bad239fad3ea8592a6fe23d5131e1485046d17870c30d732150459a5",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 3
+          }
+        },
+        {
+          "id": "built_low_selection",
+          "label": "Låg bebyggelse",
+          "database_view": "built_low_selection",
+          "authority": "GeoDanmark",
+          "dataset": "Låg bebyggelse, historiskt V1-underlag",
+          "snapshot_date": "2024-12-06",
+          "license": {
+            "name": "CC BY 4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/deed.da",
+            "status": "verified_local_delivery"
+          },
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "Urval av låga byggnadsytor på Bornholm",
+          "source_feature_count": 254,
+          "geometry_family": "polygon",
+          "data_representation": "features",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/bornholm_v1_population_normalized_2026_09_02/built_low_selection.geojson",
+            "sha256": "7e70327494cc33124d965088a053a827c87c42cf10985837c7f1de4c2b79a9ac",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 254
+          }
+        }
+      ]
+    },
+    {
+      "id": "nature",
+      "status": "candidate",
+      "reason": "Six checksum-pinned Arealdata deliveries have verified open reuse terms and dated source archives and are eligible for delivery review. The separately derived nature_area_forest source remains blocked because its authority, snapshot and licence lineage are unresolved; no V1 or V2 parity is claimed. The dated PLST coastal planning zone is added as an optional polygon constraint; it is not a blanket statutory prohibition. Official Plandata terms confirm CC BY 4.0 for PLST-owned layers.",
+      "sources": [
+        {
+          "id": "protected_areas",
+          "label": "Fredade områden",
+          "database_view": "protected_areas",
+          "authority": "Miljøstyrelsen / Danmarks Miljøportal",
+          "dataset": "Fredede områder",
+          "snapshot_date": "2024-12-12",
+          "license": {
+            "name": "Danmarks Miljøportal – vilkår for brug af Arealdata",
+            "url": "https://arealdata.miljoeportal.dk/terms",
+            "status": "verified_local_delivery"
+          },
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "Dissolverad och klippt Bornholm-geometri från det daterade Arealdata-arkivet; kandidat för leveransgranskning",
+          "source_feature_count": 1,
+          "geometry_family": "polygon",
+          "data_representation": "features",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/bornholm_v1_nature_normalized_2026_09_03/protected_areas.geojson",
+            "sha256": "d89352c038cf96c90808676c7187f5365bd82de38dcba81d5c7ab287eeb32f0c",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 1
+          }
+        },
+        {
+          "id": "natura_designated_land",
+          "label": "Natura 2000 – särskilt utpekad mark",
+          "database_view": "natura_designated_land",
+          "authority": "Miljøstyrelsen / Danmarks Miljøportal",
+          "dataset": "Natura 2000 – særligt udpegede landområder",
+          "snapshot_date": "2024-12-12",
+          "license": {
+            "name": "Danmarks Miljøportal – vilkår for brug af Arealdata",
+            "url": "https://arealdata.miljoeportal.dk/terms",
+            "status": "verified_local_delivery"
+          },
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "143 polygonobjekt klippta till den granskade DAGI-landytan; kandidat för leveransgranskning",
+          "source_feature_count": 143,
+          "geometry_family": "polygon",
+          "data_representation": "features",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/bornholm_v1_nature_normalized_2026_09_03/natura_designated_land.geojson",
+            "sha256": "3bb3d1ccc3787d8dd0d3d7f5136f37f1a697c23ab27b4c1e02f617c33445bc9d",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 143
+          }
+        },
+        {
+          "id": "natura_bird_protection",
+          "label": "Natura 2000 – fågelskydd",
+          "database_view": "natura_bird_protection",
+          "authority": "Miljøstyrelsen / Danmarks Miljøportal",
+          "dataset": "Natura 2000 – fuglebeskyttelsesområder",
+          "snapshot_date": "2024-12-12",
+          "license": {
+            "name": "Danmarks Miljøportal – vilkår for brug af Arealdata",
+            "url": "https://arealdata.miljoeportal.dk/terms",
+            "status": "verified_local_delivery"
+          },
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "3 polygonobjekt klippta till den granskade DAGI-landytan; kandidat för leveransgranskning",
+          "source_feature_count": 3,
+          "geometry_family": "polygon",
+          "data_representation": "features",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/bornholm_v1_nature_normalized_2026_09_03/natura_bird_protection.geojson",
+            "sha256": "97e5e72d6d93c42d3e5d973ae8c4f9213e2f52ae41d9ebb18c8d52fc4f5c9077",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 3
+          }
+        },
+        {
+          "id": "natura_habitat_areas",
+          "label": "Natura 2000 – habitatområden",
+          "database_view": "natura_habitat_areas",
+          "authority": "Miljøstyrelsen / Danmarks Miljøportal",
+          "dataset": "Natura 2000 – habitatområder",
+          "snapshot_date": "2024-12-12",
+          "license": {
+            "name": "Danmarks Miljøportal – vilkår for brug af Arealdata",
+            "url": "https://arealdata.miljoeportal.dk/terms",
+            "status": "verified_local_delivery"
+          },
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "4 polygongeometrier från 8 källrader, där 4 rader saknar geometri; klippta till den granskade DAGI-landytan för leveransgranskning",
+          "source_feature_count": 8,
+          "geometry_family": "polygon",
+          "data_representation": "features",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/bornholm_v1_nature_normalized_2026_09_03/natura_habitat_areas.geojson",
+            "sha256": "9bed2b5c77a9e9d9075e4f44aa7085ed5f4fc42b64ef98ea2a82ba82a3396fb5",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 4
+          }
+        },
+        {
+          "id": "natura_ramsar",
+          "label": "Natura 2000 – Ramsarområde",
+          "database_view": "natura_ramsar",
+          "authority": "Miljøstyrelsen / Danmarks Miljøportal",
+          "dataset": "Natura 2000 – Ramsarområde",
+          "snapshot_date": "2024-12-20",
+          "license": {
+            "name": "Danmarks Miljøportal – vilkår for brug af Arealdata",
+            "url": "https://arealdata.miljoeportal.dk/terms",
+            "status": "verified_local_delivery"
+          },
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "1 multipolygon klippt till den granskade DAGI-landytan; kandidat för leveransgranskning",
+          "source_feature_count": 1,
+          "geometry_family": "polygon",
+          "data_representation": "features",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/bornholm_v1_nature_normalized_2026_09_03/natura_ramsar.geojson",
+            "sha256": "d74a07a0dfa0927ff1cc63bb673391483200a5b83da9b07873a05f1a28f84639",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 1
+          }
+        },
+        {
+          "id": "nature_wildlife_reserve",
+          "label": "Natur- och viltreservat",
+          "database_view": "nature_wildlife_reserve",
+          "authority": "Danmarks Miljøportal",
+          "dataset": "Natur- og vildtreservater",
+          "snapshot_date": "2024-12-12",
+          "license": {
+            "name": "Danmarks Miljøportal – vilkår for brug af Arealdata",
+            "url": "https://arealdata.miljoeportal.dk/terms",
+            "status": "verified_local_delivery"
+          },
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "1 multipolygongeometri från 3 källrader, där 2 rader saknar geometri; klippt till den granskade DAGI-landytan för leveransgranskning",
+          "source_feature_count": 3,
+          "geometry_family": "polygon",
+          "data_representation": "features",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/bornholm_v1_nature_normalized_2026_09_03/nature_wildlife_reserve.geojson",
+            "sha256": "413fafe26442f451057ca0af520a210bfc3cd1588bebdcdabe95f89fae022f9a",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 1
+          }
+        },
+        {
+          "id": "nature_area_forest",
+          "label": "Naturareal – skog och plantage",
+          "database_view": "nature_area_forest",
+          "authority": "Historiskt Bornholm V1-underlag",
+          "dataset": "Danskt naturareal-underlag, naturareal = skovPlantage",
+          "snapshot_date": null,
+          "license": {
+            "name": null,
+            "url": null,
+            "status": "unverified"
+          },
+          "public_display_status": "blocked",
+          "selection": "34 skogs- och plantagepolygoner från 83 källrader, där 49 rader saknar geometri; klippta till den granskade DAGI-landytan, med källmyndighet, snapshot och licens blockerade före publik visning",
+          "source_feature_count": 83,
+          "geometry_family": "polygon",
+          "data_representation": "features",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/bornholm_v1_nature_normalized_2026_09_03/nature_area_forest.geojson",
+            "sha256": "c7f3f448a759c05bdeef9d2d800bd3f81b0a2b1bbba03487f31d253f27ebb078",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 34
+          }
+        },
+        {
+          "id": "coastal_proximity_zone",
+          "label": "Kustnärhetszon – planeringshänsyn",
+          "database_view": "coastal_proximity_zone",
+          "authority": "Plan- og Landdistriktsstyrelsen / Plandata.dk",
+          "dataset": "Kystnærhedszonen, polygon",
+          "snapshot_date": "2025-09-18",
+          "license": {
+            "name": "CC BY 4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/deed.da",
+            "status": "verified_local_delivery"
+          },
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "110 Bornholm-objekt (cpr_noegle=400) från den daterade Plandata-leveransen, klippta till den granskade DAGI-landytan; Christiansø ingår inte. Ingen extra 3 km-buffert.",
+          "source_feature_count": 110,
+          "geometry_family": "polygon",
+          "data_representation": "features",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/bornholm_coastal_zone_2026_10_08_2d/coastal_proximity_zone.geojson",
+            "sha256": "db0b74b600e6d8f3609e63485d3b80f723733105ff5e2190c409b0e15a99443c",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 110
+          }
+        }
+      ]
+    },
+    {
+      "id": "culture",
+      "status": "candidate",
+      "reason": "Two distinct, checksum-pinned Bornholm V1-derived culture geometries from the 2024-12-12 Plandata archive are eligible for delivery review. Both authoritative dataset records explicitly declare CC BY 4.0; attribution and transformations are recorded in docs/BORNHOLM_SKARABORG_SOURCE_EVIDENCE.md. The verified duplicate remains excluded. This source-licence decision does not approve analysis, public activation or Bornholm V2 parity.",
+      "sources": [
+        {
+          "id": "cultural_preservation",
+          "label": "Kulturhistoriska bevarandevärden",
+          "database_view": "cultural_preservation",
+          "authority": "Bornholms Regionskommune / Plandata.dk",
+          "dataset": "Kulturhistoriske bevaringsværdier, Bornholms Kommuneplan 2020",
+          "snapshot_date": "2024-12-12",
+          "license": {
+            "name": "CC BY 4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/deed.da",
+            "status": "verified_local_delivery"
+          },
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "16 antagna kommunplanegeometrier klippta till den granskade DAGI-landytan; intern geometri- och källgranskning endast",
+          "source_feature_count": 16,
+          "geometry_family": "polygon",
+          "data_representation": "features",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/bornholm_v1_culture_normalized_2026_09_04/cultural_preservation.geojson",
+            "sha256": "3b3f7db84446a5f7927d434198c41ea55829fc204fc8dba2dad3593ee7a830e4",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 16
+          }
+        },
+        {
+          "id": "valuable_cultural_environment",
+          "label": "Värdefulla kulturmiljöer",
+          "database_view": "valuable_cultural_environment",
+          "authority": "Bornholms Regionskommune / Plandata.dk",
+          "dataset": "Værdifulde kulturmiljøer, Bornholms Kommuneplan 2020",
+          "snapshot_date": "2024-12-12",
+          "license": {
+            "name": "CC BY 4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/deed.da",
+            "status": "verified_local_delivery"
+          },
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "123 antagna kommunplanegeometrier klippta till den granskade DAGI-landytan; intern geometri- och källgranskning endast",
+          "source_feature_count": 123,
+          "geometry_family": "polygon",
+          "data_representation": "features",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/bornholm_v1_culture_normalized_2026_09_04/valuable_cultural_environment.geojson",
+            "sha256": "a03855bfb15f3623e6534ed27ae5a520c7b0769642f71bbb721e6499afe042b6",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 123
+          }
+        }
+      ]
+    },
+    {
+      "id": "grid_infrastructure",
+      "status": "candidate",
+      "reason": "Existing selected OSM grid sources plus separately pinned OSM wind-generator positions and solar-park polygons. Historical ENS inventory retains its original unresolved reuse status.",
+      "sources": [
+        {
+          "id": "high_voltage_lines",
+          "label": "Högspänningsledningar",
+          "database_view": "high_voltage_lines",
+          "authority": "OpenStreetMap contributors",
+          "dataset": "OSM 60 kV overhead lines, Overpass 2026-09-05",
+          "snapshot_date": "2026-09-05",
+          "license": {
+            "name": "Open Data Commons Open Database License (ODbL) 1.0",
+            "url": "https://www.openstreetmap.org/copyright",
+            "status": "verified_local_delivery"
+          },
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "14 luftledningar med power=line och voltage som innehåller 60000; location=indoor och line=bay/busbar exkluderas; klippta till granskad DAGI-landyta; ägargodkänt källurval 2026-09-05",
+          "source_feature_count": 14,
+          "geometry_family": "line",
+          "data_representation": "features",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/bornholm_osm_grid_2026_09_05_wgs84_2d/high_voltage_lines.geojson",
+            "sha256": "2f5429ded82e2f3b369f17d6fb34af565be63db6c71b671e06348f64568fab40",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 14
+          }
+        },
+        {
+          "id": "underground_cables",
+          "label": "Markkablar",
+          "database_view": "underground_cables",
+          "authority": "OpenStreetMap contributors",
+          "dataset": "OSM 60 kV underground cables, Overpass 2026-09-05",
+          "snapshot_date": "2026-09-05",
+          "license": {
+            "name": "Open Data Commons Open Database License (ODbL) 1.0",
+            "url": "https://www.openstreetmap.org/copyright",
+            "status": "verified_local_delivery"
+          },
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "13 markkablar med power=cable, location=underground och voltage som innehåller 60000; line=bay/busbar exkluderas; klippta till granskad DAGI-landyta; ägargodkänt källurval 2026-09-05",
+          "source_feature_count": 13,
+          "geometry_family": "line",
+          "data_representation": "features",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/bornholm_osm_grid_2026_09_05_wgs84_2d/underground_cables.geojson",
+            "sha256": "8c280e1661392b4b8f06aed6fe5bf162b0a02e0e5c6ac14d805e0a01919f6a87",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 13
+          }
+        },
+        {
+          "id": "power_substations",
+          "label": "Transformatorstationer",
+          "database_view": "power_substations",
+          "authority": "OpenStreetMap contributors",
+          "dataset": "OSM 60 kV distribution substations, Overpass 2026-09-05",
+          "snapshot_date": "2026-09-05",
+          "license": {
+            "name": "Open Data Commons Open Database License (ODbL) 1.0",
+            "url": "https://www.openstreetmap.org/copyright",
+            "status": "verified_local_delivery"
+          },
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "15 stationspolygoner med power=substation, substation=distribution och voltage som innehåller 60000; inkluderar inomhusstationer; klippta till granskad DAGI-landyta; ägargodkänt källurval 2026-09-05",
+          "source_feature_count": 15,
+          "geometry_family": "polygon",
+          "data_representation": "features",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/bornholm_osm_grid_2026_09_05_wgs84_2d/power_substations.geojson",
+            "sha256": "4df2d4bb99bb186c03d28e57141383fde622fa3c0eaa7e9c572b58b565e89117",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 15
+          }
+        },
+        {
+          "id": "existing_wind_turbines",
+          "label": "Befintliga vindkraftverk",
+          "database_view": "existing_wind_turbines",
+          "authority": "Energistyrelsen",
+          "dataset": "Vindkraftanlæg, historiskt Bornholm V1-arkivuttag",
+          "snapshot_date": "2024-12-13",
+          "license": {
+            "name": null,
+            "url": null,
+            "status": "unverified"
+          },
+          "public_display_status": "blocked",
+          "selection": "73 landbaserade vindkraftverk klippta till den granskade DAGI-landytan; endast intern geometri- och källgranskning",
+          "source_feature_count": 73,
+          "geometry_family": "point",
+          "data_representation": "features",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/bornholm_v1_grid_normalized_2026_09_04/existing_wind_turbines.geojson",
+            "sha256": "456af9a30da7b877dbf2c24d01b5c520a54b2d01ee6b799b66ccb48962e7bf40",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 73
+          }
+        },
+        {
+          "id": "wind_turbines_osm",
+          "label": "Befintliga vindkraftverk (OSM)",
+          "database_view": "wind_turbines_osm",
+          "authority": "OpenStreetMap contributors",
+          "dataset": "OSM mapped wind generators, Overpass 2026-10-08",
+          "snapshot_date": "2026-10-08",
+          "license": {
+            "name": "Open Data Commons Open Database License (ODbL) 1.0",
+            "url": "https://www.openstreetmap.org/copyright",
+            "status": "verified_local_delivery"
+          },
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "82 wind generator nodes with current power=generator and generator:source=wind tags; explicit planned/construction/disused/demolished objects excluded; clipped to reviewed DAGI land. Coverage and operating status unverified; location proximity is not evidence of available grid capacity.",
+          "source_feature_count": 82,
+          "geometry_family": "point",
+          "data_representation": "features",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/bornholm_osm_generation_2026_10_08/wind_turbines_osm.geojson",
+            "sha256": "7f8cc080e0313e98f9475a39e7237ddc33820a674d0f8e27e676cd28c52c9312",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 82
+          }
+        },
+        {
+          "id": "solar_parks_osm",
+          "label": "Befintliga solanläggningar (OSM)",
+          "database_view": "solar_parks_osm",
+          "authority": "OpenStreetMap contributors",
+          "dataset": "OSM mapped photovoltaic plant boundaries, Overpass 2026-10-08",
+          "snapshot_date": "2026-10-08",
+          "license": {
+            "name": "Open Data Commons Open Database License (ODbL) 1.0",
+            "url": "https://www.openstreetmap.org/copyright",
+            "status": "verified_local_delivery"
+          },
+          "public_display_status": "eligible_for_delivery_review",
+          "selection": "Four photovoltaic power=plant boundaries (three polygons and one multipolygon); individual solar-panel/rooftop generators excluded, relation-member duplicates suppressed; clipped to reviewed DAGI land. Coverage and operating status unverified; location proximity is not evidence of available grid capacity.",
+          "source_feature_count": 4,
+          "geometry_family": "polygon",
+          "data_representation": "features",
+          "asset": {
+            "provider": "generated_runtime",
+            "path": "data/generated/source_snapshots/bornholm_osm_generation_2026_10_08/solar_parks_osm.geojson",
+            "sha256": "9d5439e38fb0b6a91195b5db5fc285937b7c7dd9572249709d094a97607e3afa",
+            "format": "geojson",
+            "source_crs": "EPSG:4326",
+            "expected_feature_count": 4
+          }
+        }
+      ]
+    }
+  ]
+}

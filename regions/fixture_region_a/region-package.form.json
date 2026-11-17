@@ -1,0 +1,197 @@
+{
+  "$schema": "../../schemas/speedlocal/1.0/region-package-form.schema.json",
+  "form_schema_version": "1.0",
+  "region": {
+    "region_id": "fixture_region_a",
+    "display_name": "Neutral fixture A",
+    "country_code": "ZZ",
+    "country_name": "Synthetic test territory",
+    "native_crs": "EPSG:32633",
+    "web_crs": "EPSG:4326",
+    "behavior_reference": {
+      "state": "unavailable",
+      "reason": "Synthetic portability fixture; it has no regional behavior reference."
+    }
+  },
+  "access": {
+    "lifecycle": "onboarding",
+    "trust_classification": "diagnostic_only",
+    "product_route_requested": false,
+    "local_review": {
+      "enabled": true,
+      "allowed_capabilities": ["workspace.map", "wind.group.roads"]
+    },
+    "landing_card": {
+      "title": "Neutral fixture A",
+      "subtitle": "Synthetic manifest-program fixture",
+      "description": "A non-public fixture that proves manifest-only compilation without regional behavior.",
+      "badge": "Fixture",
+      "sort_order": 999
+    }
+  },
+  "map_h3": {
+    "center": [56.0, 12.0],
+    "zoom": 10,
+    "analysis_resolution": 9,
+    "rollup_resolutions": [8]
+  },
+  "geography": {
+    "boundary": {
+      "state": "declared",
+      "id": "onshore_region_extent",
+      "label": "Synthetic square boundary",
+      "asset": {
+        "provider": "repo",
+        "path": "regions/fixture_region_a/assets/boundary.geojson",
+        "format": "geojson",
+        "integrity": {
+          "mode": "generate"
+        }
+      },
+      "source_crs": "EPSG:4326",
+      "native_crs": "EPSG:32633",
+      "geometry_family": "polygon",
+      "provenance": {
+        "authority": "SpeedLocal test suite",
+        "dataset_name": "Synthetic square boundary",
+        "dataset_version": "fixture-1",
+        "snapshot_date": "2026-08-14",
+        "license": "CC0-1.0 synthetic fixture",
+        "provenance_status": "processed_snapshot_only",
+        "derivation": "Hand-authored synthetic polygon used only by deterministic compiler gates."
+      }
+    },
+    "standard_analysis_domain": {
+      "state": "declared",
+      "domain_id": "standard_constraints_r9",
+      "coverage_geometry_id": "onshore_region_extent",
+      "cell_kind": "h3",
+      "resolution": 9,
+      "rollup_resolutions": [8],
+      "candidate_buffer_m": 5000,
+      "coverage_rule": "positive_area_intersection",
+      "missing_observation_policy": "error"
+    },
+    "technology_support": {
+      "state": "unavailable",
+      "reason": "This fixture proves the standard-group request and engine path only."
+    }
+  },
+  "landscape": {
+    "state": "unavailable",
+    "reason": "This fixture proves the standard-group request and engine path only; it declares no landscape view contract."
+  },
+  "standard_groups": [
+    {
+      "id": "roads",
+      "state": "declared",
+      "layers": [
+        {
+          "id": "fixture_roads",
+          "label": "Synthetic roads",
+          "operation": "distance_exclusion",
+          "geometry_family": "line",
+          "data_representation": "network",
+          "source": {
+            "source_kind": "vector_file",
+            "asset": {
+              "provider": "repo",
+              "path": "regions/fixture_region_a/assets/roads.geojson",
+              "format": "geojson",
+              "integrity": {
+                "mode": "generate"
+              }
+            },
+            "source_crs": "EPSG:4326",
+            "geometry_family": "line",
+            "data_representation": "network",
+            "selection": {
+              "field": "road_class",
+              "values": ["included"]
+            },
+            "provenance": {
+              "authority": "SpeedLocal test suite",
+              "dataset_name": "Synthetic road lines",
+              "dataset_version": "fixture-1",
+              "snapshot_date": "2026-08-14",
+              "license": "CC0-1.0 synthetic fixture",
+              "provenance_status": "processed_snapshot_only",
+              "derivation": "Two hand-authored lines exercise explicit attribute selection."
+            }
+          },
+          "parameters": {
+            "buffer_m": {
+              "type": "number",
+              "unit": "m",
+              "minimum": 0,
+              "maximum": 1000,
+              "step": 25,
+              "technical_initial_value": 100,
+              "accepted_recommended_default": {
+                "state": "unavailable",
+                "reason": "Synthetic fixture has no accepted regional recommendation."
+              }
+            }
+          },
+          "note": "Only the feature whose road_class is included may enter the generated source artifact."
+        }
+      ]
+    },
+    {
+      "id": "population",
+      "state": "unavailable",
+      "reason": "Not part of the roads portability fixture."
+    },
+    {
+      "id": "nature",
+      "state": "unavailable",
+      "reason": "Not part of the roads portability fixture."
+    },
+    {
+      "id": "culture",
+      "state": "unavailable",
+      "reason": "Not part of the roads portability fixture."
+    },
+    {
+      "id": "grid_infrastructure",
+      "state": "unavailable",
+      "reason": "Not part of the roads portability fixture."
+    }
+  ],
+  "technologies": {
+    "wind": {
+      "technology_id": "wind",
+      "state": "declared",
+      "applicable_group_ids": ["roads"],
+      "area_result": {
+        "state": "unavailable",
+        "reason": "The fixture proves the standard roads engine only."
+      }
+    },
+    "solar": {
+      "technology_id": "solar",
+      "state": "unavailable",
+      "reason": "Not part of the roads portability fixture."
+    }
+  },
+  "solar_rooftop": {
+    "state": "unavailable",
+    "reason": "Not part of the roads portability fixture."
+  },
+  "scenario": {
+    "state": "unavailable",
+    "reason": "Not part of the roads portability fixture."
+  },
+  "social_acceptance": {
+    "state": "unavailable",
+    "reason": "Not part of the roads portability fixture."
+  },
+  "combined_result": {
+    "state": "unavailable",
+    "reason": "Not part of the roads portability fixture."
+  },
+  "notes": [
+    "This directory is intentionally absent from regions/index.json and can never become a public region.",
+    "Changing only region_id must not change operation, geometry adapter, parameters or readiness semantics."
+  ]
+}

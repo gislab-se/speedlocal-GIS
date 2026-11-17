@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "technologies": {
+    "wind": {
+      "roads": 300,
+      "population": 800,
+      "nature": 100,
+      "culture": 100,
+      "grid_infrastructure": 3000
+    },
+    "solar": {
+      "roads": 100,
+      "population": 300,
+      "nature": 0,
+      "culture": 0,
+      "grid_infrastructure": 500
+    }
+  }
+}
